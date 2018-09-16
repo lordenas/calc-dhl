@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -50,6 +51,10 @@ module.exports = {
     noInfo: true,
     overlay: true
   },
+  plugins: [
+    // убедитесь что подключили плагин!
+    new VueLoaderPlugin()
+  ],
   performance: {
     hints: false
   },
