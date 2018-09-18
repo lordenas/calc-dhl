@@ -8,9 +8,9 @@
                         <div class="typepost-type-title">Тип груза</div>
                         <div class="typepost-type-select">
                             <div class="typepost-type-select-selecter">
-                              <select class="standinput">
-                                  <option>Документы</option>
-                                  <option>Груз</option>
+                              <select class="standinput" v-model="presoptionState"  @input="getCategoryChanges">
+                                  <option :value="1">Документы</option>
+                                  <option :value="2">Груз</option>
                               </select>
                             </div>
                             <div class="typepost-type-select-val">Бумажные листы любого формата</div>
@@ -30,7 +30,7 @@
 
 
 
-                    <div class="ng-untouched ng-valid ng-dirty">
+                    <div class="ng-untouched ng-valid ng-dirty"  v-show="presoptionState == 2">
                         <div _ngcontent-c20="" class="box-sizing" style="background-image:url('/img/box-sizing.png');">
                             <div _ngcontent-c20="" class="box-sizing__property-name">Длина</div>
                             <div _ngcontent-c20="" class="box-sizing__property-name" style="top:54%;left:auto;right:578px;">Высота</div>
@@ -61,18 +61,30 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+import {mapGetters} from 'vuex';
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      
-    }
-  },
-  methods: {
-    stepOne () {
-      this.stepOneflag =  !this.stepOneflag;
-    }
-  }
+    name: 'app',
+    data () {
+        return {
+            selecteded: 1,
+        }
+    },
+    computed: {
+        ...mapGetters([
+        'presoptionState'
+        ]),
+    },
+    methods: {
+        ...mapMutations([
+            'presoption'
+        ]),
+        getCategoryChanges (e) {
+            //console.log(e.target.value)
+            this.presoption(e.target.value)
+        }
+    },
 }
 </script>
 

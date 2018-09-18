@@ -8,21 +8,18 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="value" :hideSelected="true"  track-by="region" label="city" placeholder="Select one" :options="options" :searchable="true" :allow-empty="false">
-                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                              <multiselect v-model="valuecountry" :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
-                             <pre>{{ value.tarifid  }}</pre>
+                             <pre>{{ value.zone  }}</pre>
                         </div>
                         <div class="block-input">
 
                         <label class="typo__label">Город</label>
-                        <multiselect v-model="value" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Select one" :options="options" :searchable="true" :allow-empty="false">
+                        <multiselect v-model="value" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false">
                             <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                         </multiselect>
-
-
                         <pre>{{ value.tarifid  }}</pre>
-
                         </div>
                         <div class="block-input">
                             <label>Индекс</label>
@@ -41,11 +38,16 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                            <input class="standinput" type="text" placeholder="Страна">
+                              <multiselect v-model="valuecountryToSet" :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
+                             </multiselect>
                         </div>
                         <div class="block-input">
-                            <label>Город</label>
-                            <input class="standinput" type="text" placeholder="Город">
+                            <label class="typo__label">Город</label>
+                            <multiselect  v-model="valuetoSet" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false">
+                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                            </multiselect>
+                             <pre>{{ value.tarifid  }}</pre>
                         </div>
                         <div class="block-input">
                             <label>Индекс</label>
@@ -60,6 +62,7 @@
 
 <script>
     const cityId = require('./json/cityid.json') 
+    const country = require('./json/country.json')
     import Multiselect from 'vue-multiselect'
 
     export default {
@@ -67,13 +70,17 @@
       data () {
         return {
           stepOneflag: true,
-          selected: null,
-            value: 0,
-            options: []
+          value: 0,
+          valuetoSet: 0,
+          valuecountry: 15,
+          valuecountryToSet: 15,
+          options: [],
+          optionscountry: [],
         }
       },
       mounted () {
           this.cicl()
+          this.countrycl()
       },
       methods: {
          cicl() {
@@ -87,6 +94,17 @@
                 //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
             }
             console.log(this.options)
+         },
+         countrycl() {
+              for (var i=0; i<country.country.length; i++) {
+                this.optionscountry.push({
+                    'country': country.country[i].cuuntry,
+                    'zone': country.country[i].zone
+                })
+                //this.options.push({'region': cityId.cityid[i].city.split('(')[1]})
+                //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
+            }
+            console.log(this.optionscountry)
          },
          onSelect(index) {
             // console.log(index)

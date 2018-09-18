@@ -17,9 +17,15 @@
     import TypePost from './type-post.vue'
     import TypeStore from './type-store.vue'
     import Multiselect from 'vue-multiselect'
+    import {store} from './store/';
+    import Vuex from 'vuex';
+    import { mapMutations } from 'vuex';
+    import { mapGetters } from 'vuex';
+    Vue.use(Vuex);
 
     export default {
       name: 'app',
+      store,
       data () {
         return {
           stepOneflag: true,

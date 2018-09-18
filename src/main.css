@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Helveticaneuecyr";
+    src: url("https://uploads-ssl.webflow.com/5a3f599c80557a0001777654/5a3f599c80557a000177772e_HelveticaNeueCyr-Thin.otf") format("opentype");
+    font-style: normal;
+    font-weight: 100;
+  }
+body {
+    margin: 20px auto;
+    display: table;
+}
 #app {
     font-family: Helveticaneuecyr, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -6,6 +16,7 @@
     color: #333;
     font-size: 14px;
     line-height: 1.4;
+    font-weight: 300;
   }
   label {
       margin-bottom: 5px;
@@ -29,6 +40,15 @@
   a {
     color: #42b983;
   }
+  input::placeholder {
+      font-weight: 300 !important;
+      font-family: Helveticaneuecyr, sans-serif;
+  }
+  select{
+    font-weight: 300 !important;
+    font-family: Helveticaneuecyr, sans-serif;
+}
+
   .block-input {
     display: flex;
     justify-content: space-between;
@@ -45,13 +65,16 @@
   .toset {
     display: flex;
     justify-content: space-between;
-    background: #F4F4F4;
+    background: #FFF;
     padding: 10px;
     margin-top: 50px;
+    border-left: 2px solid red;
+    box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
+    border-radius: 3px;
   }
   .blocktwo label {
     width: 100px;
-    margin-bottom: 5px;
+    margin: 5px 0;
     font-family: Helveticaneuecyr, sans-serif;
     font-weight: 200;
     padding: 5px 0;
@@ -72,7 +95,7 @@
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 5px;
-    border: 1px solid #6798d4;
+    border: 1px solid #f0f0f0;
     border-radius: 4px;
     background-position: 12px 50%;
     background-size: 18px;
@@ -88,7 +111,13 @@
     justify-content: center;
     align-items: center;
   }
-  
+
+  .toset-title span {
+    color: #0f3b83;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
   .country {
     justify-content: space-between;
     display: flex;
@@ -122,13 +151,18 @@
   
   .typestore {
     margin: 50px 0 0 0;
-    background: #F4F4F4;
+    background: #FFF;
+    padding: 10px;
+    margin-top: 50px;
+    border-left: 2px solid red;
+    box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
   }
   
   .typestore-icon {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 20px 0;
   }
   
   .typestore-icon-step {
@@ -137,28 +171,59 @@
     align-items: center;
     justify-content: space-between;
     width: 300px;
+    cursor: pointer;
   }
-  
+
+  .typestore-icon-step-active {
+    padding: 8px;
+    transition: all 0.2s;
+  }
+  .active {
+    padding: 5px;
+    border-radius: 3px;
+    border: 3px solid #d40511;
+    transition: all 0.2s;
+    box-sizing: border-box;
+  }
+
+  .typestore-icon-step-active:hover {
+    padding: 5px;
+    border-radius: 3px;
+    border: 3px solid #d40511;
+    transition: all 0.2s;
+    box-sizing: border-box;
+  }
+
+  .typestore-icon-step img {
+    max-height: 100px;
+    max-width: 150px;
+  }
   .typestore-icon-step:nth-child(2) {
     width: 10px;
   }
   
   .typepost {
     margin: 50px 0 0 0;
-    background: #F4F4F4;
     padding: 50px;
+    background: #FFF;
+    border-left: 2px solid red;
+    box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
   }
   
   .typepost-title {
     font-size: 20px;
     text-align: center;
-    background: #CCC;
+    background: #FCFCFC;
     padding: 10px;
+    box-shadow: 1px 1px 1px #CCC;
+    border-top: 2px solid red;
+    border-radius: 3px;
   }
   
   .typepost-type-title {
     width: 25%;
     text-align: left;
+    margin: 5px 0 0 0;
   }
   
   .typepost-type {

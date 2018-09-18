@@ -1,0 +1,1163 @@
+{
+    "country": [
+        {
+            "cuuntry": "Австралия",
+            "zone": "УШ",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Австрия",
+            "zone": "ш",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Азербайджан",
+            "zone": "II",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Албания",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Алжир",
+            "zone": "VII",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Ангилья",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Ангола",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Андорра",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Антигуа и Барбуда",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Аргентина",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Армения",
+            "zone": "II",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Аруба",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Афганистан",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Багамские о-ва",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Бангладеш",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Барбадос",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Бахрейн",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Беларусь",
+            "zone": "I",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Белиз",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Бельгия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Бенин",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Бермудские О-ва",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Болгария",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Боливия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Бонэр",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Босния и Герцеговина",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Ботсвана",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Бразилия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Бурунди",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Бутан",
+            "zone": "VII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Вануату",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Ватикан (Государство-город Ва",
+            "zone": "т Ш",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Великобритания",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Венгрия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Венесуэла",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Виргинские о-ва (США)",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Виргинские о-ва (Брит.)",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Восточное Самоа (США)",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Восточный Тимор",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Вьетнам",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Габон",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гаити",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гайана",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Гамбия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Гана",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гваделупа",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гватемала",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гвинея",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гвинея-Бисау",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Германия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Гернси (Нормандские о-ва)",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гибралтар",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Гондурас",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гонконг",
+            "zone": "VI",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гренада",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Гренландия",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Греция",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Грузия",
+            "zone": "II",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Гуам",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Дания",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Джерси (Нормандские о-ва)",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Джибути",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Доминика",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Доминиканская Республика",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Египет",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Замбия",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Западное Самоа",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Зимбабве",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Израиль",
+            "zone": "VI",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Индия",
+            "zone": "VI",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Индонезия",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Иордания",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Ирак",
+            "zone": "VII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Иран",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Ирландия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Исландия",
+            "zone": "VIII",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Испания",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Италия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Йемен",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Кабо-Верде",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Казакстан",
+            "zone": "I",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Кайман",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Камбоджа",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Камерун",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Канада",
+            "zone": "V",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Канарские о-ва",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Катар",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Кения",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Кипр",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Кирибати",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Китай",
+            "zone": "VI",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Колумбия",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Коморские о-ва",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Конго",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Конго. Демократическая р-ка",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Корея, Северная**",
+            "zone": "VII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Корея, Южная",
+            "zone": "VI",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Косово",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Коста-Рика",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Кот-д'Ивуар",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Куба",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Кувейт",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Кыргызстан",
+            "zone": "I",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Кюрасао",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Лаос",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Латвия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Лесото",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Либерия",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Ливан",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Ливия",
+            "zone": "VII",
+            "time": "7"
+        },
+        {
+            "cuuntry": "Литва",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Ликтенштейн",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Люксембург",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Маврикий",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Мавритания",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Мадагаскар",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Майотта",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Макао",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Македония",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Малави",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Малайзия",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Мали",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Мальдивские о-ва",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Мальта",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Марокко",
+            "zone": "VII",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Мартиника",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Маршалловы о-ва",
+            "zone": "VIII",
+            "time": "6"
+        },
+        {
+            "cuuntry": "Мексика",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Микронезия",
+            "zone": "VIII",
+            "time": "6"
+        },
+        {
+            "cuuntry": "Мозамбик",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Молдова",
+            "zone": "II",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Монако",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Монголия",
+            "zone": "VII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Монтсеррат",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Мьянма",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Намибия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Непал",
+            "zone": "VII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Нигер",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Нигерия",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Нидерландские Антильские острова",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Нидерланды",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Никарагуа",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Ниуэ",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Новая Зеландия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Новая Каледония",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Норвегия",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Объединенные Арабские Эмираты",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "О-ва Кука",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "О-в Святой Елены",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Оман",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Пакистан",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Палау",
+            "zone": "VIII",
+            "time": "5"
+        },
+        {
+            "cuuntry": "Панама",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Папуа-Новая Гвинея",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Парагвай",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Польша",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Португалия",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Пуэрто-Рико",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Реюньон",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Россия"
+        },
+        {
+            "cuuntry": "Руанда",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Румыния",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Сайпан",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Сальвадор",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Сан-Марино",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Сан-Томе и Принсипи",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Саудовская Аравия",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Св. Бартоломью",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Свазиленд",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сейшельские о-ва",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Сенегал",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сен-Мартен",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сент-Винсент",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сент-Китс (Сент-Кристофер)",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сент-Люсия",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сент-Юстас",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Сербия",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Сингапур",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Сирия",
+            "zone": "VII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Словакия",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Словения",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Соломоновы о-ва",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Сомали",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Сомалилэнд**",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Судан",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Суринам",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "США",
+            "zone": "V",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Сьерра-Леоне",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Таджикистан",
+            "zone": "II",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Таиланд",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Таити",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Тайвань",
+            "zone": "VI",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Танзания",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Терке и Кайкос",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Того",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Тонга",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Тринидад и Тобаго",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Тувалу",
+            "zone": "VIII",
+            "time": "5"
+        },
+        {
+            "cuuntry": "Тунис**",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Турция",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Уганда",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Узбекистан",
+            "zone": "II",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Украина",
+            "zone": "I",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Уругвай",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Фарерские о-ва",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Фиджи",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Филиппины",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Финляндия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Фолклендские (Мальвинские) о-ва",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Франция",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Французская Гвиана",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Хорватия",
+            "zone": "IV",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Центрально-Африканская Республик",
+            "zone": "а VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Чад",
+            "zone": "VIII",
+            "time": "4"
+        },
+        {
+            "cuuntry": "Черногория",
+            "zone": "IV",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Чекия",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Чили",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Швейцария",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Швеция",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Шри-Ланка",
+            "zone": "VII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Эквадор",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Экваториальная Гвинея",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Эритрея",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Эстония",
+            "zone": "III",
+            "time": "1"
+        },
+        {
+            "cuuntry": "Эфиопия",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "ЮАР",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Южный Судан",
+            "zone": "VIII",
+            "time": "3"
+        },
+        {
+            "cuuntry": "Ямайка",
+            "zone": "VIII",
+            "time": "2"
+        },
+        {
+            "cuuntry": "Япония",
+            "zone": "VI",
+            "time": "2"
+        }
+    ]
+}
