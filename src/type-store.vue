@@ -26,6 +26,7 @@
 
 
 <script>
+import Vue from 'vue';
 import {mapMutations} from 'vuex';
 import {mapGetters} from 'vuex';
 
@@ -43,7 +44,7 @@ export default {
     },
     methods: {
         ...mapMutations([
-                'presoption'
+            'presoption'
         ])
     },
 }

@@ -4,6 +4,7 @@
         <div class="stepOne" v-show="!stepOneflag" >
             <form-adress></form-adress>
             <form-date></form-date>
+            <bascket></bascket>
             <type-store></type-store>
             <type-post></type-post>
         </div>
@@ -16,6 +17,7 @@
     import FormDate from './form-date.vue'
     import TypePost from './type-post.vue'
     import TypeStore from './type-store.vue'
+    import bascket from './bascket.vue'
     import Multiselect from 'vue-multiselect'
     import {store} from './store/';
     import Vuex from 'vuex';
@@ -25,7 +27,7 @@
 
     export default {
       name: 'app',
-      store,
+      store: store,
       data () {
         return {
           stepOneflag: true,
@@ -37,7 +39,7 @@
         }
       },
       components: {
-          TypePost, TypeStore, FormAdress, FormDate, Multiselect 
+          TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket 
         },
     }
 </script>
