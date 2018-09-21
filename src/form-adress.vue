@@ -61,6 +61,8 @@
 </template>
 
 <script>
+    import {mapMutations} from 'vuex';
+    import {mapGetters} from 'vuex';
     const cityId = require('./json/cityid.json') 
     const country = require('./json/country.json')
     import Multiselect from 'vue-multiselect'
