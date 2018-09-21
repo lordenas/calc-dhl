@@ -64,7 +64,7 @@
         </div>
         <div class="options__field-wrap todate-activedate">
             <button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('https://zakaz.dhl.ru/assets/img/datepicker-button.svg');">
-                <span  class="datepicker-button__text">{{selectedDate}}</span>
+                <span  class="datepicker-button__text">{{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : 'С 12:00 до 19:00'}}</span>
             </button>
 
         </div>
@@ -90,8 +90,8 @@
         data() {
             return {
                 showModal: false,
-                
-                selectedDate: null,
+                valueDate: null,
+                selectedDate: new Date(),
                 attrs: [
                     {
                         key: 'today',
@@ -102,15 +102,16 @@
         },
         computed: {
             ...mapGetters([
-                'dateStatePosition'
+                'dateStatePosition', 'dateCalenStatePosition'
             ])
         },
         methods: {
             ...mapMutations([
-                'dateState'
+                'dateState', 'calendarState'
         ]),
         selectedDateMeth () {
-            console.log(this.selectedDate)
+            this.showModal = false
+            this.calendarState(this.selectedDate)
         }
     },
     }
