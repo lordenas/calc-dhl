@@ -1,8 +1,17 @@
 <template>
-        <div class="typestore">
-            <div class="typestore-title">
-            Что Вы отправляете?
+    <div>
+        <div class="title-block-new">
+            <div class="div-block-51 _500 w-clearfix">
+                <div class="heading-text-block _500">
+                <div class="div-line"></div>
+                <div class="div-rad"></div>
+                <div class="div-block-50"></div>
+                <div class="div-rad min"></div>
+                <h2 class="heading-13">Что Вы отправляете?<br></h2>
+                </div>
             </div>
+        </div>
+        <div class="typestore">
             <div class="typestore-icon">
             <div class="typestore-icon-step">
                 <div class="typestore-icon-step-active" v-bind:class="{ active: presoptionState == 1 }" @click="presoption(1)">
@@ -22,6 +31,7 @@
             </div>
             </div>
         </div>
+    </div>
 </template>
 
 

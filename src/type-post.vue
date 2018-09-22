@@ -1,8 +1,17 @@
-<template>
-               <div class="typepost">
-                <div class="typepost-title">
-                  Информация о Вашем грузе
+<template> 
+    <div>
+        <div class="title-block-new">
+            <div class="div-block-51 _500 w-clearfix">
+                <div class="heading-text-block _500">
+                <div class="div-line"></div>
+                <div class="div-rad"></div>
+                <div class="div-block-50"></div>
+                <div class="div-rad min"></div>
+                <h2 class="heading-13">Информация о Вашем грузе<br></h2>
                 </div>
+            </div>
+        </div>
+               <div class="typepost">
                 <div class="typepost-body">
                     <div class="typepost-type">
                         <div class="typepost-type-title">Тип груза</div>
@@ -60,6 +69,7 @@
                     </div>
                 </div>
             </div>
+    </div>
 </template>
 
 <script>

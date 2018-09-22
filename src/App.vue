@@ -1,7 +1,8 @@
 <template>
     <div id="app">
-        <a @click ="stepOne()" v-show="stepOneflag" class="button-start">Расчитать стоимость доставки</a>
-        <div class="stepOne" v-show="!stepOneflag" >
+        <!-- <a @click ="stepOne()" v-show="stepOneflag" class="button-start">Расчитать стоимость доставки</a> -->
+
+        <div class="stepOne">
             <form-adress></form-adress>
             <form-date></form-date>
             <bascket></bascket>

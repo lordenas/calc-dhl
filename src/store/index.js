@@ -65,10 +65,6 @@ export const store = new Vuex.Store({
 			console.log(index)
 			let typePost = state.backetData[index].title
 			state.curentvalue = typePost
-		},
-		// выбор города отправки
-		toCitysending(state, citiSet) {
-			console.log(citiSet)
 		}
 	},
 	actions: {

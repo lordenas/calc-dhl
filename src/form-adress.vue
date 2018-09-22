@@ -1,39 +1,55 @@
 <template>
 <div>
-        <div class="toset">
-                <div class="toset-title">
-                  <span>Откуда забрать груз?</span>
+        <div class="title-block-new">
+            <div class="div-block-51 _500 w-clearfix">
+                <div class="heading-text-block _500">
+                <div class="div-line"></div>
+                <div class="div-rad"></div>
+                <div class="div-block-50"></div>
+                <div class="div-rad min"></div>
+                <h2 class="heading-13">Откуда отправляете груз?<br></h2>
                 </div>
+            </div>
+        </div>
+        <div class="toset">
                 <div class="blocktwo">
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="valuecountry" :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect v-model="valuecountry" :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @search-change="toCitysending">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
                              <pre>{{ value.zone  }}</pre>
                         </div>
-                        <div class="block-input">
-
-                        <label class="typo__label">Город</label>
-                        <multiselect v-model="value" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false">
-                            <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
-                        </multiselect>
-                        <pre>{{ value.tarifid  }}</pre>
-                        </div>
-                        <div class="block-input">
-                            <label>Индекс</label>
-                            <input class="standinput" type="text"  placeholder="Индекс">
+                        <div class="block-fotter-input">
+                            <div class="block-input">
+                                <label class="typo__label">Город</label>
+                                <multiselect v-model="value" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false">
+                                    <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                                </multiselect>
+                                <pre>{{ value.tarifid  }}</pre>
+                            </div>
+                            <div class="block-input">
+                                <label>Индекс</label>
+                                <input class="standinput" type="text"  placeholder="Индекс">
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
-            <div class="toset">
-                <div class="toset-title">
-                  <span>Куда доставить груз?</span>
+            <div class="title-block-new">
+                <div class="div-block-51 _500 w-clearfix">
+                    <div class="heading-text-block _500">
+                    <div class="div-line"></div>
+                    <div class="div-rad"></div>
+                    <div class="div-block-50"></div>
+                    <div class="div-rad min"></div>
+                    <h2 class="heading-13">Куда доставить груз?<br></h2>
+                    </div>
                 </div>
+            </div>
+            <div class="toset">
                 <div class="blocktwo">
                     <div class="country">
                         <div class="block-input">
@@ -84,6 +100,9 @@
           this.cicl()
           this.countrycl()
       },
+      computed: {
+
+      },
       methods: {
          cicl() {
               for (var i=0; i<cityId.cityid.length; i++) {
@@ -107,9 +126,6 @@
                 //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
             }
             console.log(this.optionscountry)
-         },
-         onSelect(index) {
-            // console.log(index)
          }
       },
       components: {
