@@ -19,7 +19,6 @@
                               <multiselect v-model="valuecountry" :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
-                             <pre>{{ value.zone  }}</pre>
                         </div>
                         <div class="block-fotter-input">
                             <div class="block-input">
@@ -27,7 +26,6 @@
                                 <multiselect v-model="value" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                                 </multiselect>
-                                <pre>{{ value.tarifid  }}</pre>
                             </div>
                             <div class="block-input">
                                 <label>Индекс</label>
@@ -63,7 +61,6 @@
                             <multiselect  v-model="valuetoSet" :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                             </multiselect>
-                             <pre>{{ valuetoSet.tarifid  }}</pre>
                         </div>
                         <div class="block-input">
                             <label>Индекс</label>
@@ -105,7 +102,7 @@
       },
       methods: {
         ...mapMutations([
-                'toCitysending', 'toCityReception', 'tarifZone'
+                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif'
          ]),
          cicl() {
               for (var i=0; i<cityId.cityid.length; i++) {
@@ -126,6 +123,7 @@
                 this.toCityReception(this.valuetoSet.tarifid )
              }
              this.tarifZone()
+             this.selecttarif()
          },
          countrycl() {
               for (var i=0; i<country.country.length; i++) {

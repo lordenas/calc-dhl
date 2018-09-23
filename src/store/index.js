@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 const tarifzone = require('../json/tarifzone.json')
+const pricelist = require('../json/pricelist.json')
 
 Vue.use(Vuex);
 let newdata =  new Date()
@@ -18,7 +19,8 @@ export const store = new Vuex.Store({
 			depth: null
 		},
 		valueCitySending: null, //город отправитель
-		valueCityReception: null // город получатель
+		valueCityReception: null, // город получатель
+		tarifzonevalue: null, //тарифная зона
 	},
 	getters: {
 		presoptionState(state){
@@ -89,15 +91,19 @@ export const store = new Vuex.Store({
 				//console.log(tarifzone.datatarifzone[i][state.valueCitySending])
 				if(tarifzone.datatarifzone[i][0] == state.valueCitySending+'a') {
 					let paramFix = state.valueCitySending+'a'
-					console.log(arr.datatarifzone[i])
+					//console.log(arr.datatarifzone[i])
 					var ilnegh = [] 
 					ilnegh.push(arr.datatarifzone[i])
 					for (var j = 0; j<ilnegh.length; j++) {
 						console.log('работает', arr.datatarifzone[i][state.valueCityReception])
+						state.tarifzonevalue = arr.datatarifzone[i][state.valueCityReception]
 					}
 				}
 			}
-		}
+		},
+		selecttarif () {
+				console.log('прайс', pricelist.pricelistdata)
+		},
 	},
 	actions: {
 		
