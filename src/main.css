@@ -180,7 +180,7 @@ body {
     cursor: pointer;
     box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
     justify-content: space-between;
-    height: 200px;
+    height: 150px;
   }
   .typestore-icon-step-radio {
     width: 31px;
@@ -190,7 +190,7 @@ body {
     z-index: 10;
   }
 
-  .typestore-icon-step-radio::before {
+  .active::before {
     content: '';
     width: 50px;
     height: 59px;
@@ -235,35 +235,17 @@ body {
     padding: 0px;
     transition: all 0.2s;
     width: 240px;
-    height: 140px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .active {
-    padding: 5px;
-    border-radius: 3px;
-    border: 3px solid #d40511;
-    transition: all 0.2s;
-    box-sizing: border-box;
-    width: 240px;
-    height: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+ 
 
-  .typestore-icon-step-active:hover {
-    padding: 5px;
-    border-radius: 3px;
-    border: 3px solid #d40511;
-    transition: all 0.2s;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 240px;
-    height: 140px;
+  .typestore-icon-step:hover {
+    box-shadow: 3px 3px 7px RGBA(0, 0, 0, 0.35);
+    transition: all 0.3s;
+    padding: 1px;
   }
 
   .typestore-icon-step img {
@@ -371,9 +353,18 @@ body {
     height: 23px;
     margin: 0px 15px;
     padding: 8px 20px;
-    border: 1px solid #e2e2e2;
-    background-color: #e0a816;
-    box-shadow: 0 2px 0 0 rgba(0,1,1,.04);
+    transform-style: preserve-3d;
+    transition: transform 500ms ease-in-out 0s, opacity 500ms ease-in-out 0s;
+    opacity: 1;
+    transform: translateX(0px) translateY(0px) translateZ(0px);
+    padding-right: 17px;
+    background-image: -webkit-linear-gradient(315deg, #2454ae, #6798d4);
+    background-image: linear-gradient(135deg, #2454ae, #6798d4);
+    background-position: 0px 0px;
+    color: #FFF;
+    background-size: auto;
+    background-repeat: repeat;
+    text-align: center;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
@@ -399,9 +390,9 @@ body {
       letter-spacing: .15px;
   }
   .box-sizing__property-name {
-      top: -10px;
+      top: 200px;
       left: 50%;
-      color: #b78600;
+      color: #000;
   }
   
   .box-sizing__title {
@@ -432,7 +423,7 @@ body {
       padding-top: 6px;
   }
   .box-sizing__error {
-      top: 70px;
+      top: 163px;
       left: 150px;
       color: #d40511;
   }

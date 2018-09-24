@@ -13,21 +13,23 @@
         </div>
         <div class="typestore">
             <div class="typestore-icon">
-                <div class="typestore-icon-step">
-                    <div class="typestore-icon-step-active" v-bind:class="{ active: presoptionState == 1 }" @click="presoption(1)">
-                        <img src="/img/4.png" />
-                    </div>
-                    <span>Документы</span>
-                </div>
-                <div class="typestore-icon-step">
-                    <div class="typestore-icon-step-radio"></div>
+                <div class="typestore-icon-step"  @click="presoption(1)">
+                    <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionState == 1 }" @click="presoption(1)"></div>
                     <div class="typestore-icon-step-body">
-                        <div class="typestore-icon-step-active" v-bind:class="{ active: presoptionState == 2 }" v-on:click="presoption(2)">
+                        <div class="typestore-icon-step-active">
+                            <img src="/img/4.png" />
+                        </div>
+                        <span>Документы</span>
+                    </div>
+                </div>
+                <div class="typestore-icon-step" v-on:click="presoption(2)">
+                    <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionState == 2 }" @click="presoption(2)"></div>
+                    <div class="typestore-icon-step-body">
+                        <div class="typestore-icon-step-active" >
                             <img src="img/5.png" />
                         </div>
                         <span>Груз</span>
                     </div>
-                    
                 </div>
             </div>
         </div>

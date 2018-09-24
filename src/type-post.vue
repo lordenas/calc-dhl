@@ -40,10 +40,10 @@
 
 
                     <div class="ng-untouched ng-valid ng-dirty"  v-show="presoptionState == 2">
-                        <div class="box-sizing" style="background-image:url('/img/box-sizing.png');">
+                        <div class="box-sizing" style="background-image:url('/img/7.png'); background-size: 575px; margin: 0 0 45px 0;">
                             <div class="box-sizing__property-name">Длина</div>
-                            <div class="box-sizing__property-name" style="top:54%;left:auto;right:578px;">Высота</div>
-                            <div class="box-sizing__property-name" style="top:185px;left:562px;">Ширина</div>
+                            <div class="box-sizing__property-name" style="top:60%;left:auto;right:610px;">Высота</div>
+                            <div class="box-sizing__property-name" style="top:190px;left:595px;">Ширина</div>
                             <div class="box-sizing__title">Габариты (см)</div>
                             <div class="box-sizing__hint"> </div>
                             <div v-show="validblock" class="box-sizing__error">{{validblock}}</div>
@@ -90,7 +90,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-        'presoptionState', 'weightDataState'
+        'presoptionState'
         ]),
         weight() {
             //console.log( this.weightel.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
@@ -126,7 +126,7 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'presoption', 'backetDataArr'
+            'presoption', 'backetDataArr', 'selecttarif'
         ]),
         getCategoryChanges (e) {
             //console.log(e.target.value)
@@ -146,7 +146,7 @@ export default {
                 ? false
                 : this.backetDataArr(gabarit)
             }
-           
+           this.selecttarif()
         }
     },
 }

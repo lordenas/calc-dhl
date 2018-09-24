@@ -63,7 +63,7 @@
             
         </div>
         <div class="options__field-wrap todate-activedate">
-            <button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('https://zakaz.dhl.ru/assets/img/datepicker-button.svg');">
+            <button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
                 <span  class="datepicker-button__text">{{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : 'С 12:00 до 19:00'}}</span>
             </button>
 

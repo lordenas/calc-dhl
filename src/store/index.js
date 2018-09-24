@@ -101,8 +101,16 @@ export const store = new Vuex.Store({
 				}
 			}
 		},
-		selecttarif () {
+		selecttarif (state) {
 				console.log('прайс', pricelist.pricelistdata)
+				//console.log('state.weight', parseFloat(state.backetData[0].parametr))
+				let parseWeight = parseFloat(state.backetData[0].parametr)
+				for (var i = 0; i<pricelist.pricelistdata.length; i++) {
+					//console.log('dddddddd', parseWeight, '-', parseFloat(pricelist.pricelistdata[i].kg))
+					if(parseFloat(pricelist.pricelistdata[i].kg) == parseWeight) {
+						console.log('aaaaaaaaaaaa', parseFloat(pricelist.pricelistdata[i].kg))
+					}
+				}
 		},
 	},
 	actions: {
