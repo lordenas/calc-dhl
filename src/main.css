@@ -139,8 +139,8 @@ body {
     flex-direction: row;
     height: 40px;
     align-items: center;
-    border: 2px solid #0f57ae;
     border-radius: 3px;
+    box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
   }
   .todate-title {
     display: flex;
@@ -190,7 +190,7 @@ body {
     z-index: 10;
   }
 
-  .active::before {
+  .typestore-icon-step .active::before {
     content: '';
     width: 50px;
     height: 59px;
@@ -242,11 +242,11 @@ body {
   }
  
 
-  .typestore-icon-step:hover {
+  /* .typestore-icon-step:hover {
     box-shadow: 3px 3px 7px RGBA(0, 0, 0, 0.35);
     transition: all 0.3s;
     padding: 1px;
-  }
+  } */
 
   .typestore-icon-step img {
     max-height: 90px;
@@ -579,9 +579,10 @@ body {
 }
 
 .calendar__time-radio-item.active {
-  border-color: #e0a817;
-  background-color: #fc0;
+  border-color: #457bee;
+  background-color: #006cd8;
   margin: 5px 0;
+  color: #fff;
 }
 .calendar__time-radio-item {
   position: relative;

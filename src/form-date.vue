@@ -26,12 +26,12 @@
 
                     </slot>
                     <v-date-picker
-                        mode='single'
-                        tint-color='#f142f4'
+                        :available-dates='{ start: new Date(), end: null }'
+                        tint-color='#30507e'
                         v-model='selectedDate'
-                        :attributes='attrs'
                         is-inline>
                     </v-date-picker>
+                    
                 </div>
 
                 <div class="modal-footer">
@@ -91,13 +91,11 @@
             return {
                 showModal: false,
                 valueDate: null,
-                selectedDate: new Date(),
-                attrs: [
-                    {
-                        key: 'today',
-                        dates: new Date(2018, 9, 9)
-                    }
-                ]
+                
+                selectedDate: {
+                    start: new Date(2018, 9, 25),
+                    end: new Date(2018, 9, 28)
+                }
             }
         },
         computed: {

@@ -103,12 +103,22 @@ export const store = new Vuex.Store({
 		},
 		selecttarif (state) {
 				console.log('прайс', pricelist.pricelistdata)
-				//console.log('state.weight', parseFloat(state.backetData[0].parametr))
 				let parseWeight = parseFloat(state.backetData[0].parametr)
-				for (var i = 0; i<pricelist.pricelistdata.length; i++) {
-					//console.log('dddddddd', parseWeight, '-', parseFloat(pricelist.pricelistdata[i].kg))
-					if(parseFloat(pricelist.pricelistdata[i].kg) == parseWeight) {
-						console.log('aaaaaaaaaaaa', parseFloat(pricelist.pricelistdata[i].kg))
+				var summ = 0
+				console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
+				for (var a = 0; a<state.backetData.length; a++) {
+					for (var i = 0; i<pricelist.pricelistdata.length; i++) {
+						console.log('dddddddd',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
+						if(parseFloat(pricelist.pricelistdata[i].kg) == parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr)))) {
+							console.log('aaaaaaaaaaaa', parseFloat(pricelist.pricelistdata[i].kg))
+							var maslengt = []
+							maslengt.push(pricelist.pricelistdata[i])
+							for(var j = 0; j < maslengt.length; j++) {
+								console.log(pricelist.pricelistdata[j][state.tarifzonevalue], 'цена')
+								summ += parseFloat(pricelist.pricelistdata[j][state.tarifzonevalue])
+								console.log('itog', summ)
+							}
+						}
 					}
 				}
 		},
