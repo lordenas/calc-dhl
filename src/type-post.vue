@@ -126,7 +126,7 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'presoption', 'backetDataArr', 'selecttarif'
+            'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 
         ]),
         getCategoryChanges (e) {
             //console.log(e.target.value)
@@ -147,6 +147,8 @@ export default {
                 : this.backetDataArr(gabarit)
             }
            this.selecttarif()
+           //скрываем блок после добавление товара в корзину
+           this.addTobasketHide()
         }
     },
 }

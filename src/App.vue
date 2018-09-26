@@ -1,13 +1,27 @@
 <template>
     <div id="app">
-         <a @click ="stepOne()" v-show="stepOneflag" class="button-start">Расчитать стоимость доставки</a> 
+         <a @click ="stepOne()" v-show="stepOneflag" class="typepost-but-succes button-next">Расчитать стоимость доставки</a> 
 
         <div  v-show="!stepOneflag" class="stepOne">
             <form-adress></form-adress>
             <form-date></form-date>
-            <bascket></bascket>
-            <type-store></type-store>
-            <type-post></type-post>
+            <input class="typepost-but-succes button-next" :disabled="!validate" v-show="!steponeEx" @click="nextstepX" value="Далее">
+            <div v-show="steponeEx">
+                <bascket></bascket>
+                <div v-show="!stepTreeEx">
+                    <type-store></type-store>
+                </div>
+                <div>
+                
+                {{ this.$store.state.backetData.length  }} 
+                 <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextstepTreeX" :value="valueButton">
+                
+                 </div>
+            </div>
+            <div v-show="stepTreeEx">
+              <type-post></type-post>
+              <div class="typepost-but-succes button-next">Расчитать стоимость</div>
+            </div>
         </div>
     </div>
 </template>
@@ -34,10 +48,22 @@
           stepOneflag: true,
         }
       },
+      computed: {
+        ...mapGetters([
+          'steponeEx', 'stepTreeEx', 'basketGet', 'validate'
+        ]),
+        valueButton () {
+          this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'
+        }
+      },
       methods: {
+        ...mapMutations([
+            'nextstepX', 'nextstepTreeX'
+        ]),
         stepOne () {
           this.stepOneflag =  !this.stepOneflag;
-        }
+        },
+
       },
       components: {
           TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket 

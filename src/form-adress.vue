@@ -23,13 +23,13 @@
                         <div class="block-fotter-input">
                             <div class="block-input">
                                 <label class="typo__label">Город</label>
-                                <multiselect v-model="value" selectLabel=" " :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
+                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" selectLabel=" " :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                                 </multiselect>
                             </div>
                             <div class="block-input">
                                 <label>Индекс</label>
-                                <input class="standinput" type="text"  placeholder="Индекс">
+                                <input class="standinput" v-model="index" type="text"  placeholder="Индекс">
                             </div>
                         </div>
                     </div>
@@ -58,13 +58,13 @@
                         </div>
                         <div class="block-input">
                             <label class="typo__label">Город</label>
-                            <multiselect  v-model="valuetoSet" selectLabel=" "  :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
+                            <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" "  :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                             </multiselect>
                         </div>
                         <div class="block-input">
                             <label>Индекс</label>
-                            <input class="standinput" type="text"  placeholder="Индекс">
+                            <input class="standinput" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
                         </div>
                     </div>
 
@@ -84,11 +84,13 @@
       name: 'app',
       data () {
         return {
+          index: null,
+          indexReception: null,
           stepOneflag: true,
           value: 0,
           valuetoSet: 0,
-          valuecountry: 15,
-          valuecountryToSet: 15,
+          valuecountry: {"country": "Россия" },
+          valuecountryToSet: {"country": "Россия" },
           options: [],
           optionscountry: [],
         }
@@ -102,8 +104,23 @@
       },
       methods: {
         ...mapMutations([
-                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif'
+                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut'
          ]),
+         controlvalid () {
+             //форма валидна или нет
+             if (this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 && this.indexReception && this.index ) {
+                this.validateOneMut(true)
+             } else { 
+                 this.validateOneMut(false)
+             }
+         },
+         disabledinput () {
+              if (this.valuecountry ==  {"country": "Россия" }) {
+                  return false
+              } else {
+                  return true
+              }
+        },
          cicl() {
               for (var i=0; i<cityId.cityid.length; i++) {
                 this.options.push({
@@ -122,6 +139,7 @@
              } else if (typeSelectValue == 'CityReception') {
                 this.toCityReception(this.valuetoSet.tarifid )
              }
+             this.controlvalid ()
              this.tarifZone()
              this.selecttarif()
          },

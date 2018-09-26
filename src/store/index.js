@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import step from './indexstep'
 const tarifzone = require('../json/tarifzone.json')
 const pricelist = require('../json/pricelist.json')
 
 Vue.use(Vuex);
 let newdata =  new Date()
 export const store = new Vuex.Store({
+	modules: {
+		step,
+	},
 	state: {
 		curentvalue: 1, //тип документы или груз
 		curentTime: 1, //время
@@ -108,9 +112,9 @@ export const store = new Vuex.Store({
 				console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
 				for (var a = 0; a<state.backetData.length; a++) {
 					for (var i = 0; i<pricelist.pricelistdata.length; i++) {
-						console.log('dddddddd',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
+						console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
 						if(parseFloat(pricelist.pricelistdata[i].kg) == parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr)))) {
-							console.log('aaaaaaaaaaaa', parseFloat(pricelist.pricelistdata[i].kg))
+							console.log('кг', parseFloat(pricelist.pricelistdata[i].kg))
 							var maslengt = []
 							maslengt.push(pricelist.pricelistdata[i])
 							for(var j = 0; j < maslengt.length; j++) {

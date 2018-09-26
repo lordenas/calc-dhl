@@ -341,9 +341,9 @@ body {
   }
   .typepost-but-cancel:hover {
     color: #000;
-    border-color: #009d1e;
-    background-color: #009d1e;
-    box-shadow: 0 2px 0 0 rgba(0,157,30,.24);
+    border-color: #f5f5f5;
+    background-color: #d4d4d4;
+    box-shadow: 0 2px 0 0 rgba(188, 194, 189, 0.2);
   }
   
   .typepost-but-succes {
@@ -370,10 +370,11 @@ body {
     cursor: pointer;
   }
   .typepost-but-succes:hover {
-    color: #000;
+    color: #fff;
     border-color: #009d1e;
     background-color: #009d1e;
     box-shadow: 0 2px 0 0 rgba(0,157,30,.24);
+    opacity: 0.8;
   }
   
   .box-sizing {
@@ -823,4 +824,14 @@ h2 {
   display: flex;
   margin: 50px 0;
   justify-content: flex-start;
+}
+
+.button-next {
+  margin: 30px 0;
+  border: none;
+}
+
+.button-next:disabled  {
+  background: #CCC;
+  cursor: default;
 }
