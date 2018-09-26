@@ -12,9 +12,7 @@
                     <type-store></type-store>
                 </div>
                 <div>
-                
-                {{ this.$store.state.backetData.length  }} 
-                 <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextstepTreeX" :value="valueButton">
+                 <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextstepTreeX" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
                 
                  </div>
             </div>
@@ -46,6 +44,7 @@
       data () {
         return {
           stepOneflag: true,
+          valueButtonText: 'Добавить еще'
         }
       },
       computed: {
