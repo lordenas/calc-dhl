@@ -835,3 +835,7 @@ h2 {
   background: #CCC;
   cursor: default;
 }
+
+.calcstr {
+  margin: 20px 0;
+}

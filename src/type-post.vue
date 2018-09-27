@@ -146,7 +146,7 @@ export default {
                 ? false
                 : this.backetDataArr(gabarit)
             }
-           this.selecttarif()
+           //this.selecttarif()
            //скрываем блок после добавление товара в корзину
            this.addTobasketHide()
         }

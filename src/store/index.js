@@ -25,6 +25,8 @@ export const store = new Vuex.Store({
 		valueCitySending: null, //город отправитель
 		valueCityReception: null, // город получатель
 		tarifzonevalue: null, //тарифная зона
+		tarifcalc: 0,
+		finalCalchide: false
 	},
 	getters: {
 		presoptionState(state){
@@ -39,6 +41,13 @@ export const store = new Vuex.Store({
 		backetDataState(state){
 			return state.backetData; // корзина
 		},
+		tarifcalcState(state) {
+			return state.tarifcalc
+		},
+		finalCalchideState(state) {
+			return state.finalCalchide
+		}
+		
 	},
 	mutations: {
 		//  регулятор груз или документы
@@ -121,6 +130,8 @@ export const store = new Vuex.Store({
 								console.log(pricelist.pricelistdata[j][state.tarifzonevalue], 'цена')
 								summ += parseFloat(pricelist.pricelistdata[j][state.tarifzonevalue])
 								console.log('itog', summ)
+								state.tarifcalc = summ
+								state.finalCalchide = true
 							}
 						}
 					}

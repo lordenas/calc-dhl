@@ -7,18 +7,23 @@
             <form-date></form-date>
             <input class="typepost-but-succes button-next" :disabled="!validate" v-show="!steponeEx" @click="nextstepX" value="Далее">
             <div v-show="steponeEx">
-                <bascket></bascket>
+                
                 <div v-show="!stepTreeEx">
                     <type-store></type-store>
                 </div>
+                <bascket></bascket>
                 <div>
                  <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextstepTreeX" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
                 
                  </div>
             </div>
             <div v-show="stepTreeEx">
-              <type-post></type-post>
-              <div class="typepost-but-succes button-next">Расчитать стоимость</div>
+                <type-post></type-post>
+            </div>
+
+            <Finalcalc v-show="finalCalchideState"></Finalcalc>
+            <div v-show="this.$store.state.backetData.length > 0 ? true : false">
+                <div style="width: 100%" class="typepost-but-succes button-next" @click="selecttarif">Расчитать стоимость</div>
             </div>
         </div>
     </div>
@@ -30,6 +35,7 @@
     import FormDate from './form-date.vue'
     import TypePost from './type-post.vue'
     import TypeStore from './type-store.vue'
+    import Finalcalc from './finalcalc.vue'
     import bascket from './bascket.vue'
     import Multiselect from 'vue-multiselect'
     import {store} from './store/';
@@ -49,7 +55,7 @@
       },
       computed: {
         ...mapGetters([
-          'steponeEx', 'stepTreeEx', 'basketGet', 'validate'
+          'steponeEx', 'stepTreeEx', 'basketGet', 'validate', 'finalCalchideState'
         ]),
         valueButton () {
           this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'
@@ -57,7 +63,7 @@
       },
       methods: {
         ...mapMutations([
-            'nextstepX', 'nextstepTreeX'
+            'nextstepX', 'nextstepTreeX', 'selecttarif'
         ]),
         stepOne () {
           this.stepOneflag =  !this.stepOneflag;
@@ -65,7 +71,7 @@
 
       },
       components: {
-          TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket 
+          TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket, Finalcalc
         },
     }
 </script>
