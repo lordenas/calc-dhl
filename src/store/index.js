@@ -122,7 +122,7 @@ export const store = new Vuex.Store({
 				for (var a = 0; a<state.backetData.length; a++) {
 					for (var i = 0; i<pricelist.pricelistdata.length; i++) {
 						console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
-						if(parseFloat(pricelist.pricelistdata[i].kg) == parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr)))) {
+						if(parseFloat(pricelist.pricelistdata[i].kg) ==  Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))) {
 							console.log('кг', parseFloat(pricelist.pricelistdata[i].kg))
 							var maslengt = []
 							maslengt.push(pricelist.pricelistdata[i])
@@ -142,3 +142,14 @@ export const store = new Vuex.Store({
 		
 	}
 });
+
+
+
+/*
+var decimal = 1;
+if(2 % 1 == 0) {
+ decimal = 0;
+  } else {
+   decimal = 1;
+  }
+console.log((Math.ceil(2 * 2) / 2).toFixed(decimal))*/

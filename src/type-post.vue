@@ -40,7 +40,9 @@
 
 
                     <div class="ng-untouched ng-valid ng-dirty"  v-show="presoptionState == 2">
-                        <div class="box-sizing" style="background-image:url('/img/7.png'); background-size: 575px; margin: 0 0 45px 0;">
+                       
+                        <div class="box-sizing" style="background-image:url('/img/7.png'); background-size: 575px; margin: 0 0 15px 0;">
+                         
                             <div class="box-sizing__property-name">Длина</div>
                             <div class="box-sizing__property-name" style="top:60%;left:auto;right:610px;">Высота</div>
                             <div class="box-sizing__property-name" style="top:190px;left:595px;">Ширина</div>
@@ -61,11 +63,12 @@
                                 </wcc-piece-edit-dimensions-input>
                             </div>
                         </div>
+                        <div  style=" margin: 0 0 35px 0;">Максимально допустимые размеры - 120x80x80см</div>
                     </div>
 
                     <div class="typepost-but">
                         <div class="typepost-but-cancel">Отмена</div>
-                        <div class="typepost-but-succes"  @click="getToBacket">Готово</div>
+                        <div class="typepost-but-succes"  @click="getToBacket">Подтвердить</div>
                     </div>
                 </div>
             </div>

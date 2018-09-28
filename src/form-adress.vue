@@ -29,7 +29,7 @@
                             </div>
                             <div class="block-input">
                                 <label>Индекс</label>
-                                <input class="standinput" v-model="index" type="text"  placeholder="Индекс">
+                                <input class="standinput" v-model="index" type="text"  @input="controlvalid" placeholder="Индекс">
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
          ]),
          controlvalid () {
              //форма валидна или нет
-             if (this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 && this.indexReception && this.index ) {
+             if ((this.valuecountry || this.valuecountry || this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 )&& this.indexReception && this.index ) {
                 this.validateOneMut(true)
              } else { 
                  this.validateOneMut(false)
