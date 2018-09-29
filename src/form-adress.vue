@@ -16,7 +16,7 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="valuecountry" selectLabel=" " :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect disabled="" v-model="valuecountry" selectLabel=" " :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
                         </div>

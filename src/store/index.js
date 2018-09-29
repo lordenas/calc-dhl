@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import step from './indexstep'
 const tarifzone = require('../json/tarifzone.json')
 const pricelist = require('../json/pricelist.json')
+const srochtarig = require('../json/srochtarig.json')
 
 Vue.use(Vuex);
 let newdata =  new Date()
@@ -26,9 +27,13 @@ export const store = new Vuex.Store({
 		valueCityReception: null, // город получатель
 		tarifzonevalue: null, //тарифная зона
 		tarifcalc: 0,
-		finalCalchide: false
+		finalCalchide: false,
+		express: 1
 	},
 	getters: {
+		getExpress(state) {
+			return state.express //экспресс 
+		},
 		presoptionState(state){
 			return state.curentvalue; // переключатель докумет или груз
 		},
@@ -50,6 +55,11 @@ export const store = new Vuex.Store({
 		
 	},
 	mutations: {
+		//срочная не срочная доставка
+		expressnoexpress(state, param) {
+			state.express = param
+			console.log('express', param)
+		},
 		//  регулятор груз или документы
 		presoption (state, param) {
 			state.curentvalue = param
@@ -114,22 +124,72 @@ export const store = new Vuex.Store({
 				}
 			}
 		},
+		
+
+
 		selecttarif (state) {
-				console.log('прайс', pricelist.pricelistdata)
+				let express = state.express == 1 ? pricelist : srochtarig
+				console.log('прайсссс', express.pricelistdata)
 				let parseWeight = parseFloat(state.backetData[0].parametr)
 				var summ = 0
 				console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
+				//колличество товаров в корзине
 				for (var a = 0; a<state.backetData.length; a++) {
-					for (var i = 0; i<pricelist.pricelistdata.length; i++) {
-						console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
-						if(parseFloat(pricelist.pricelistdata[i].kg) ==  Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))) {
-							console.log('кг', parseFloat(pricelist.pricelistdata[i].kg))
+					//проходим по всему прайсу
+					for (var i = 0; i<express.pricelistdata.length; i++) {
+						//console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
+
+						let decimal = 1
+						//округляем вес
+						if(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
+							decimal = 0;
+							 } else {
+							  decimal = 1;
+							 }
+
+						//расчет объемного веса
+						if(state.backetData[a].gabarit != null) {
+							let aMass = state.backetData[a].gabarit.split('x')
+							aMass[0] = parseFloat(aMass[0])
+							aMass[1] = parseFloat(aMass[1])
+							aMass[2] = parseFloat(aMass[2])
+							//console.log('V MASS', a)
+							var newaMass =  aMass[0] * aMass[1] * aMass[2] / 5000
+						}
+						//если вс груза больше 30 тогда округлям с шагом 1 если меньше 30, с шагом 1
+						if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) <30 ) {
+							var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
+						} else {
+							var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))).toFixed(decimal)
+						}
+						mass = parseFloat(mass) + parseFloat(newaMass || 0)
+						//округляем все + объемные вес
+						let decimal2 = 1
+						if(parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
+							decimal2 = 0;
+							 } else {
+							  decimal2 = 1;
+							 }
+
+						mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)
+						
+						
+
+						console.log('ОБЪЁМНЫЙ ВЕС', mass)
+						//если элемент прайса равен элементу корзины
+						if(parseFloat(express.pricelistdata[i].kg) == parseFloat(mass)) {
+							console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))
+							
 							var maslengt = []
-							maslengt.push(pricelist.pricelistdata[i])
+							maslengt.push(express.pricelistdata[i])
+
 							for(var j = 0; j < maslengt.length; j++) {
-								console.log(pricelist.pricelistdata[j][state.tarifzonevalue], 'цена')
-								summ += parseFloat(pricelist.pricelistdata[j][state.tarifzonevalue])
+								console.log(express.pricelistdata[j][state.tarifzonevalue], 'цена', state.tarifzonevalue)
+								summ += parseFloat(express.pricelistdata[i][state.tarifzonevalue])
 								console.log('itog', summ)
+								//if(summ >= 20 && sum <=30) {
+									
+								//}
 								state.tarifcalc = summ
 								state.finalCalchide = true
 							}
@@ -143,13 +203,13 @@ export const store = new Vuex.Store({
 	}
 });
 
+/*						let decimal = 1
+						
+						if(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
+							decimal = 0;
+							 } else {
+							  decimal = 1;
+							 }
 
-
-/*
-var decimal = 1;
-if(2 % 1 == 0) {
- decimal = 0;
-  } else {
-   decimal = 1;
-  }
-console.log((Math.ceil(2 * 2) / 2).toFixed(decimal))*/
+						let mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
+						*/

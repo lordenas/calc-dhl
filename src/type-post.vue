@@ -29,10 +29,11 @@
                         <div class="typepost-type-title">Вес груза (кг.)</div>
                         <div class="typepost-type-variator">
                           <div class="typepost-type-select-selecter">
-                              <input type="text" v-model="weightel"  v-bind:class="[ weightel < 0.5 ? 'redinput' : false ]" class="standinput" @input="weight">
+                              <input type="text" v-model="weightel"  v-bind:class="[ weightel < 0.5 || weightel > 50  ? 'redinput' : false ]" class="standinput" @input="weight">
                           </div>
                           <div class="typepost-type-variator-bool">
                               <div class="typepost-type-select-valRed" v-show="weightel < 0.5">Минимальный оплачиваемый вес одного места 0.5кг</div>
+                              <div class="typepost-type-select-valRed" v-show="weightel > 50">Максимальный вес одного места 50кг</div>
                           </div>
                         </div>
                     </div>
@@ -64,10 +65,13 @@
                             </div>
                         </div>
                         <div  style=" margin: 0 0 35px 0;">Максимально допустимые размеры - 120x80x80см</div>
+                        <div class="textareainfo">
+                            <textarea class="standinput" placeholder="Описание вложения"></textarea>
+                        </div>
                     </div>
 
                     <div class="typepost-but">
-                        <div class="typepost-but-cancel">Отмена</div>
+                        <div class="typepost-but-cancel" @click="cancelInfo">Отмена</div>
                         <div class="typepost-but-succes"  @click="getToBacket">Подтвердить</div>
                     </div>
                 </div>
@@ -88,7 +92,8 @@ export default {
             height: '',
             width: '',
             depth: '',
-            flagGabatir: false
+            flagGabatir: false,
+            flagWeight: false
         }
     },
     computed: {
@@ -125,12 +130,23 @@ export default {
                 this.flagGabatir = true
                 return false
             }
+        },
+
+        validWiight () {
+            if ( this.weightel < 0.5 || this.weightel > 50) {
+                this.flagWeight = false
+            } else {
+                this.flagWeight = true
+            }
         }
     },
     methods: {
         ...mapMutations([
             'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 
         ]),
+        cancelInfo () {
+            this.addTobasketHide()
+        },
         getCategoryChanges (e) {
             //console.log(e.target.value)
             this.presoption(e.target.value)
@@ -139,19 +155,29 @@ export default {
             if (this.presoptionState == 1) {
                 let gabarit = {gabarit: null, weightel: this.weightel}
 
-                this.weightel < 0.5
-                ? false
-                : this.backetDataArr(gabarit)
+                if(this.weightel < 0.5 || this.weightel > 50) {
+                    return false 
+                } else {
+                    this.addTobasketHide()
+                     this.backetDataArr(gabarit); 
+                }
+                
             } else {
                 let gabarit = {gabarit: this.height + 'x' + this.width + 'x' + this.depth + ' см', weightel: this.weightel}
 
                 this.weightel < 0.5 || !this.flagGabatir
                 ? false
-                : this.backetDataArr(gabarit)
+                : this.backetDataArr(gabarit); 
             }
            //this.selecttarif()
            //скрываем блок после добавление товара в корзину
-           this.addTobasketHide()
+
+
+            if(this.flagGabatir) {
+                this.addTobasketHide()
+            } else {
+                return false
+            }
         }
     },
 }

@@ -26,9 +26,18 @@
                     <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionState == 2 }" @click="presoption(2)"></div>
                     <div class="typestore-icon-step-body">
                         <div class="typestore-icon-step-active" >
-                            <img src="img/5.png" />
+                            <img src="img/5-1.png" />
                         </div>
                         <span>Груз</span>
+                    </div>
+                </div>
+                <div class="typestore-icon-step" v-on:click="presoption(3)">
+                    <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionState == 3 }" @click="presoption(3)"></div>
+                    <div class="typestore-icon-step-body">
+                        <div class="typestore-icon-step-active" >
+                            <img src="img/c5.png" />
+                        </div>
+                        <span>Контейнер</span>
                     </div>
                 </div>
             </div>
