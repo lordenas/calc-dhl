@@ -16,15 +16,16 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect disabled="" v-model="valuecountry" selectLabel=" " :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect disabled="" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
                         </div>
                         <div class="block-fotter-input">
                             <div class="block-input">
                                 <label class="typo__label">Город</label>
-                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" selectLabel=" " :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
+                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                                    <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
                             </div>
                             <div class="block-input">
@@ -52,14 +53,16 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="valuecountryToSet" selectLabel=" " :hideSelected="true" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
+                                 <span slot="noResult">Ничего не найдено.</span>
                              </multiselect>
                         </div>
                         <div class="block-input">
                             <label class="typo__label">Город</label>
-                            <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" "  :hideSelected="true" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
+                            <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                                 <span slot="noResult">Ничего не найдено.</span>
                             </multiselect>
                         </div>
                         <div class="block-input">
