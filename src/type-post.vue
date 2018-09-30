@@ -29,10 +29,10 @@
                         <div class="typepost-type-title">Вес груза (кг.)</div>
                         <div class="typepost-type-variator">
                           <div class="typepost-type-select-selecter">
-                              <input type="text" v-model="weightel"  v-bind:class="[ weightel < 0.5 || weightel > 50  ? 'redinput' : false ]" class="standinput" @input="weight">
+                              <input type="text" v-model="weightel"  v-bind:class="[ weightel < this.$store.state.minweight || weightel > 50  ? 'redinput' : false ]" class="standinput" @input="weight">
                           </div>
                           <div class="typepost-type-variator-bool">
-                              <div class="typepost-type-select-valRed" v-show="weightel < 0.5">Минимальный оплачиваемый вес одного места 0.5кг</div>
+                              <div class="typepost-type-select-valRed" v-show="weightel < this.$store.state.minweight">Минимальный оплачиваемый вес одного места {{this.$store.state.minweight}}кг</div>
                               <div class="typepost-type-select-valRed" v-show="weightel > 50">Максимальный вес одного места 50кг</div>
                           </div>
                         </div>

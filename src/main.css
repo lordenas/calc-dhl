@@ -859,6 +859,7 @@ h2 {
 
 .radio-btn-group {
   display: flex;
+  justify-content: center;
 }
 .radio-btn-group .radio {
   margin: 0 0.25rem;
@@ -972,4 +973,29 @@ h2 {
 
 .regulat-post {
   margin: 50px 0;
+}
+
+.label-radio {
+  margin: 40px 0;
+}
+
+.flex-blockdariodreg {
+
+}
+.calendar-diaposit {
+  padding: 5px;
+  border: 1px solid #DCDCDC;
+  border-radius: 2px;
+  position: relative;
+  left: -1px;
+  height: 25px;
+}
+.flex-dir {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.datepicker_container {
+  margin: 20px 0 0 0;
 }

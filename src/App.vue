@@ -35,7 +35,7 @@
             </transition>
             <div v-show="this.$store.state.backetData.length > 0 ? true : false">
                 <div id="div-id"></div> 
-                <a href="#div-id" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next" @click="selecttarif">Расчитать стоимость</div></a> 
+                <a href="#div-id" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next" @click="clickcalctarif">Расчитать стоимость</div></a> 
             </div>
             <transition name="fade">
                 <Finalcalc v-show="finalCalchideState"></Finalcalc>
@@ -57,6 +57,9 @@
             <div v-show="finalCalchideState">
                 <div style="width: 95%" class="typepost-but-succes button-next">Перейти к оформлению</div>
             </div>
+            <div>
+              <registration></registration>
+            </div>
         </div>
         </transition>
     </div>
@@ -72,6 +75,7 @@
     import bascket from './bascket.vue'
     import regular from './regular-form'
     import Multiselect from 'vue-multiselect'
+    import registration from './registration'
     import {store} from './store/';
     import Vuex from 'vuex';
     import { mapMutations } from 'vuex';
@@ -105,8 +109,12 @@
       },
       methods: {
         ...mapMutations([
-            'nextstepX', 'nextstepTreeX', 'selecttarif', 'expressnoexpress'
+            'nextstepX', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc'
         ]),
+        clickcalctarif() {
+            this.$store.state.import ? this.importcalc() : this.selecttarif()
+            //console.log(this.$store.state.import)
+        },
         stepOne () {
           this.stepOneflag =  !this.stepOneflag;
         },
@@ -116,7 +124,7 @@
         }
       },
       components: {
-          TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket, Finalcalc, regular
+          TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket, Finalcalc, regular, registration
         },
     }
 </script>

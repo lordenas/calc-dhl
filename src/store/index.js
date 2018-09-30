@@ -28,9 +28,14 @@ export const store = new Vuex.Store({
 		tarifzonevalue: null, //тарифная зона
 		tarifcalc: 0,
 		finalCalchide: false,
-		express: 1
+		express: 1, //экспресс доставка или несрочная
+		import: false, //доставка в другие страны
+		minweight: 0.5, // минимальный допустимый вес
 	},
 	getters: {
+		getImport (state) {
+			return state.import //доставка в другие страны
+		},
 		getExpress(state) {
 			return state.express //экспресс 
 		},
@@ -55,6 +60,28 @@ export const store = new Vuex.Store({
 		
 	},
 	mutations: {
+		//расчет тарифа при отправке загранцу
+		importcalc(state, param) {
+			if(state.import) {
+				console.log('апывапывап')
+			}
+		},
+		//доставка заграницу
+		importmut(state, param) {
+			console.log('test2 test2', param)
+			if (param !=0) {
+				state.import = true
+				if(param != 0 && state.curentvalue == 1) {
+					state.minweight = 0.3
+				} else {
+					state.minweight = 0.5
+				}
+			} else {
+				state.import = false
+				state.minweight = 0.5
+			}
+		}
+		,
 		//срочная не срочная доставка
 		expressnoexpress(state, param) {
 			state.express = param
@@ -63,6 +90,13 @@ export const store = new Vuex.Store({
 		//  регулятор груз или документы
 		presoption (state, param) {
 			state.curentvalue = param
+			if (state.import  && state.curentvalue == 1 ) {
+				state.minweight = 0.3
+			} else if (state.import && state.curentvalue == 2 ) {
+				state.minweight = 0.5
+			} else {
+				state.minweight = 0.5
+			}
 			console.log(state.curentvalue, param)
 		},
 		//  регулятор времени
@@ -186,7 +220,7 @@ export const store = new Vuex.Store({
 							for(var j = 0; j < maslengt.length; j++) {
 								console.log(express.pricelistdata[j][state.tarifzonevalue], 'цена', state.tarifzonevalue)
 								summ += parseFloat(express.pricelistdata[i][state.tarifzonevalue])
-								console.log('itog', summ)
+								console.log('itog', summ, 'объемный вес', mass)
 								//if(summ >= 20 && sum <=30) {
 									
 								//}

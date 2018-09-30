@@ -90,11 +90,11 @@
         data() {
             return {
                 showModal: false,
-                valueDate: null,
-                
+                valueDate: new Date(),
                 selectedDate: {
-                    start: new Date(2018, 9, 25),
-                    end: new Date(2018, 9, 28)
+                    start: new Date(2018, 9, 30),
+                    end: new Date(2018, 10, 28),
+                    
                 }
             }
         },

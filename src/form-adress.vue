@@ -53,7 +53,7 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                                  <span slot="noResult">Ничего не найдено.</span>
                              </multiselect>
@@ -65,6 +65,7 @@
                                  <span slot="noResult">Ничего не найдено.</span>
                             </multiselect>
                         </div>
+                        
                         <div class="block-input">
                             <label>Индекс</label>
                             <input class="standinput" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
@@ -107,8 +108,12 @@
       },
       methods: {
         ...mapMutations([
-                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut'
+                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut'
          ]),
+         selectCountry () {
+             console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
+             this.importmut(this.valuecountryToSet.zone)
+         },
          controlvalid () {
              //форма валидна или нет
              if ((this.valuecountry || this.valuecountry || this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 )&& this.indexReception && this.index ) {
