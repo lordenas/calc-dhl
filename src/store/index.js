@@ -139,8 +139,8 @@ export const store = new Vuex.Store({
 							maslengt.push(express.pricelistdata[i])
 
 							for(var j = 0; j < maslengt.length; j++) {
-								console.log(express.pricelistdata[j][zonecity], 'цена', state.countrySeter)
-								summ += parseFloat(express.pricelistdata[i][zonecity])
+								console.log(express.pricelistdata[j][state.countrySeter], 'цена', state.countrySeter)
+								summ += parseFloat(express.pricelistdata[i][state.countrySeter])
 								console.log('itog', summ, 'объемный вес', mass)
 								//if(summ >= 20 && sum <=30) {
 									
