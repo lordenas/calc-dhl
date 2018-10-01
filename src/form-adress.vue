@@ -30,7 +30,7 @@
                             </div>
                             <div class="block-input">
                                 <label>Индекс</label>
-                                <input class="standinput" v-model="index" type="text"  @input="controlvalid" placeholder="Индекс">
+                                <input class="standinput" :maxlength="6"  v-model="index" type="text"  @input="indextel" placeholder="Индекс">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         
                         <div class="block-input">
                             <label>Индекс</label>
-                            <input class="standinput" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
+                            <input class="standinput" :maxlength="6" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
                         </div>
                     </div>
 
@@ -88,8 +88,8 @@
       name: 'app',
       data () {
         return {
-          index: null,
-          indexReception: null,
+          index: '',
+          indexReception: '',
           stepOneflag: true,
           value: 0,
           valuetoSet: 0,
@@ -104,19 +104,24 @@
           this.countrycl()
       },
       computed: {
-
+        indextel() {
+            console.log( this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
+            this.index = this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
+            this.controlvalid ()
+        },
       },
       methods: {
         ...mapMutations([
-                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut'
+                'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc'
          ]),
          selectCountry () {
              console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
              this.importmut(this.valuecountryToSet.zone)
+             this.importcalc(this.valuecountryToSet.zone)
          },
          controlvalid () {
              //форма валидна или нет
-             if ((this.valuecountry || this.valuecountry || this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 )&& this.indexReception && this.index ) {
+             if ((this.valuecountry || this.valuecountry || this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
                 this.validateOneMut(true)
              } else { 
                  this.validateOneMut(false)

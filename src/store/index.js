@@ -1,9 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import step from './indexstep'
+import { format } from 'util';
 const tarifzone = require('../json/tarifzone.json')
 const pricelist = require('../json/pricelist.json')
 const srochtarig = require('../json/srochtarig.json')
+const tarifimport = require('../json/tarifimport.json')
+const cityzone = require('../json/countrytarif.json')
+
 
 Vue.use(Vuex);
 let newdata =  new Date()
@@ -31,6 +35,8 @@ export const store = new Vuex.Store({
 		express: 1, //экспресс доставка или несрочная
 		import: false, //доставка в другие страны
 		minweight: 0.5, // минимальный допустимый вес
+		countryset: null,
+		countrySeter: null, // номер страны римский
 	},
 	getters: {
 		getImport (state) {
@@ -61,14 +67,97 @@ export const store = new Vuex.Store({
 	},
 	mutations: {
 		//расчет тарифа при отправке загранцу
-		importcalc(state, param) {
+		importcalc(state) {
 			if(state.import) {
-				console.log('апывапывап')
+
+				//сначала находим зону города
+				var zonecity = null
+				for (let i = 0; i < cityzone.countrytarif.length; i++) {
+					if(state.valueCitySending == cityzone.countrytarif[i].cityid ) {
+						var newarrc = []
+						newarrc.push(cityzone.countrytarif[i])
+						console.log('newarr', newarrc)
+						for (let j = 0; j < newarrc.length; j++) {
+							zonecity = cityzone.countrytarif[i][state.countrySeter]
+						}
+					}
+				}
+				console.log('numbertarif', zonecity)
+				let express = state.express == 1 ? tarifimport : tarifimport
+				console.log('прайсссс', express.pricelistdata)
+				let parseWeight = parseFloat(state.backetData[0].parametr)
+				var summ = 0
+				console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
+				//колличество товаров в корзине
+				for (var a = 0; a<state.backetData.length; a++) {
+					//проходим по всему прайсу
+					for (var i = 0; i<express.pricelistdata.length; i++) {
+						//console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
+
+						let decimal = 1
+						//округляем вес
+						if(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
+							decimal = 0;
+							 } else {
+							  decimal = 1;
+							 }
+
+						//расчет объемного веса
+						if(state.backetData[a].gabarit != null) {
+							let aMass = state.backetData[a].gabarit.split('x')
+							aMass[0] = parseFloat(aMass[0])
+							aMass[1] = parseFloat(aMass[1])
+							aMass[2] = parseFloat(aMass[2])
+							//console.log('V MASS', a)
+							var newaMass =  aMass[0] * aMass[1] * aMass[2] / 5000
+						}
+						//если вс груза больше 30 тогда округлям с шагом 1 если меньше 30, с шагом 1
+						if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) <30 ) {
+							var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
+						} else {
+							var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))).toFixed(decimal)
+						}
+						mass = parseFloat(mass) + parseFloat(newaMass || 0)
+						//округляем все + объемные вес
+						let decimal2 = 1
+						if(parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
+							decimal2 = 0;
+							 } else {
+							  decimal2 = 1;
+							 }
+
+						mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)
+						
+						
+
+						console.log('ОБЪЁМНЫЙ ВЕС', mass)
+						//если элемент прайса равен элементу корзины
+						if(parseFloat(express.pricelistdata[i].kg) == parseFloat(mass)) {
+							console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))
+							
+							var maslengt = []
+							maslengt.push(express.pricelistdata[i])
+
+							for(var j = 0; j < maslengt.length; j++) {
+								console.log(express.pricelistdata[j][state.countrySeter], 'цена', state.countrySeter)
+								summ += parseFloat(express.pricelistdata[i][state.countrySeter])
+								console.log('itog', summ, 'объемный вес', mass)
+								//if(summ >= 20 && sum <=30) {
+									
+								//}
+								state.tarifcalc = summ
+								state.finalCalchide = true
+							}
+					}
+					}
+				}	
 			}
 		},
 		//доставка заграницу
 		importmut(state, param) {
-			console.log('test2 test2', param)
+			
+			state.countrySeter = param
+			console.log('test2 test2', state.countrySeter)
 			if (param !=0) {
 				state.import = true
 				if(param != 0 && state.curentvalue == 1) {
@@ -134,6 +223,11 @@ export const store = new Vuex.Store({
 			state.valueCitySending = citiSet
 			console.log(state.valueCitySending)
 		},
+		//страна получатель
+		toCountry(state, countryset) {
+			state.countryset = countryset
+			console.log(state.countryset)
+		},
 		toCityReception(state, reception) {
 			//Получаем данные о городе получателе и записываем в сторе
 			state.valueCityReception = reception
@@ -158,8 +252,6 @@ export const store = new Vuex.Store({
 				}
 			}
 		},
-		
-
 
 		selecttarif (state) {
 				let express = state.express == 1 ? pricelist : srochtarig
@@ -227,9 +319,9 @@ export const store = new Vuex.Store({
 								state.tarifcalc = summ
 								state.finalCalchide = true
 							}
-						}
 					}
-				}
+					}
+				}	
 		},
 	},
 	actions: {

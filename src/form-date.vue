@@ -1,5 +1,5 @@
 <template>
-
+<div class="boxdates">
     <div class="todate">
         <div class="todate-title">Когда отправить груз?</div>
         <template>
@@ -63,15 +63,24 @@
             
         </div>
         <div class="options__field-wrap todate-activedate">
-            <button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
+            <div>
+                <button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
                 <span  class="datepicker-button__text">{{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : 'С 12:00 до 19:00'}}</span>
-            </button>
-
+            
+   
+                </button>
+            </div>
+            
         </div>
-          
+
             <!-- use the modal component, pass in the prop -->
 
     </div>
+    <div class="textareainfo">
+        <div class="todate-title">Комментарий к заказу</div>
+        <textarea class="standinput" placeholder="Комментарий"></textarea>
+    </div> 
+</div>
 </template>
 
 <script>
