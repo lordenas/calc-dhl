@@ -143,7 +143,7 @@ export const store = new Vuex.Store({
 								summ += parseFloat(express.pricelistdata[i][zonecity])
 								console.log('itog', summ, 'объемный вес', mass)
 								//if(summ >= 20 && sum <=30) {
-								 	
+									
 								//}
 								state.tarifcalc = summ
 								state.finalCalchide = true
