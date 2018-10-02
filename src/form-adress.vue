@@ -16,7 +16,7 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect disabled="" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false">
+                              <multiselect :disabled="disabledcountrySet" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="countrydesebl">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                              </multiselect>
                         </div>
@@ -53,7 +53,7 @@
                     <div class="country">
                         <div class="block-input">
                             <label>Страна</label>
-                              <multiselect v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
+                              <multiselect :disabled="disabledcountryGet"  v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
                                 <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
                                  <span slot="noResult">Ничего не найдено.</span>
                              </multiselect>
@@ -97,6 +97,8 @@
           valuecountryToSet: {"country": "Россия" },
           options: [],
           optionscountry: [],
+          disabledcountrySet: false,
+          disabledcountryGet: false
         }
       },
       mounted () {
@@ -114,10 +116,33 @@
         ...mapMutations([
                 'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc'
          ]),
+         //если страна отправки не Россия тогда блокируем поле страна получения, и ставим страну Россия
+         countrydesebl () {
+             if ( JSON.stringify(this.valuecountry) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
+                 console.log(JSON.stringify(this.valuecountry))
+                 this.disabledcountryGet = true
+                 this.valuecountryToSet = {"country":"Россия","zone":"0"}
+                this.importmut(this.valuecountry.zone)
+                this.importcalc(this.valuecountry.zone)
+             } else {
+                  this.disabledcountryGet = false
+             }
+         },
+
          selectCountry () {
              console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
-             this.importmut(this.valuecountryToSet.zone)
-             this.importcalc(this.valuecountryToSet.zone)
+
+            console.log('sdfdff', JSON.stringify(this.valuecountryToSet))
+             //проверкаа на страну
+             if ( JSON.stringify(this.valuecountryToSet) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
+                this.disabledcountrySet = true
+                this.valuecountry = {"country":"Россия","zone":"0"}
+                 this.importmut(this.valuecountryToSet.zone)
+                this.importcalc(this.valuecountryToSet.zone)
+             } else {
+                this.disabledcountrySet = false
+             }
+
          },
          controlvalid () {
              //форма валидна или нет
