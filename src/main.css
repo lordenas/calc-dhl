@@ -280,7 +280,7 @@ body {
   
   .typepost {
     margin: 50px 0 0 0;
-    padding: 50px;
+    padding: 10px;
     background: #FFF;
     box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
   }
@@ -296,25 +296,25 @@ body {
   }
   
   .typepost-type-title {
-    width: 25%;
+    width: 205px;
     text-align: left;
-    margin: 5px 0 0 0;
+    margin: 20px 0 0 0;
   }
   
   .typepost-type {
     display: flex;
     justify-content: flex-start;
-    padding: 20px 0;
+    padding: 10px 0;
   }
   .typepost-type-select {
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 100%;
   }
   .typepost-type-variator {
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 100%;
   }
   
   .typepost-type-select-selecter {
@@ -343,13 +343,14 @@ body {
   .typepost-but {
     display: flex;
     justify-content: center;
+    margin: 20px 0;
   }
   
   .typepost-but-cancel {
     display: inline-block;
     vertical-align: middle;
     min-width: 94px;
-    height: 23px;
+    height: 37px;
     margin: 0px 15px;
     padding: 8px 20px;
     border: 1px solid #e2e2e2;
@@ -370,7 +371,7 @@ body {
     display: inline-block;
     vertical-align: middle;
     min-width: 94px;
-    height: 23px;
+    height: 40px !;
     margin: 0px 15px;
     padding: 8px 20px;
     transform-style: preserve-3d;
@@ -381,7 +382,7 @@ body {
     background-image: -webkit-linear-gradient(315deg, #2454ae, #6798d4);
     background-image: linear-gradient(135deg, #2454ae, #6798d4);
     background-position: 0px 0px;
-    color: #FFF;
+    color: #FFF !important;
     background-size: auto;
     background-repeat: repeat;
     text-align: center;
@@ -418,7 +419,7 @@ body {
   
   .box-sizing__title {
       top: 125px;
-      right: 410px;
+      right: 480px;
       color: #000;
       font-weight: 700;
   }
@@ -463,7 +464,7 @@ body {
       left: 260px;
       background-color: #fff;
       width: 227px;
-      height: 36px;
+      height: 47px;
       padding: 4px 0;
       border: 4px solid rgba(0,0,0,.12);
       text-align: center;
@@ -1017,4 +1018,24 @@ h2 {
 
 .datepicker_container {
   margin: 20px 0 0 0;
+}
+
+.regulat-lab {
+  width: 300px;
+margin: 5px 0;
+font-family: Helveticaneuecyr, sans-serif;
+font-weight: 200;
+padding: 5px 0;
+text-align: left;
+}
+
+.formlabael .regulat-lab {
+  margin: 5px 0;
+}
+
+.redstar {
+  font-size: 23px; 
+  color: red;
+  position: absolute;
+  top: 0;
 }

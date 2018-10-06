@@ -7,7 +7,8 @@ export default {
 		stepTree: false,
 		addTobasketSteep: false,
 		basketHide: false,
-		validateOne: false
+		validateOne: false,
+		calcRegistr: false
 	},
 	getters: {
 		//второй шаг (после адреса)
@@ -24,6 +25,9 @@ export default {
 		validate (state) {
 			return state.validateOne
 		},
+		calcRegistrGet (state) {
+			return state.calcRegistr
+		}
 
 	},
 	mutations: {
@@ -42,6 +46,9 @@ export default {
 		  validateOneMut (state, param) {
 			  console.log(param)
 			  state.validateOne = param
+		  },
+		  registrStateShow (state) {
+			  state.calcRegistr = ! state.calcRegistr
 		  }
 	},
 	actions: {

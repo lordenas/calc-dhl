@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "@enrian/vue-pikaday": "^1.0.2",
     "axios": "^0.18.0",
     "install": "^0.12.1",
     "or": "^0.2.0",

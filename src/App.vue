@@ -33,32 +33,40 @@
                       <type-post></type-post>
                 </div>
             </transition>
-            <div v-show="this.$store.state.backetData.length > 0 ? true : false">
-                <div id="div-id"></div> 
-                <a href="#div-id" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next" @click="clickcalctarif">Расчитать стоимость</div></a> 
-            </div>
-            <transition name="fade">
-                <Finalcalc v-show="finalCalchideState"></Finalcalc>
-            </transition>
-
-            <div class="radio-btn-group regulat-post" v-show="finalCalchideState">
+<!--             <div class="radio-btn-group regulat-post" v-show="finalCalchideState">
                <input class="inp-cbx" id="cbx" v-model="regularcheck" type="checkbox" style="display: none;"/>
                <label class="cbx" for="cbx"><span>
                <svg width="12px" height="10px" viewbox="0 0 12 10">
                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                </svg></span><span>Сделать отправку регулярной?</span></label>
-                
-            </div>
-            <transition name="fade">
+            </div> -->
+
+               <div v-show="this.$store.state.backetData.length > 0 ? true : false" style="display: flex; justify-content: space-around; width: 100%;">
+                    <div>
+                        <input class="inp-cbx" id="cbx" v-model="regularcheck" type="checkbox" style="display: none;"/>
+                        <label class="cbx" for="cbx">
+                            <div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">Сделать доставку регулярной?</div> 
+                        </label>
+                        </div>
+                    <div>
+                        <div id="div-id"></div> 
+                        <a href="#div-id" v-smooth-scroll><div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">Расчитать стоимость</div></a> 
+                    </div>
+                </div>
+           <transition name="fade">
                 <div v-show="regularcheck">
                     <regular></regular>
                 </div>
             </transition>
+            <transition name="fade">
+                <Finalcalc v-show="finalCalchideState"></Finalcalc>
+            </transition>
+ 
             <div v-show="finalCalchideState">
-                <div style="width: 95%" class="typepost-but-succes button-next">Перейти к оформлению</div>
+                <a href="#div-registr" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next" @click="registrStateShow">Перейти к оформлению</div></a>
             </div>
-            <div>
-              <registration></registration>
+            <div id="div-registr">
+              <registration v-show="calcRegistrGet"></registration>
             </div>
         </div>
         </transition>
@@ -101,7 +109,7 @@
       },
       computed: {
         ...mapGetters([
-          'steponeEx', 'stepTreeEx', 'basketGet', 'validate', 'finalCalchideState', 'getExpress'
+          'steponeEx', 'stepTreeEx', 'basketGet', 'validate', 'finalCalchideState', 'getExpress', 'calcRegistrGet'
         ]),
         valueButton () {
           this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'
@@ -109,7 +117,7 @@
       },
       methods: {
         ...mapMutations([
-            'nextstepX', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc'
+            'nextstepX', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow'
         ]),
         clickcalctarif() {
             this.$store.state.import ? this.importcalc() : this.selecttarif()
@@ -136,4 +144,5 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
+
 </style>

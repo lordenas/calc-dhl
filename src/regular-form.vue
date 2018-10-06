@@ -1,87 +1,200 @@
 <template>
-   <div>
-        <div class="title-block-new">
-            <div class="div-block-51 _500 w-clearfix">
-                <div class="heading-text-block _500">
-                <div class="div-line"></div>
-                <div class="div-rad"></div>
-                <div class="div-block-50"></div>
-                <div class="div-rad min"></div>
-                <h2 class="heading-13">Регулярная доставка<br></h2>
-                </div>
-            </div>
-        </div>
-         <div class="typepost">
-                <div class="typepost-body">
-                    <template>
-                        <div class="flex-blockdariodreg">
-                            <div class="label-radio">Выбирете время забора документов</div>
-                            <div class="radio-btn-group">
-                                <div class="radio"><input type="radio" name="radior" value="1" checked="checked" v-model="checkedtwo" id="click_met"  /><label for="click_met">09:00 - 18:00</label></div>
-                                <div class="radio"><input type="radio" name="radior" value="2" v-model="checkedtwo" id="or_mea"  /><label for="or_mea">09:00-14:00</label></div>
-                                <div class="radio"><input type="radio" name="radior" value="3" v-model="checkedtwo" id="or_met"  /><label for="or_met">14:00-18:00</label></div>
-                            </div>
-                            <div class="label-radio marginradio">
-                                <label>Выбирите диапозон отправки</label>
-                                <div class="flex-dir">
-                                    <VueHotelDatepicker :ref="datepickerId" :datepickerId="datepickerId" :placeholder="placeholder" startOfWeek="monday" :i18n="ptBr" />
-                                    <div class="calendar-diaposit">
-                                        <img src="/img/Simpleicons_Business_weekly-calendar.svg" width="20px" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="label-radio">Как часто отправлять?</div>
-                            <div class="radio-btn-group">
-                                <div class="radio"><input type="radio" name="radiortype" value="1" checked="checked" v-model="checkedtwotype" id="everyday"  /><label for="everyday">Каждый день</label></div>
-                                <div class="radio"><input type="radio" name="radiortype" value="2" v-model="checkedtwotype" id="evertyweek"  /><label for="evertyweek">Неделю</label></div>
-                                <div class="radio"><input type="radio" name="radiortype" value="3" v-model="checkedtwotype" id="everymoth"  /><label for="everymoth">Месяц</label></div>
-                                <div class="radio"><input type="radio" name="radiortype" value="4" v-model="checkedtwotype" id="everyear"  /><label for="everyear">Год</label></div>
+	<div>
+		<div v-show="showModalregS">
+			<div class="modal-mask">
+				<div class="modal-wrapper">
+					<div class="modal-container">
+						<button class="calendar__close" @click="[showModalregS = false]">
+						OK
+						</button>
+						<div class="modal-header">
+							<slot name="header">
+								<h6 slot="header">Укажите дату началаповтоения</h6>
+							</slot>
+						</div>
+						<div class="modal-body">
+							<slot name="body">
+							</slot>
+							<v-date-picker
+								:available-dates='{ start: new Date(), end: null }'
+								tint-color='#30507e'
+								v-model='selectedDate'
+								is-inline>
+							</v-date-picker>
+						</div>
+						<slot name="footer">
+								<div class="calendar__time-block">
+									<div class="calendar__time-radio-block">
+										<button class="calendar__time-radio-confirm" @click="selectedDateMeth">Подтвердить</button>
+									</div>
+								</div>
+						</slot>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div v-show="showModalregD">
+			<div class="modal-mask">
+				<div class="modal-wrapper">
+					<div class="modal-container">
+						<button class="calendar__close" @click="[showModalregD = false]">
+						OK
+						</button>
+						<div class="modal-header">
+							<slot name="header">
+								<h6 slot="header">Укажите дату началаповтоения</h6>
+							</slot>
+						</div>
+						<div class="modal-body">
+							<slot name="body">
+							</slot>
+							<v-date-picker
+								:available-dates='{ start: new Date(), end: null }'
+								tint-color='#30507e'
+								v-model='selectedDate'
+								is-inline>
+							</v-date-picker>
+						</div>
+                        <slot name="footer">
+								<div class="calendar__time-block">
+									<div class="calendar__time-radio-block">
+										<button class="calendar__time-radio-confirm" @click="selectedDateMethD">Подтвердить</button>
+									</div>
+								</div>
+						</slot>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="title-block-new">
+			<div class="div-block-51 _500 w-clearfix">
+				<div class="heading-text-block _500">
+					<div class="div-line"></div>
+					<div class="div-rad"></div>
+					<div class="div-block-50"></div>
+					<div class="div-rad min"></div>
+					<h2 class="heading-13">Регулярная доставка<br></h2>
+				</div>
+			</div>
+		</div>
+		<div class="typepost">
+			<div class="typepost-body">
+				<template>
+					<div class="input-group mb-3">
+						<label class="regulat-lab">Как часто отправлять?</label>
+						<select class="custom-select" id="inputGroupSelect01">
+							<option selected>Выберите значение</option>
+							<option value="1">Каждый день</option>
+							<option value="2">Раз в неделю</option>
+							<option value="3">Рах в месяц</option>
+							<option value="3">Раз в год</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<label class="regulat-lab">Время забора документов</label>
+						<select class="custom-select" id="inputGroupSelect01">
+							<option selected>Выберите значение</option>
+							<option value="1">09:00 - 18:00</option>
+							<option value="2">09:00-14:00</option>
+							<option value="3">14:00-18:00</option>
+						</select>
+					</div>
+					<div class="input-group mb-3">
+						<label class="regulat-lab">Начинать повторение с:</label>
+                        <div class="options__field-wrap todate-activedate">
+                            <div>
+                                <button id="show-modal" @click="showModalregS = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
+                                <span  class="datepicker-button__text">{{dateCalenStatePositionRS}}</span>
+                                </button>
                             </div>
                         </div>
-                    </template>
-
-                </div>
-         </div>
-    </div>
+					</div>
+					<div class="input-group mb-3">
+						<label class="regulat-lab">Повторять до:</label>
+                        <div class="options__field-wrap todate-activedate">
+                            <div>
+                                <button id="show-modal" @click="showModalregD = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
+                                <span  class="datepicker-button__text">{{dateCalenStatePositionRD}} </span>
+                                </button>
+                            </div>
+                        </div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
-import {mapMutations} from 'vuex';
-import {mapGetters} from 'vuex';
-import VueHotelDatepicker from 'vue-hotel-datepicker'
-
-export default {
-    name: 'app',
-    data () {
-        return {
-            datepickerId: 'datepicker-demo-id-01',
-            placeholder: 'Выберите интерал',
-            checkedtwo: 1,
-            checkedtwotype: 1,
-            ptBr: {
-                night: 'Noite',
-                nights: 'Noites',
-                'day-names': ['Вс.', 'Пн.', 'Вт.', 'Ср.', 'Чт.', 'Пт.', 'Сб.'],
-                'check-in': 'С',
-                'check-out': 'По',
-                 button: 'Закрыть',
-                 startOfWeek: 'monday',
-                 selected: 'Your stay:',
-                'month-names': ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-                },
-        }
-    },
-    computed: {
-        ...mapGetters([
-            'backetDataState', 'tarifcalcState'
-        ])
-    },
-    methods: {
-        ...mapMutations([
-            'presoption', 'deletepost','editpost'
-        ])
-    },
-    components: {
-        VueHotelDatepicker,
-    },
-}
+	import {mapMutations} from 'vuex';
+	import {mapGetters} from 'vuex';
+	import Vue from 'vue';
+    import VCalendar from 'v-calendar'
+	import 'v-calendar/lib/v-calendar.min.css'
+	
+	Vue.use(VCalendar);
+	Vue.component('modalS', {template: '#modal-templateS'})
+	export default {
+	    name: 'app',
+	    data () {
+	        return {
+                showModalregS: false,
+                showModalregD: false,
+                selectedDate: new Date(),
+	            themeStyles: {
+	                wrapper: {
+	                border: '1',
+	                },
+	                header: {
+	                color: '#fafafa',
+	                backgroundColor: '#636363',
+	                borderColor: '#006cd8',
+	                borderWidth: '1px 1px 0 1px',
+	                },
+	                headerVerticalDivider: {
+	                borderLeft: '1px solid #006cd8',
+	                },
+	                weekdays: {
+	                color: '#ffffff',
+	                backgroundColor: '#434343',
+	                borderColor: '#ff0098',
+	                borderWidth: '0 1px',
+	                padding: '5px 0 10px 0',
+	                },
+	                weekdaysVerticalDivider: {
+	                borderLeft: '1px solid #636363',
+	                },
+	                weeks: {
+	                border: '1px solid #dadada',
+	                },
+	            },
+	        }
+	    },
+	    computed: {
+	        ...mapGetters([
+                'dateCalenStatePositionRS', 'dateCalenStatePositionRD',  
+	        ])
+	    },
+	    methods: {
+	        ...mapMutations([
+                'calendarStateRegS',   'calendarStateRegD'
+            ]),
+            selectedDateMeth () {
+                this.showModalregS = false
+                this.calendarStateRegS(this.selectedDate)
+            },
+            selectedDateMethD () {
+                this.showModalregD = false
+                this.calendarStateRegD(this.selectedDate)
+            },
+	    },
+	    components: {
+	        
+	    },
+	}
 </script>
+
+<style scoped>
+.options__field-wrap {
+    width: 300px;
+}
+</style>

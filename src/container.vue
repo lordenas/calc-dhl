@@ -1,0 +1,194 @@
+
+
+<template>
+	<form class="needs-validation" novalidate>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Контакт<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<select class="custom-select" id="inputGroupSelect01">
+					<option selected>Выберите значение</option>
+					<option value="1">Брокер</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Название фабрики / место загрузки<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Телефон<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Emeil<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Контактное лицо на месте загрузки<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Имя, под которым Вы известны поставщику<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчиа)<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчиа)<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Общий объём груза<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Общий вес груза<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Общая стоимость груза<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		</br>
+		<h5>Расчет таможенного оформления</h5>
+		</br>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Код товара по ТНВЭД<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Полное наименование товара, технические характеристики, материал, размеры, назначение (ГРАФА 31)<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Модель или Артикул</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Торговая марка<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Фирма-производитель (на английском языке) полное написание<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Страна и адрес производителя</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Грузовые места</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Колличество единиц<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Колличество шт. м, м2, и т.д.<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Вес брутто<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Вес нетто</label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Указать наличие разрешительной документаци (сертификат, СЭЗ, пожарный)<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-5 col-form-label">Как упаковано<span class="redstar">*</span></label>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-auto my-1">
+				<div class="custom-control custom-checkbox mr-sm-3">
+					<input type="checkbox" class="custom-control-input" id="hrup">
+					<label   class="custom-control-label" for="hrup"><img src="/img/grup.png" style="margin: 0 5px" width="20px"/>Хрупкое</label>
+				</div>
+			</div>
+			<div class="col-auto my-1">
+				<div class="custom-control custom-checkbox mr-sm-3">
+					<input type="checkbox" class="custom-control-input" id="oblic">
+					<label   class="custom-control-label" for="oblic"><img src="/img/plus-big-512.png" style="margin: 0 5px" width="20px"/>Добавить облицовку упаковки</label>
+				</div>
+			</div>
+			<div class="col-auto my-1">
+				<span style="color: red;">* Поля обязательные для заполнения</span>
+			</div>
+		</div>
+	</form>
+</template>
+<<script>
+	import {mapMutations} from 'vuex';
+	import {mapGetters} from 'vuex';
+	
+	export default {
+	name: 'app',
+	data () {
+	    return {
+	        selecteded: 1,
+	        weightel: '',
+	        height: '',
+	        width: '',
+	        depth: '',
+	        flagGabatir: false,
+	        flagWeight: false
+	    }
+	},
+	computed: {}
+	}
+</script>
+

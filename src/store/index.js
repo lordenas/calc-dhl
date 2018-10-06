@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import step from './indexstep'
+import regular from './regular-store'
+import registrfinal from './registfinal'
 import { format } from 'util';
 const tarifzone = require('../json/tarifzone.json')
 const pricelist = require('../json/pricelist.json')
@@ -13,7 +15,7 @@ Vue.use(Vuex);
 let newdata =  new Date()
 export const store = new Vuex.Store({
 	modules: {
-		step,
+		step, regular, registrfinal
 	},
 	state: {
 		curentvalue: 1, //тип документы или груз
