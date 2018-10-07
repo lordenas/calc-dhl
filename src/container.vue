@@ -71,9 +71,9 @@
 				<input type="text" class="form-control" >
 			</div>
 		</div>
-		</br>
+		<br>
 		<h5>Расчет таможенного оформления</h5>
-		</br>
+		<br>
 		<div class="form-group row">
 			<label for="staticEmail" class="col-sm-5 col-form-label">Код товара по ТНВЭД<span class="redstar">*</span></label>
 			<div class="col-sm-7">

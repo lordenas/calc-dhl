@@ -4,6 +4,7 @@ export default {
 	state: {
 		selectedDateRS: (newdata.getDate()<10? '0':'') + newdata.getDate() + '.' +   ((newdata.getMonth()+1)<10? '0':'') + (newdata.getMonth()+1) + '.'+ newdata.getUTCFullYear() ,
 		selectedDateRD: (newdata.getDate()<10? '0':'') + newdata.getDate() + '.' +   ((newdata.getMonth()+1)<10? '0':'') + (newdata.getMonth()+1) + '.'+ newdata.getUTCFullYear() ,
+		period: 1
 	},
 	getters: {
 		dateCalenStatePositionRS(state){
@@ -12,6 +13,9 @@ export default {
 		dateCalenStatePositionRD(state){
 			return state.selectedDateRD
 		},
+		periodGetState(state) {
+			return state.period
+		}
 	},
 	mutations: {
 		//  регулятор даты отправки в регулярной доставке  (повторять с)
@@ -25,6 +29,10 @@ export default {
 			state.selectedDateRD = (param.getDate()<10? '0':'') + param.getDate() + '.' +   ((param.getMonth()+1)<10? '0':'') + (param.getMonth()+1) + '.'+ param.getUTCFullYear() 
 			//console.log(state.selectedDate, param.getUTCFullYear())
 		},
+		periodMut (state, id) {
+			state.period = id
+			console.log(state.period)
+		}
 	},
 	actions: {
 		

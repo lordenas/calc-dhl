@@ -14,23 +14,27 @@
         <div class="toset">
                 <div class="blocktwo">
                     <div class="country">
-                        <div class="block-input">
-                            <label>Страна</label>
-                              <multiselect :disabled="disabledcountrySet" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="countrydesebl">
-                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
-                             </multiselect>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Страна</label>
+                            <div class="col-sm-10">
+                                <multiselect :disabled="disabledcountrySet" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="countrydesebl">
+                                    <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
+                                </multiselect>
+                            </div>
                         </div>
-                        <div class="block-fotter-input">
-                            <div class="block-input">
-                                <label class="typo__label">Город</label>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
+                            <div class="col-sm-10">
                                 <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                                     <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
                             </div>
-                            <div class="block-input">
-                                <label>Индекс</label>
-                                <input class="standinput" :maxlength="6"  v-model="index" type="text"  @input="indextel" placeholder="Индекс">
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Индекс</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" :maxlength="6"  v-model="index" type="text"  @input="indextel" placeholder="Индекс">
                             </div>
                         </div>
                     </div>
@@ -51,25 +55,31 @@
             <div class="toset">
                 <div class="blocktwo">
                     <div class="country">
-                        <div class="block-input">
-                            <label>Страна</label>
-                              <multiselect :disabled="disabledcountryGet"  v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
-                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
-                                 <span slot="noResult">Ничего не найдено.</span>
-                             </multiselect>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Страна</label>
+                            <div class="col-sm-10">
+                                <multiselect :disabled="disabledcountryGet"  v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
+                                    <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
+                                    <span slot="noResult">Ничего не найдено.</span>
+                                </multiselect>                            
+                            </div>
                         </div>
-                        <div class="block-input">
-                            <label class="typo__label">Город</label>
-                            <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
-                                <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
-                                 <span slot="noResult">Ничего не найдено.</span>
-                            </multiselect>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
+                            <div class="col-sm-10">
+                                <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
+                                    <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+                                    <span slot="noResult">Ничего не найдено.</span>
+                                </multiselect>                         
+                            </div>
                         </div>
-                        
-                        <div class="block-input">
-                            <label>Индекс</label>
-                            <input class="standinput" :maxlength="6" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Индекс</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" :maxlength="6" v-model="indexReception" type="text" @input="controlvalid" placeholder="Индекс">
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -200,9 +210,13 @@
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style>
+<style scoped>
 .multiselect__option--highlight {
     background: #e9f0f8 !important;
     color: #000 !important;
+}
+
+.toset .col-form-label {
+    text-align: center;
 }
 </style>

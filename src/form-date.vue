@@ -1,7 +1,7 @@
 
 
 <template>
-	<div class="boxdates">
+	<div class="boxdates" style="border: 2px solid #056CB1; margin: 50px 0 0 0; box-shadow: none;">
 		<div class="todate">
 			<div class="todate-title">Когда отправить груз?</div>
 
@@ -45,7 +45,11 @@
 											</button>
 											<button class="calendar__time-radio-item" v-bind:class="{ active: dateStatePosition == 2 }"  v-on:click="dateState(2)">
 												<div class="calendar__time-radio-item-img"></div>
-												<span>С 12:00 до 19:00</span>
+												<span>С 14.00 до 18.00</span>
+											</button>
+											<button class="calendar__time-radio-item" v-bind:class="{ active: dateStatePosition == 3 }"  v-on:click="dateState(3)">
+												<div class="calendar__time-radio-item-img"></div>
+												<span>С 9.00 до 18.00</span>
 											</button>
 											<button class="calendar__time-radio-confirm" @click="selectedDateMeth">Подтвердить</button>
 										</div>
@@ -56,10 +60,13 @@
 					</div>
 				</div>
 			</div>
+
+
+
 			<div class="options__field-wrap todate-activedate">
 				<div>
 					<button id="show-modal" @click="showModal = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
-					<span  class="datepicker-button__text">{{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : 'С 12:00 до 19:00'}}</span>
+					<span  class="datepicker-button__text">{{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : this.$store.state.curentTime == 2 ? 'С  14.00 до 18.00' : 'С 9.00 до 18.00'}}</span>
 					</button>
 				</div>
 			</div>

@@ -82,12 +82,10 @@
 				<template>
 					<div class="input-group mb-3">
 						<label class="regulat-lab">Как часто отправлять?</label>
-						<select class="custom-select" id="inputGroupSelect01">
-							<option selected>Выберите значение</option>
-							<option value="1">Каждый день</option>
-							<option value="2">Раз в неделю</option>
-							<option value="3">Рах в месяц</option>
-							<option value="3">Раз в год</option>
+						<select v-model="periodselect" class="custom-select" id="inputGroupSelect01" @input="periodToStore">
+							<option selected :value="1">Каждый день</option>
+							<option :value="2">Раз в неделю</option>
+							<option :value="3">Раз в месяц</option>
 						</select>
 					</div>
 					<div class="input-group mb-3">
@@ -105,16 +103,6 @@
                             <div>
                                 <button id="show-modal" @click="showModalregS = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
                                 <span  class="datepicker-button__text">{{dateCalenStatePositionRS}}</span>
-                                </button>
-                            </div>
-                        </div>
-					</div>
-					<div class="input-group mb-3">
-						<label class="regulat-lab">Повторять до:</label>
-                        <div class="options__field-wrap todate-activedate">
-                            <div>
-                                <button id="show-modal" @click="showModalregD = true" class="datepicker-button" style="background-image:url('/img/9.png'); background-size: 20px;">
-                                <span  class="datepicker-button__text">{{dateCalenStatePositionRD}} </span>
                                 </button>
                             </div>
                         </div>
@@ -166,17 +154,18 @@
 	                weeks: {
 	                border: '1px solid #dadada',
 	                },
-	            },
+				},
+				periodselect: 1
 	        }
 	    },
 	    computed: {
 	        ...mapGetters([
-                'dateCalenStatePositionRS', 'dateCalenStatePositionRD',  
+                'dateCalenStatePositionRS', 'dateCalenStatePositionRD', 'periodGetState'
 	        ])
 	    },
 	    methods: {
 	        ...mapMutations([
-                'calendarStateRegS',   'calendarStateRegD'
+                'calendarStateRegS',   'calendarStateRegD', 'periodMut'
             ]),
             selectedDateMeth () {
                 this.showModalregS = false
@@ -185,7 +174,12 @@
             selectedDateMethD () {
                 this.showModalregD = false
                 this.calendarStateRegD(this.selectedDate)
-            },
+			},
+			periodToStore(e) {
+				//this.periodMut(this.periodselect)
+				this.periodMut(e.target.value)
+				//this.$store.state.period = this.periodselect
+			}
 	    },
 	    components: {
 	        

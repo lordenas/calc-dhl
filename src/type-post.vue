@@ -29,10 +29,10 @@
 			</div>
 			<div class="form-group row" v-show="presoptionState != 3">
 				<label for="staticEmail" class="col-sm-3 col-form-label">Вес груза</label>
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<input type="text" v-model="weightel" v-bind:class="[ weightel < this.$store.state.minweight || weightel > 50  ? 'redinput' : false ]" class="form-control" @input="weight">
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-7">
 					<div class="typepost-type-select-valRed col-form-label" v-show="weightel < this.$store.state.minweight">Минимальный оплачиваемый вес одного места {{this.$store.state.minweight}}кг</div>
 					<div class="typepost-type-select-valRed col-form-label" v-show="weightel > 50">Максимальный вес одного места 50кг</div>
 				</div>

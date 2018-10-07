@@ -40,12 +40,16 @@
                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                </svg></span><span>Сделать отправку регулярной?</span></label>
             </div> -->
-
+           <transition name="fade">
+                <div v-show="regularcheck">
+                    <regular></regular>
+                </div>
+            </transition>
                <div v-show="this.$store.state.backetData.length > 0 ? true : false" style="display: flex; justify-content: space-around; width: 100%;">
                     <div>
                         <input class="inp-cbx" id="cbx" v-model="regularcheck" type="checkbox" style="display: none;"/>
                         <label class="cbx" for="cbx">
-                            <div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">Сделать доставку регулярной?</div> 
+                            <div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">{{regularcheck ? 'Отменить' : 'Сделать доставку регулярной?'}}</div> 
                         </label>
                         </div>
                     <div>
@@ -53,11 +57,7 @@
                         <a href="#div-id" v-smooth-scroll><div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">Расчитать стоимость</div></a> 
                     </div>
                 </div>
-           <transition name="fade">
-                <div v-show="regularcheck">
-                    <regular></regular>
-                </div>
-            </transition>
+
             <transition name="fade">
                 <Finalcalc v-show="finalCalchideState"></Finalcalc>
             </transition>
@@ -67,6 +67,7 @@
             </div>
             <div id="div-registr">
               <registration v-show="calcRegistrGet"></registration>
+              <a href="#div-registr" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next">Отправить</div></a>
             </div>
         </div>
         </transition>
@@ -144,5 +145,8 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
-
+.col-form-label {
+    font-size: 15px;
+    font-weight: 600;
+}
 </style>
