@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import step from './indexstep'
 import regular from './regular-store'
 import registrfinal from './registfinal'
+import backed from './backed'
+
 import {
     format
 } from 'util';
@@ -19,12 +21,13 @@ export const store = new Vuex.Store({
     modules: {
         step,
         regular,
-        registrfinal
+        registrfinal,
+        backed,
+        backetData: backed.state.backetData
     },
     state: {
         curentvalue: 1, //тип документы или груз
         curentTime: 1, //время
-        backetData: [], //корзина
         selectedDate: (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear(),
         gabarit: null,
         weight: null, //вес
@@ -60,9 +63,6 @@ export const store = new Vuex.Store({
         dateCalenStatePosition(state) {
             return state.selectedDate.getUTCFullYear() + ' - ' + state.selectedDate.getUTCFullYear(); // выбор даты 
         },
-        backetDataState(state) {
-            return state.backetData; // корзина
-        },
         tarifcalcState(state) {
             return state.tarifcalc
         },
@@ -91,26 +91,26 @@ export const store = new Vuex.Store({
                 console.log('numbertarif', zonecity)
                 let express = state.express == 1 ? tarifimport : tarifimport
                 console.log('прайсссс', express.pricelistdata)
-                let parseWeight = parseFloat(state.backetData[0].parametr)
+                let parseWeight = parseFloat(backed.state.backetData[0].parametr)
                 var summ = 0
-                console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
+                console.log('basket', JSON.parse(JSON.stringify(backed.state.backetData)))
                 //колличество товаров в корзине
-                for (var a = 0; a < state.backetData.length; a++) {
+                for (var a = 0; a < backed.state.backetData.length; a++) {
                     //проходим по всему прайсу
                     for (var i = 0; i < express.pricelistdata.length; i++) {
                         //console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
 
                         let decimal = 1
                         //округляем вес
-                        if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
+                        if (parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) % 1 == 0) {
                             decimal = 0;
                         } else {
                             decimal = 1;
                         }
 
                         //расчет объемного веса
-                        if (state.backetData[a].gabarit != null) {
-                            let aMass = state.backetData[a].gabarit.split('x')
+                        if (backed.state.backetData[a].gabarit != null) {
+                            let aMass = backed.state.backetData[a].gabarit.split('x')
                             aMass[0] = parseFloat(aMass[0])
                             aMass[1] = parseFloat(aMass[1])
                             aMass[2] = parseFloat(aMass[2])
@@ -118,10 +118,10 @@ export const store = new Vuex.Store({
                             var newaMass = aMass[0] * aMass[1] * aMass[2] / 5000
                         }
                         //если вс груза больше 30 тогда округлям с шагом 1 если меньше 30, с шагом 1
-                        if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) < 30) {
-                            var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
+                        if (parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) < 30) {
+                            var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
                         } else {
-                            var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))).toFixed(decimal)
+                            var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))))).toFixed(decimal)
                         }
                         mass = parseFloat(mass) + parseFloat(newaMass || 0)
                         //округляем все + объемные вес
@@ -151,7 +151,8 @@ export const store = new Vuex.Store({
                                 //if(summ >= 20 && sum <=30) {
 
                                 //}
-                                state.tarifcalc = summ
+                                state.tarifcalc = summ * (regular.state.period > 0 ? regular.state.period : 1)
+                                console.log(regular.state.period)
                                 state.finalCalchide = true
                             }
                         }
@@ -203,23 +204,12 @@ export const store = new Vuex.Store({
             state.selectedDate = (param.getDate() < 10 ? '0' : '') + param.getDate() + '.' + ((param.getMonth() + 1) < 10 ? '0' : '') + (param.getMonth() + 1) + '.' + param.getUTCFullYear()
             //console.log(state.selectedDate, param.getUTCFullYear())
         },
-        // добавление посылки в корзину
-        backetDataArr(state, gabarit) {
-            console.log(gabarit)
-            state.backetData.push({
-                title: this.state.curentvalue,
-                parametr: gabarit.weightel + ' кг.',
-                gabarit: gabarit.gabarit
-            })
-        },
-        // удаление посылки из корзины
-        deletepost(state, index) {
-            state.backetData.splice(index, 1)
-        },
+
+
         // изменить позицию товара ( вызывается из корзины )
         editpost(state, index) {
             console.log(index)
-            let typePost = state.backetData[index].title
+            let typePost = backed.state.backetData[index].title
             state.curentvalue = typePost
         },
         // выбор города отправки
@@ -261,26 +251,26 @@ export const store = new Vuex.Store({
         selecttarif(state) {
             let express = state.express == 1 ? pricelist : srochtarig
             console.log('прайсссс', express.pricelistdata)
-            let parseWeight = parseFloat(state.backetData[0].parametr)
+            let parseWeight = parseFloat(backed.state.backetData[0].parametr)
             var summ = 0
-            console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
+            console.log('basket', JSON.parse(JSON.stringify(backed.state.backetData)))
             //колличество товаров в корзине
-            for (var a = 0; a < state.backetData.length; a++) {
+            for (var a = 0; a < backed.state.backetData.length; a++) {
                 //проходим по всему прайсу
                 for (var i = 0; i < express.pricelistdata.length; i++) {
                     //console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
 
                     let decimal = 1
                     //округляем вес
-                    if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
+                    if (parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) % 1 == 0) {
                         decimal = 0;
                     } else {
                         decimal = 1;
                     }
 
                     //расчет объемного веса
-                    if (state.backetData[a].gabarit != null) {
-                        let aMass = state.backetData[a].gabarit.split('x')
+                    if (backed.state.backetData[a].gabarit != null) {
+                        let aMass = backed.state.backetData[a].gabarit.split('x')
                         aMass[0] = parseFloat(aMass[0])
                         aMass[1] = parseFloat(aMass[1])
                         aMass[2] = parseFloat(aMass[2])
@@ -288,10 +278,10 @@ export const store = new Vuex.Store({
                         var newaMass = aMass[0] * aMass[1] * aMass[2] / 5000
                     }
                     //если вс груза больше 30 тогда округлям с шагом 1 если меньше 30, с шагом 1
-                    if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) < 30) {
-                        var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
+                    if (parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) < 30) {
+                        var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
                     } else {
-                        var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))).toFixed(decimal)
+                        var mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))))).toFixed(decimal)
                     }
                     mass = parseFloat(mass) + parseFloat(newaMass || 0)
                     //округляем все + объемные вес
@@ -309,7 +299,7 @@ export const store = new Vuex.Store({
                     console.log('ОБЪЁМНЫЙ ВЕС', mass)
                     //если элемент прайса равен элементу корзины
                     if (parseFloat(express.pricelistdata[i].kg) == parseFloat(mass)) {
-                        console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))
+                        console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(backed.state.backetData[a].parametr))))
 
                         var maslengt = []
                         maslengt.push(express.pricelistdata[i])
@@ -321,7 +311,8 @@ export const store = new Vuex.Store({
                             //if(summ >= 20 && sum <=30) {
 
                             //}
-                            state.tarifcalc = summ
+                            state.tarifcalc = summ * (regular.state.period > 0 ? regular.state.period : 1)
+                            console.log(regular.state.period)
                             state.finalCalchide = true
                         }
                     }
@@ -333,14 +324,3 @@ export const store = new Vuex.Store({
 
     }
 });
-
-/*						let decimal = 1
-						
-						if(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
-							decimal = 0;
-							 } else {
-							  decimal = 1;
-							 }
-
-						let mass = (Math.ceil(parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) * 2) / 2).toFixed(decimal)
-						*/

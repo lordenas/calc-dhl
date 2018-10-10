@@ -42,7 +42,7 @@
 						</button>
 						<div class="modal-header">
 							<slot name="header">
-								<h6 slot="header">Укажите дату началаповтоения</h6>
+								<h6 slot="header">Укажите дату начала повтоения</h6>
 							</slot>
 						</div>
 						<div class="modal-body">
@@ -83,9 +83,9 @@
 					<div class="input-group mb-3">
 						<label class="regulat-lab">Как часто отправлять?</label>
 						<select v-model="periodselect" class="custom-select" id="inputGroupSelect01" @input="periodToStore">
-							<option selected :value="1">Каждый день</option>
-							<option :value="2">Раз в неделю</option>
-							<option :value="3">Раз в месяц</option>
+							<option selected :value="30">Каждый день</option>
+							<option :value="4">Раз в неделю</option>
+							<option :value="1">Раз в месяц</option>
 						</select>
 					</div>
 					<div class="input-group mb-3">
