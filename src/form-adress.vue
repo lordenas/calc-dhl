@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="toset">
+        <div class="toset col-sm-12">
                 <div class="blocktwo">
                     <div class="country">
                         <div class="form-group row">

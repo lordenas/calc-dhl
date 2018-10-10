@@ -104,8 +104,39 @@
                 </div>
             </div>
         </div>
-
          
+        <div class="title-block-new" v-show="presoptionStateFace == 1">
+            <div class="div-block-51 _500 w-clearfix">
+                <div class="heading-text-block _500">
+                <div class="div-line"></div>
+                <div class="div-rad"></div>
+                <div class="div-block-50"></div>
+                <div class="div-rad min"></div>
+                <h2 class="heading-13">Куда доставить оригиналы документов?<br></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="typepost" v-show="presoptionStateFace == 1">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-1 col-form-label">Страна</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-1 col-form-label">Город</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" >
+                </div>
+                <label for="staticEmail" class="col-sm-1 col-form-label">Индекс</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" >
+                </div>
+            </div>
+
+        </div>
+
 
         <div class="title-block-new">
             <div class="div-block-51 _500 w-clearfix">

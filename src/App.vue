@@ -67,7 +67,8 @@
             </div>
             <div id="div-registr">
               <registration v-show="calcRegistrGet"></registration>
-              <a href="#div-registr" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next">Отправить</div></a>
+              
+              <a href="#div-registr" v-show="calcRegistrGet" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</div></a>
             </div>
         </div>
         </transition>
@@ -97,6 +98,7 @@
     import vueSmoothScroll from 'vue-smooth-scroll'
     Vue.use(vueSmoothScroll)
     Vue.use(VueAxios, axios)
+    
     export default {
       name: 'app',
       store: store,
@@ -110,7 +112,7 @@
       },
       computed: {
         ...mapGetters([
-          'steponeEx', 'stepTreeEx', 'basketGet', 'validate', 'finalCalchideState', 'getExpress', 'calcRegistrGet'
+          'steponeEx', 'stepTreeEx', 'basketGet', 'validate', 'finalCalchideState', 'getExpress', 'calcRegistrGet', 'presoptionStateBay'
         ]),
         valueButton () {
           this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'
