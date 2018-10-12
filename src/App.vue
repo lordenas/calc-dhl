@@ -21,9 +21,9 @@
                     <div v-show="!stepTreeEx">
                         <type-store></type-store>
                     </div>
-                    <bascket></bascket>
+                    <bascket v-show="this.$store.state.backetData.length > 0 ? true : false "></bascket>
                     <div>
-                      <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextstepTreeX" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
+                      <input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextCalcBacket" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
                     
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                </svg></span><span>Сделать отправку регулярной?</span></label>
             </div> -->
-           <transition name="fade">
+           <transition id="div-regialt" name="fade">
                 <div v-show="regularcheck">
                     <regular></regular>
                 </div>
@@ -49,7 +49,7 @@
                     <div>
                         <input class="inp-cbx" id="cbx" v-model="regularcheck" type="checkbox" style="display: none;"/>
                         <label class="cbx" for="cbx">
-                            <div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">{{regularcheck ? 'Отменить' : 'Сделать доставку регулярной?'}}</div> 
+                             <a href="#div-regialt" v-smooth-scroll><div style="width: 100%" class="typepost-but-succes button-next" @click="openRegulat">{{regularcheck ? 'Отменить' : 'Сделать доставку регулярной?'}}</div></a>
                         </label>
                         </div>
                     <div>
@@ -62,8 +62,8 @@
                 <Finalcalc v-show="finalCalchideState"></Finalcalc>
             </transition>
  
-            <div v-show="finalCalchideState">
-                <a href="#div-registr" v-smooth-scroll><div style="width: 95%" class="typepost-but-succes button-next" @click="registrStateShow">Перейти к оформлению</div></a>
+            <div @click="registrStateShow" v-show="finalCalchideState">
+                <a href="#div-registr" v-smooth-scroll ><div style="width: 95%" class="typepost-but-succes button-next" >Перейти к оформлению</div></a>
             </div>
             <div id="div-registr">
               <registration v-show="calcRegistrGet"></registration>
@@ -132,6 +132,13 @@
         getValueState (e) {
           console.log(e.target.value)
           this.expressnoexpress(e.target.value)
+        },
+        openRegulat() {
+            this.regularcheck = !this.regularcheck
+        },
+        nextCalcBacket() {
+            this.nextstepTreeX()
+            this.$store.state.import ? this.importcalc() : this.selecttarif()
         }
       },
       components: {

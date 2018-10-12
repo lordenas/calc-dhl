@@ -141,7 +141,7 @@
 	            this.disabledcountryGet = true
 	            this.valuecountryToSet = {"country":"Россия","zone":"0"}
 	            this.importmut(this.valuecountry.zone)
-	            this.importcalc(this.valuecountry.zone)
+	            //this.importcalc(this.valuecountry.zone)
 	         } else {
 	              this.disabledcountryGet = false
 	         } 
@@ -156,7 +156,7 @@
 	            this.disabledcountrySet = true
 	            this.valuecountry = {"country":"Россия","zone":"0"}
 	            this.importmut(this.valuecountryToSet.zone)
-	            this.importcalc(this.valuecountryToSet.zone)
+	            //this.importcalc(this.valuecountryToSet.zone)
 	         } else {
 	            this.disabledcountrySet = false
 	         }
@@ -164,7 +164,7 @@
 	     },
 	     controlvalid () {
 	         //форма валидна или нет
-	         if ((this.valuecountry || this.valuecountry || this.value.tarifid > 0 && this.valuetoSet.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
+	         if ((this.valuecountry || this.value.tarifid > 0 && this.options.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
 	            this.validateOneMut(true)
 	         } else { 
 	             this.validateOneMut(false)

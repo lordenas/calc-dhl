@@ -12,10 +12,10 @@
                 </div>
                 <div class="col-sm-12 form-group row">
                     <div class="col-sm-2 rightalign">
-                        <img src="/img/8.png" width="15px" />
+                        <img src="/img/9.png" width="20px" />
                     </div>
                     <div class="col-sm-10 leftalign">
-                        Из России, Москва, 19000 - в Россию, Краснодар, 35000 
+                        {{this.$store.state.selectedDate}} - {{this.$store.state.curentTime == 1 ? 'С 09:00 до 14:00' : this.$store.state.curentTime == 2 ? 'С  14.00 до 18.00' : 'С 9.00 до 18.00'}}
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="basket-block-position-row"><img class="summary__img  summary__img--non-doc" :src="item.title == 1 ? '/img/summary-document.svg' : '/img/summary-nonDocuments.svg'"></div>
                 <div class="basket-block-position-row-title">{{item.title == 1 ? 'Документы' : 'Груз'}}</div>
                 <div class="basket-block-position-row-parametr">{{item.parametr}} {{item.title == 1 ? '' : item.gabarit}}</div>
-                <div class="basket-block-position-row-title price-bask">1235 руб.</div>
+                <div class="basket-block-position-row-title price-bask">{{item.price}} руб.</div>
                 <div class="basket-block-position-row">
                     <div class="basket-block-position-row-button">
                         <!-- <button @click="editpost(index)" class="summary__link summary__link_edit" style="background-image:url('https://zakaz.dhl.ru/assets/img/summary-edit.png');">Изменить</button> -->

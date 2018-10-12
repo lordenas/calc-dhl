@@ -533,7 +533,6 @@ body {
   justify-content: space-between;
   padding: 17px 30px;
   margin-top: 30px;
-  border-left: 2px solid red;
   box-shadow: 1px 2px 7px RGBA(0, 0, 0, 0.35);
 }
 

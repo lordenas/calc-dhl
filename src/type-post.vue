@@ -46,17 +46,17 @@
 					<div class="box-sizing__hint"> </div>
 					<div v-show="validblock" class="box-sizing__error">{{validblock}}</div>
 					<div class="box-sizing__dimensions" v-bind:class="{ valid: validblock}">
-						<wcc-piece-edit-dimensions-input class="ng-untouched ng-valid ng-dirty">
+						<span class="ng-untouched ng-valid ng-dirty">
 							<input type="text" v-model="height"  class="box-sizing__field ng-valid ng-dirty ng-touched" @input="heighttel">
-						</wcc-piece-edit-dimensions-input>
+						</span>
 						<span class="box-sizing__separator">х</span>
-						<wcc-piece-edit-dimensions-input  class="ng-untouched ng-valid ng-dirty">
+						<span  class="ng-untouched ng-valid ng-dirty">
 							<input v-model="width" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" @input="widthtel">
-						</wcc-piece-edit-dimensions-input>
+						</span>
 						<span class="box-sizing__separator">х</span>
-						<wcc-piece-edit-dimensions-input  class="ng-untouched ng-valid ng-dirty">
+						<span  class="ng-untouched ng-valid ng-dirty">
 							<input v-model="depth" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" @input="depthtel">
-						</wcc-piece-edit-dimensions-input>
+						</span>
 					</div>
 				</div>
 				<div  style=" margin: 0 0 35px 0;">Максимально допустимые размеры - 120x80x80см</div>
@@ -156,17 +156,22 @@
 	                if(this.weightel < 0.5 || this.weightel > 50) {
 	                    return false 
 	                } else {
+						 this.backetDataArr(gabarit); 
 	                    this.addTobasketHide()
-	                     this.backetDataArr(gabarit); 
+	                    
 	                }
 	                
-	            } else {
+	            } else if (this.presoptionState == 2) {
 	                let gabarit = {gabarit: this.height + 'x' + this.width + 'x' + this.depth + ' см', weightel: this.weightel}
 	
 	                this.weightel < 0.5 || !this.flagGabatir
 	                ? false
 	                : this.backetDataArr(gabarit); 
-	            }
+	            } if (this.presoptionState == 3) {
+					console.log('dddddddd')
+					 let gabarit = {gabarit: null, weightel: '-'}
+					 this.backetDataArr(gabarit); 
+				}
 	           //this.selecttarif()
 	           //скрываем блок после добавление товара в корзину
 	

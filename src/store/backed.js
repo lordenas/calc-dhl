@@ -9,6 +9,7 @@ export default {
 	},
 	mutations: {
         // добавление посылки в корзину
+        /*
         backetDataArr(state, gabarit) {
             console.log(gabarit)
             state.backetData.push({
@@ -18,6 +19,7 @@ export default {
                 price: 0
             })
         },
+        */
         // удаление посылки из корзины
         deletepost(state, index) {
             state.backetData.splice(index, 1)
