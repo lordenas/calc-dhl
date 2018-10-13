@@ -116,6 +116,11 @@ export const store = new Vuex.Store({
                 //console.log('basket', JSON.parse(JSON.stringify(backed.state.backetData)))
                 //колличество товаров в корзине
                 for (var a = 0; a < backed.state.backetData.length; a++) {
+                    console.log('ГРАНИЦА - контейнер', backed.state.backetData[a].price)
+                    if(backed.state.backetData[a].price == 'Расчет в течении 24 часов') {
+                        state.tarifcalc = 'Расчет в течении 24 часов'
+                        break
+                    } else {
                     //проходим по всему прайсу
                     for (var i = 0; i < express.pricelistdata.length; i++) {
                         //console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
@@ -178,6 +183,7 @@ export const store = new Vuex.Store({
                         }
                     }
                 }
+            }
             }
         },
         //доставка заграницу
@@ -276,6 +282,13 @@ export const store = new Vuex.Store({
             //console.log('basket', JSON.parse(JSON.stringify(backed.state.backetData)))
             //колличество товаров в корзине
             for (var a = 0; a < backed.state.backetData.length; a++) {
+                console.log('TESTTTT', backed.state.backetData[a].price)
+                if(backed.state.backetData[a].price == 'Расчет в течении 24 часов') {
+                    state.tarifcalc = 'Расчет в течении 24 часов'
+                    break
+                } else {
+
+                
                 //проходим по всему прайсу
                 for (var i = 0; i < express.pricelistdata.length; i++) {
                     //console.log('json',  JSON.parse(JSON.stringify(state.backetData[a].parametr)))
@@ -339,6 +352,7 @@ export const store = new Vuex.Store({
                         }
                     }
                 }
+            }
             }
         },
     },

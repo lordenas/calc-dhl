@@ -2,6 +2,7 @@
 
 <template>
 	<div>
+        <input type="button" value="mail" @click="toaxios">
 		<div class="title-block-new">
 			<div class="div-block-51 _500 w-clearfix">
 				<div class="heading-text-block _500">
@@ -96,6 +97,7 @@
 	</div>
 </template>
 <script>
+
 	import {mapMutations} from 'vuex';
 	import {mapGetters} from 'vuex';
 	const cityId = require('./json/cityid.json') 
@@ -209,7 +211,66 @@
 	            //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
 	        }
 	        console.log(this.optionscountry)
-	     }
+         },
+
+         toaxios () {
+             /*
+             console.log('sfsf')
+             axios.post('http://api.mailhandler.ru/message/send/', {
+                headers: {
+                'X-Secure-Token': 'cff7fac0-37de-48ea-abb4-d30d3d29f803',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                data: {
+                    'from': 'lordenas@gmail.com',
+                    'to': ['lordenas@gmail.com'],
+                    'subject': 'Hello world!',
+                    'html_body': '<html><body>Hello dear user.</body></html>'
+                }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    */				
+				
+            this.axios({
+					method: 'POST',
+					url: 'http://api.mailhandler.ru/message/send/',
+					headers: {
+                        "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+					},
+                    data: {
+                    'from': 'lordenas@gmail.com',
+                    'to': ['lordenas@gmail.com'],
+                    'subject': 'ТЕстовое письмо апи',
+                    'html_body': '<html><body>Это тестовое письмо. </body></html>'
+                }
+            }).then(response => {
+                console.log(response)
+            })
+            /*
+            var sss = axios.create({
+                baseURL: 'http://api.mailhandler.ru/message/send/',
+                headers: {
+                    'X-Secure-Token': 'cff7fac0-37de-48ea-abb4-d30d3d29f803',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    'from': 'lordenas@gmail.com',
+                    'to': ['lordenas@gmail.com'],
+                    'subject': 'Hello world!',
+                    'html_body': '<html><body>Hello dear user.</body></html>'
+                }
+            });
+            sss()*/
+        }
 	  },
 	  components: {
 	      Multiselect 

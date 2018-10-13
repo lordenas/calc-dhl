@@ -173,12 +173,7 @@
 
 
 
-         <div class="typepost">
-             
-                <div class="typepost-body">
-                    
-                </div>
-         </div>
+
     </div>
 </template>
 <script>

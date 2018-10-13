@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-sm-6">
                         <img src="/img/12.png" width="30px" />
-                        <div class="calcstr">Стоимость: {{tarifcalcState}} руб.</div>
+                        <div class="calcstr">{{tarifcalcState == 'Расчет в течении 24 часов' ? 'Расчет в течении 24 часов' : 'Стоимость: ' + tarifcalcState + ' руб.' }} </div>
                     </div>
                 </div>
          </div>
