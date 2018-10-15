@@ -7,7 +7,8 @@
                         <img src="/img/8.png" width="15px" />
                     </div>
                     <div class="col-sm-10 leftalign">
-                        Из России, Москва, 19000 - в Россию, Краснодар, 35000 
+                        
+                        Из {{this.$store.state.countrySetText}}, {{this.$store.state.citySetText}}, {{this.$store.state.indexSet}} - в {{this.$store.state.countryGetText}}, {{this.$store.state.cityGetText}}, {{this.$store.state.indexGet}}  
                     </div>
                 </div>
                 <div class="col-sm-12 form-group row">

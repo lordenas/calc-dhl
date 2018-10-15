@@ -1,5 +1,3 @@
-
-
 <template>
 	<div class="boxdates" style="border: 2px solid #056CB1; margin: 50px 0 0 0; box-shadow: none;">
 		<div class="todate">
@@ -78,6 +76,7 @@
 		</div>
 	</div>
 </template>
+
 <script>
 	import Vue from 'vue';
 	

@@ -37,8 +37,8 @@ export const store = new Vuex.Store({
             width: null,
             depth: null
         },
-        valueCitySending: null, //город отправитель
-        valueCityReception: null, // город получатель
+        valueCitySending: null, //город отправитель код
+        valueCityReception: null, // город получатель код
         tarifzonevalue: null, //тарифная зона
         tarifcalc: 0,
         finalCalchide: false,
@@ -47,7 +47,13 @@ export const store = new Vuex.Store({
         minweight: 0.5, // минимальный допустимый вес
         countryset: null,
         countrySeter: null, // номер страны римский
-        calcEdTarif: 0 //стоимость одной позиции товара
+        calcEdTarif: 0, //стоимость одной позиции товара
+        citySetText: '', //город отправитель текст
+        cityGetText: '', //город получатель текст
+        countrySetText: 'России', //страна отправитель текст
+        countryGetText: 'Россию', //страна получатель текст
+        indexSet: '', //индекс отправитель
+        indexGet: '' //индекс получатель
     },
     getters: {
         getImport(state) {
@@ -118,6 +124,7 @@ export const store = new Vuex.Store({
                 for (var a = 0; a < backed.state.backetData.length; a++) {
                     console.log('ГРАНИЦА - контейнер', backed.state.backetData[a].price)
                     if(backed.state.backetData[a].price == 'Расчет в течении 24 часов') {
+                        state.finalCalchide = true
                         state.tarifcalc = 'Расчет в течении 24 часов'
                         break
                     } else {
@@ -284,6 +291,7 @@ export const store = new Vuex.Store({
             for (var a = 0; a < backed.state.backetData.length; a++) {
                 console.log('TESTTTT', backed.state.backetData[a].price)
                 if(backed.state.backetData[a].price == 'Расчет в течении 24 часов') {
+                    state.finalCalchide = true
                     state.tarifcalc = 'Расчет в течении 24 часов'
                     break
                 } else {

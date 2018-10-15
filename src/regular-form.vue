@@ -85,7 +85,9 @@
 						<select v-model="periodselect" class="custom-select" id="inputGroupSelect01" @input="periodToStore">
 							<option selected :value="30">Каждый день</option>
 							<option :value="4">Раз в неделю</option>
+							<option :value="8">Два раза в неделю</option>
 							<option :value="1">Раз в месяц</option>
+							<option :value="2">Два раза в месяц</option>
 						</select>
 					</div>
 					<div class="input-group mb-3">

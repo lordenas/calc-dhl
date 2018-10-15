@@ -156,7 +156,7 @@
 	                if(this.weightel < 0.5 || this.weightel > 50) {
 	                    return false 
 	                } else {
-						 this.backetDataArr(gabarit); 
+						this.backetDataArr(gabarit); 
 	                    this.addTobasketHide()
 	                    
 	                }
@@ -167,10 +167,11 @@
 	                this.weightel < 0.5 || !this.flagGabatir
 	                ? false
 	                : this.backetDataArr(gabarit); 
-	            } if (this.presoptionState == 3) {
+	            } else if (this.presoptionState == 3) {
 					console.log('dddddddd')
 					 let gabarit = {gabarit: null, weightel: '-'}
 					 this.backetDataArr(gabarit); 
+					  this.addTobasketHide()
 				}
 	           //this.selecttarif()
 	           //скрываем блок после добавление товара в корзину

@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-        <input type="button" value="mail" @click="toaxios">
+        <!-- <input type="button" value="mail" @click="toaxios"> -->
 		<div class="title-block-new">
 			<div class="div-block-51 _500 w-clearfix">
 				<div class="heading-text-block _500">
@@ -42,7 +42,7 @@
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Индекс</label>
 						<div class="col-sm-10">
-							<input class="form-control" :maxlength="6"  v-model="index" type="text"  @input="indextel" placeholder="Индекс">
+							<input class="form-control" :maxlength="6"  v-model="index" type="text"  @input="controlvalidOne" placeholder="Индекс">
 						</div>
 					</div>
 				</div>
@@ -142,7 +142,8 @@
 	            console.log(JSON.stringify(this.valuecountry))
 	            this.disabledcountryGet = true
 	            this.valuecountryToSet = {"country":"Россия","zone":"0"}
-	            this.importmut(this.valuecountry.zone)
+				this.importmut(this.valuecountry.zone)
+				this.$store.state.countrySetText = this.valuecountry.country
 	            //this.importcalc(this.valuecountry.zone)
 	         } else {
 	              this.disabledcountryGet = false
@@ -150,22 +151,33 @@
 	     },
 	
 	     selectCountry () {
-	         console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
+	        console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
 	
 	        console.log('sdfdff', JSON.stringify(this.valuecountryToSet))
 	         //проверкаа на страну
 	         if ( JSON.stringify(this.valuecountryToSet) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
 	            this.disabledcountrySet = true
 	            this.valuecountry = {"country":"Россия","zone":"0"}
-	            this.importmut(this.valuecountryToSet.zone)
+				this.importmut(this.valuecountryToSet.zone)
+				this.$store.state.countrySetText = this.valuecountryToSet.country
 	            //this.importcalc(this.valuecountryToSet.zone)
 	         } else {
 	            this.disabledcountrySet = false
 	         }
 	
+		 },
+	     controlvalidOne () {
+			 this.$store.state.indexSet = this.index
+			 //форма валидна или нет
+	         if ((this.valuecountry || this.value.tarifid > 0 && this.options.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
+	            this.validateOneMut(true)
+	         } else { 
+	             this.validateOneMut(false)
+	         }
 	     },
 	     controlvalid () {
-	         //форма валидна или нет
+			 this.$store.state.indexGet = this.indexReception
+			 //форма валидна или нет
 	         if ((this.valuecountry || this.value.tarifid > 0 && this.options.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
 	            this.validateOneMut(true)
 	         } else { 
@@ -193,9 +205,11 @@
 	     },
 	     dispatchAction (typeSelectValue) {
 	         if (typeSelectValue == 'CitySending') {
-	            this.toCitysending(this.value.tarifid)
+				this.toCitysending(this.value.tarifid)
+				this.$store.state.citySetText = this.value.city
 	         } else if (typeSelectValue == 'CityReception') {
-	            this.toCityReception(this.valuetoSet.tarifid )
+				this.toCityReception(this.valuetoSet.tarifid )
+				this.$store.state.cityGetText = this.valuetoSet.city
 	         }
 	         this.controlvalid ()
 	         this.tarifZone()

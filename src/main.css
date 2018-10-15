@@ -362,6 +362,7 @@ body {
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
+    width: 270px;
   }
   .typepost-but-cancel:hover {
     color: #000;
@@ -371,6 +372,7 @@ body {
   }
   
   .typepost-but-succes {
+    width: 270px;
     display: inline-block;
     vertical-align: middle;
     min-width: 94px;
@@ -687,10 +689,6 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   float: right;
 }
 
-header {
-  height: 345px;
-  background: #e7e3e0;
-}
 .wrapper {
   margin: 0px auto;
   display: block;
@@ -698,10 +696,10 @@ header {
 }
 
 .flex-wrap {
-  background: #e0ddda;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 305px;
+  width: 740px;
 }
 .nexthead img {
   width: 235px;
@@ -713,7 +711,10 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+.left-block {
+  height: 100px;
+  padding: 15px;
+}
 .left-block h1 {
   color: #11469e;
 }
@@ -853,6 +854,7 @@ h2 {
 .button-next {
   margin: 30px 0;
   border: none;
+  width: 270px !important;
 }
 
 .button-next:disabled  {
@@ -1044,4 +1046,173 @@ text-align: left;
   color: red;
   position: absolute;
   top: 0;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.page-width {
+	width: 92%;
+	max-width: 740px;
+	margin: 0 auto;
+}
+#header {
+	background: #2c2d33;
+	padding: 2em 0;
+}
+#header a {
+	color: #FFF;
+}
+.title {
+	display: block;
+	font-weight: bold;
+	font-size: 18px;
+}
+.subtitle {
+	display: block;
+	font-weight: normal;
+	font-size: 15px;
+	color: #959699;
+}
+a:hover .subtitle {
+	color: #FFF;
+}
+#site-title {
+	float: left;
+	margin: 0;
+}
+#content {
+	padding: 40px 0;
+}
+
+
+/* CSS from jQuery Background Video plugin */
+/**
+ * Set default positioning as a fallback for if the plugin fails
+ */
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
+
+#polina { 
+  color: white;
+  padding: 5px;
+  margin:2rem;
+  float: none;
+  font-size: 1.2rem;
+  margin: 20% auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.jquery-background-video-wrapper {
+	position: relative;
+	overflow: hidden;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+        background-size: cover;
+        height: 300px;
+}
+.jquery-background-video {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 50%;
+	-o-object-fit: contain;
+	   object-fit: contain;
+	-webkit-transform: translate(-50%,-50%);
+	   -moz-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	     -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        z-index: -100;
+}
+/**
+ * Fade in videos
+ * Note the .js class - so non js users still
+ * see the video
+ */
+.js .jquery-background-video {
+	opacity: 0;
+	-webkit-transition: opacity 300ms linear;
+			transition: opacity 300ms linear;
+}
+.js .jquery-background-video.is-visible {
+	opacity: 1;
+}
+
+/**
+ * Pause/play button
+ */ 
+.jquery-background-video-pauseplay {
+	position: absolute;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	width: 20px;
+	height: 20px;
+	top: 15px;
+	right: 15px;
+	padding: 0;
+	cursor: pointer;
+	outline: none !important;
+}
+.jquery-background-video-pauseplay span {
+	display: none;
+}
+.jquery-background-video-pauseplay:after,
+.jquery-background-video-pauseplay:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: all .3s ease;
+			transition: all .3s ease;
+}
+.jquery-background-video-pauseplay.play:before {
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid #FFF;
+}
+.jquery-background-video-pauseplay.pause:before,
+.jquery-background-video-pauseplay.pause:after {
+	border-top: 10px solid #FFF;
+	border-bottom: 10px solid #FFF;
+	border-left: 5px solid #FFF;
+}
+.jquery-background-video-pauseplay.pause:after {
+	left: 10px;
+}
+
+.video-cloud {
+  background: rgba(0, 0, 0, 0.25);
+  height: 85%;
+  margin: 20px 0;
 }
