@@ -152,7 +152,8 @@
 				<input type="text" class="form-control" >
 			</div>
 		</div>
-		<div class="form-group row">
+
+		<!-- <div class="form-group row">
 			<div class="col-auto my-1">
 				<div class="custom-control custom-checkbox mr-sm-3">
 					<input type="checkbox" class="custom-control-input" id="hrup">
@@ -168,7 +169,7 @@
 			<div class="col-auto my-1">
 				<span style="color: red;">* Поля обязательные для заполнения</span>
 			</div>
-		</div>
+		</div> -->
 	</form>
 </template>
 <<script>

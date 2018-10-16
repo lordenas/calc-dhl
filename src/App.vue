@@ -54,10 +54,8 @@
 		</div> -->
         
 		<div id="app">
-			<input type="text" v-mask="mask" v-model="inputVal" :placeholder="placeholder">
 			<transition name="fade">
 				<div  v-show="!stepOneflag" class="stepOne">
-					{{this.$store.state.citySetText}}
 					<form-adress></form-adress>
 					<form-date></form-date>
 					<div id="div2"></div>
@@ -176,7 +174,7 @@
 	  },
 	  methods: {
 	    ...mapMutations([
-	        'nextstepX', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow'
+	        'nextstepX', 'periodMut', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow'
 	    ]),
 	    clickcalctarif() {
 	        this.$store.state.import ? this.importcalc() : this.selecttarif()
@@ -190,7 +188,9 @@
 	      this.expressnoexpress(e.target.value)
 	    },
 	    openRegulat() {
-	        this.regularcheck = !this.regularcheck
+            this.regularcheck = !this.regularcheck
+            this.periodMut(1)
+            //console.log(this.$store.state.periodselect)
 	    },
 	    nextCalcBacket() {
 	        this.nextstepTreeX()

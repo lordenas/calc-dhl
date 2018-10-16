@@ -21,7 +21,10 @@
         <div class="form-group row">
 			<label for="staticEmail" class="col-sm-3 col-form-label">Телефон</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" >
+				<input class="form-control" id="us-phone-number-ex" type="text" placeholder="Введите телефон"
+                   v-mask="'+7(###)-###-####'"
+                   v-model="telephone"
+                />
 			</div>
 		</div>
         <div class="form-group row">
@@ -177,29 +180,30 @@
     </div>
 </template>
 <script>
-import {mapMutations} from 'vuex';
-import {mapGetters} from 'vuex';
+    import {mapMutations} from 'vuex';
+    import {mapGetters} from 'vuex';
+	import VueMask from 'v-mask'
 
-export default {
-    name: 'app',
-    data () {
-        return {
-
-        }
-    },
-    computed: {
-        ...mapGetters([
-        'presoptionStateFace', 'presoptionStateBay'
-        ])
-    },
-    methods: {
-        ...mapMutations([
-            'presoptionFace', 'presoptionBay'
-        ])
-    },
-    components: {
-    },
-}
+    export default {
+        name: 'app',
+        data () {
+            return {
+                telephone: ''
+            }
+        },
+        computed: {
+            ...mapGetters([
+            'presoptionStateFace', 'presoptionStateBay'
+            ])
+        },
+        methods: {
+            ...mapMutations([
+                'presoptionFace', 'presoptionBay'
+            ])
+        },
+        components: {
+        },
+    }
 </script>
 
 <style scoped>
