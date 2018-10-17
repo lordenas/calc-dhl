@@ -3,7 +3,7 @@
 <template>
 	<div>
 		<div v-show="!stepOneflag" class="video-hero jquery-background-video-wrapper demo-video-wrapper">
-			<video class="jquery-background-video" autoplay muted loop poster="https://d2ezlykacdqcnj.cloudfront.net/_assets/home-video/beach-waves-loop.jpg">
+			<video class="jquery-background-video" autoplay muted loop poster="/541.jpg">
 				<source src="/fon-transcode.webm" type="video/webm">
 			</video>
 			<div class="video-cloud">
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-            <video v-show="stepOneflag" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted loop>
+            <video v-show="stepOneflag" poster="/541.jpg" id="bgvid" playsinline autoplay muted loop>
             <!-- 
             - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
