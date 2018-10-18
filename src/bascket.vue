@@ -1,5 +1,16 @@
 <template>
     <div>
+        <div class="title-block-new">
+            <div class="div-block-51 _500 w-clearfix">
+                <div class="heading-text-block _500">
+                <div class="div-line"></div>
+                <div class="div-rad"></div>
+                <div class="div-block-50"></div>
+                <div class="div-rad min"></div>
+                <h2 class="heading-13">Информация о Вашем грузе<br></h2>
+                </div>
+            </div>
+        </div>
         <div class="toset">
             <div class="col-sm-12">
                 <div class="col-sm-12 form-group row">
@@ -7,7 +18,6 @@
                         <img src="/img/8.png" width="15px" />
                     </div>
                     <div class="col-sm-10 leftalign">
-                        
                         Из {{this.$store.state.countrySetText}}, {{this.$store.state.citySetText}}, {{this.$store.state.indexSet}} - в {{this.$store.state.countryGetText}}, {{this.$store.state.cityGetText}}, {{this.$store.state.indexGet}}  
                     </div>
                 </div>

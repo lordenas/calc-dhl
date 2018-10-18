@@ -1,11 +1,9 @@
 export default {
 	state: {
-        backetData: [], //корзина
+
 	},
 	getters: {
-        backetDataState(state) {
-            return state.backetData; // корзина
-        },
+
 	},
 	mutations: {
         // добавление посылки в корзину
@@ -21,9 +19,7 @@ export default {
         },
         */
         // удаление посылки из корзины
-        deletepost(state, index) {
-            state.backetData.splice(index, 1)
-        },
+
 	},
 	actions: {
 		

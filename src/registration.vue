@@ -11,29 +11,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group row">
-			<label for="staticEmail" class="col-sm-3 col-form-label">ФИО</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control" >
-			</div>
-		</div>
-        <div class="form-group row">
-			<label for="staticEmail" class="col-sm-3 col-form-label">Телефон</label>
-			<div class="col-sm-9">
-				<input class="form-control" id="us-phone-number-ex" type="text" placeholder="Введите телефон"
-                   v-mask="'+7(###)-###-####'"
-                   v-model="telephone"
-                />
-			</div>
-		</div>
-        <div class="form-group row">
-			<label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control" >
-			</div>
-		</div>
-        <div class="typestore-icon">
+        <div class="typestore-icon" v-if="!this.$store.state.flagBasketContainer">
                 <div class="typestore-icon-step" v-on:click="presoptionFace(1)">
                     <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionStateFace == 1 }" @click="presoptionFace(1)"></div>
                     <div class="typestore-icon-step-body">
@@ -53,7 +31,29 @@
                     </div>
                 </div>
         </div>
+        <div class="form-group row">
+			<label for="staticEmail" class="col-sm-3 col-form-label">ФИО</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+        <div class="form-group row">
+			<label for="staticEmail" class="col-sm-3 col-form-label">Телефон</label>
+			<div class="col-sm-9">
+				<input class="form-control" id="us-phone-number-ex" type="text" placeholder="+7 (000)-000-0000"
+                   v-mask="'+7(###)-###-####'"
+                   v-model="telephone"
+                />
+			</div>
+		</div>
+        <div class="form-group row">
+			<label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
 
+        <template v-if="!this.$store.state.flagBasketContainer">
         <div class="typepost" v-show="presoptionStateFace == 1">
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании</label>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
         </div>
-
+        </template>
 
 
 

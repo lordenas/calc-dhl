@@ -13,14 +13,16 @@
 		</div>
 		<div class="typepost">
 			<div class="typepost-body">
-				<div class="form-group row">
+				<div class="form-group row"  v-if="this.$store.state.curentvalue != 3">
 					<label for="staticEmail" class="col-sm-3 col-form-label" v-bind:class="[presoptionState == 3 ? 'col-sm-5' : 'col-sm-3']">Тип груза</label>
 					<div class="col-sm-5">
 						<select class="custom-select" id="inputGroupSelect01" v-model="presoptionState"  @input="getCategoryChanges">
 							<option :value="1">Документы</option>
 							<option :value="2">Груз</option>
-							<option :value="3">Контейнер</option>
+							<option v-if="this.$store.state.flagBasketContainer" :value="3">Контейнер</option>
 						</select>
+						{{ this.$store.state.flagBasketContainer  }}
+						{{ this.conteinerBool  }}
 					</div>
 					<div  v-bind:class="[presoptionState == 3 ? 'col-sm-7' : 'col-sm5-']">
 						<div v-show="presoptionState == 1" class="typepost-type-select-val col-form-label">Бумажные листы любого формата</div>
@@ -30,7 +32,7 @@
 			<div class="form-group row" v-show="presoptionState != 3">
 				<label for="staticEmail" class="col-sm-3 col-form-label">Вес груза</label>
 				<div class="col-sm-2">
-					<input type="text" v-model="weightel" v-bind:class="[ weightel < this.$store.state.minweight || weightel > 50  ? 'redinput' : false ]" class="form-control" @input="weight">
+					<input type="text" v-model="weightel" v-bind:class="[ weightel < this.$store.state.minweight || weightel > 50  ? 'redinput' : false ]" class="form-control" @input="weight" placeholder="00.00">
 				</div>
 				<div class="col-sm-7">
 					<div class="typepost-type-select-valRed col-form-label" v-show="weightel < this.$store.state.minweight">Минимальный оплачиваемый вес одного места {{this.$store.state.minweight}}кг</div>
@@ -96,7 +98,7 @@
 	    },
 	    computed: {
 	        ...mapGetters([
-	        'presoptionState'
+	        'presoptionState', 'conteinerBool'
 	        ]),
 	        weight() {
 	            //console.log( this.weightel.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))

@@ -65,7 +65,8 @@
 					<transition name="fade">
 						<div v-show="steponeEx">
 							<div class="type-postcs">
-								<div class="radio-btn-group">
+								
+								<div v-if="this.$store.state.curentvalue != 3" class="radio-btn-group">
 									<div class="radio"><input type="radio" name="radio" value="1" checked="checked" v-model="checked" id="click_me" @input="getValueState" /><label for="click_me">Экспресс доставка</label></div>
 									<div class="radio"><input type="radio" name="radio" value="2" v-model="checked" id="or_me"  @input="getValueState" /><label for="or_me">Не срочная доставка</label></div>
 								</div>
@@ -74,9 +75,16 @@
 								<type-store></type-store>
 							</div>
 							<bascket v-show="this.$store.state.backetData.length > 0 ? true : false "></bascket>
-							<div>
+
+							<div v-if="this.$store.state.curentvalue != 3">
 								<input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextCalcBacket" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
 							</div>
+
+
+							<div v-if="this.$store.state.curentvalue == 3 && this.$store.state.backetData.length == 0">
+								<input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextCalcBacket" value="Далее">
+							</div>
+
 						</div>
 					</transition>
 					<transition name="fade">
@@ -90,7 +98,7 @@
 						</div>
 					</transition>
 					<div v-show="this.$store.state.backetData.length > 0 ? true : false" style="display: flex; justify-content: space-around; width: 100%;">
-						<div>
+						<div v-show="this.$store.state.curentvalue != 3">
 							<input class="inp-cbx" id="cbx" v-model="regularcheck" type="checkbox" style="display: none;"/>
 							<label class="cbx" for="cbx">
 								<a href="#div-regialt" v-smooth-scroll>
@@ -98,22 +106,22 @@
 								</a>
 							</label>
 						</div>
-						<div>
+						<div v-show="this.$store.state.curentvalue != 3">
 							<div id="div-id"></div>
 							<a href="#div-id" v-smooth-scroll>
 								<div style="width: 100%" class="typepost-but-succes button-next" @click="clickcalctarif">Расчитать стоимость</div>
 							</a>
 						</div>
 					</div>
-					<transition name="fade">
+					<transition name="fade" v-if="this.$store.state.curentvalue != 3 && this.$store.state.backetData.length > 0">
 						<Finalcalc v-show="finalCalchideState"></Finalcalc>
 					</transition>
-					<div @click="registrStateShow" v-show="finalCalchideState">
+					<div @click="registrStateShow" v-if="finalCalchideState || (this.$store.state.curentvalue == 3 && this.$store.state.backetData.length > 0)">
 						<a href="#div-registr" v-smooth-scroll >
 							<div style="width: 95%" class="typepost-but-succes button-next" >Перейти к оформлению</div>
 						</a>
 					</div>
-					<div id="div-registr">
+					<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 						<registration v-show="calcRegistrGet"></registration>
 						<a href="#div-registr" v-show="calcRegistrGet" v-smooth-scroll>
 							<div style="width: 95%" class="typepost-but-succes button-next">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</div>
