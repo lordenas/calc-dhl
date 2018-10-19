@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="backet-block" v-for="(item, index) in backetDataState">
+        <div class="backet-block" v-for="(item, index) in backetDataState" :key="index">
             <div class="basket-block-position">
                 <div class="basket-block-position-row"><img class="summary__img  summary__img--non-doc" :src="item.title == 1 ? '/img/summary-document.svg' : item.title == 2 ? '/img/summary-nonDocuments.svg' : '/img/container-icon-4.png'"></div>
                 <div class="basket-block-position-row-title">{{item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер'}}</div>

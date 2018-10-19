@@ -10,7 +10,6 @@
                 <h2 class="heading-13">Что Вы отправляете?<br></h2>
                 </div>
             </div>
-            {{this.$store.state.flagBasketContainer}}
         </div>
         <div class="typestore">
             <div class="typestore-icon">

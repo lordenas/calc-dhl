@@ -21,8 +21,6 @@
 							<option :value="2">Груз</option>
 							<option v-if="this.$store.state.flagBasketContainer" :value="3">Контейнер</option>
 						</select>
-						{{ this.$store.state.flagBasketContainer  }}
-						{{ this.conteinerBool  }}
 					</div>
 					<div  v-bind:class="[presoptionState == 3 ? 'col-sm-7' : 'col-sm5-']">
 						<div v-show="presoptionState == 1" class="typepost-type-select-val col-form-label">Бумажные листы любого формата</div>
@@ -30,7 +28,7 @@
 				</div>
 			</div>
 			<div class="form-group row" v-show="presoptionState != 3">
-				<label for="staticEmail" class="col-sm-3 col-form-label">Вес груза</label>
+				<label for="staticEmail" class="col-sm-3 col-form-label">Вес груза в кг.</label>
 				<div class="col-sm-2">
 					<input type="text" v-model="weightel" v-bind:class="[ weightel < this.$store.state.minweight || weightel > 50  ? 'redinput' : false ]" class="form-control" @input="weight" placeholder="00.00">
 				</div>
@@ -49,15 +47,15 @@
 					<div v-show="validblock" class="box-sizing__error">{{validblock}}</div>
 					<div class="box-sizing__dimensions" v-bind:class="{ valid: validblock}">
 						<span class="ng-untouched ng-valid ng-dirty">
-							<input type="text" v-model="height"  class="box-sizing__field ng-valid ng-dirty ng-touched" @input="heighttel">
+							<input type="text" v-model="height"  class="box-sizing__field ng-valid ng-dirty ng-touched" @input="heighttel" ref="left" v-on:keyup.39="keypressOne">
 						</span>
 						<span class="box-sizing__separator">х</span>
 						<span  class="ng-untouched ng-valid ng-dirty">
-							<input v-model="width" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" @input="widthtel">
+							<input v-model="width" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" @input="widthtel" ref="center"  v-on:keyup="keypressCenterOne">
 						</span>
 						<span class="box-sizing__separator">х</span>
 						<span  class="ng-untouched ng-valid ng-dirty">
-							<input v-model="depth" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" @input="depthtel">
+							<input v-model="depth" class="box-sizing__field ng-valid ng-dirty ng-touched" type="text" ref="right"  @input="depthtel"  v-on:keyup.37="keypressRightOne">
 						</span>
 					</div>
 				</div>
@@ -99,13 +97,14 @@
 	    computed: {
 	        ...mapGetters([
 	        'presoptionState', 'conteinerBool'
-	        ]),
+			]),
 	        weight() {
 	            //console.log( this.weightel.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
 	            this.weightel = this.weightel.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
 	        },
-	        heighttel() {
-	            console.log( this.height.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
+	        heighttel(evn) {
+				console.log(evn)
+	            //console.log( this.height.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
 	            this.height = this.height.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
 	        },
 	        widthtel() {
@@ -143,7 +142,23 @@
 	    methods: {
 	        ...mapMutations([
 	            'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 
-	        ]),
+			]),
+			keypressOne() {
+				console.log('evt', this.$refs.center)
+				this.$nextTick(() => this.$refs.center.focus())
+			},
+			keypressCenterOne(event) {
+				//this.$nextTick(() => this.$refs.right.focus())
+				console.log(event.key)
+				if(event.key == 'ArrowRight') {
+					this.$nextTick(() => this.$refs.right.focus())
+				} else if (event.key == 'ArrowLeft') {
+					this.$nextTick(() => this.$refs.left.focus())
+				}
+			},
+			keypressRightOne() {
+				this.$nextTick(() => this.$refs.center.focus())
+			},
 	        cancelInfo () {
 	            this.addTobasketHide()
 	        },
