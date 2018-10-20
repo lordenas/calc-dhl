@@ -123,9 +123,7 @@
 					</div>
 					<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 						<registration v-show="calcRegistrGet"></registration>
-						<a href="#div-registr" v-show="calcRegistrGet" v-smooth-scroll>
-							<div style="width: 95%" class="typepost-but-succes button-next">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</div>
-						</a>
+						
 					</div>
 				</div>
 			</transition>
@@ -150,7 +148,8 @@
 	import VueMask from 'v-mask'
 	Vue.use(Vuex);
 	Vue.use(VueMask);
-
+ 	Vue.use(BootstrapVue);
+  	import BootstrapVue from 'bootstrap-vue'
     Vue.config.productionTip = false    
 	import axios from 'axios'
 	import VueAxios from 'vue-axios'
@@ -182,7 +181,7 @@
 	  },
 	  methods: {
 	    ...mapMutations([
-	        'nextstepX', 'periodMut', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow'
+	        'nextstepX', 'periodMut', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow', 'onSubmit'
 	    ]),
 	    clickcalctarif() {
 	        this.$store.state.import ? this.importcalc() : this.selecttarif()

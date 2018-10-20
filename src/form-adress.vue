@@ -29,7 +29,7 @@
 						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
 						<div class="col-sm-10">
                             <template v-if="disabledcountryGet">
-                                    <input class="form-control"  type="text" placeholder="Город">
+                                    <input class="form-control"  @input="controlvalidOne" type="text" placeholder="Город">
                             </template>
                             <template  v-if="!disabledcountryGet">
                                 <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
@@ -75,7 +75,7 @@
 						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
 						<div class="col-sm-10">
                             <template v-if="valuecountryToSet.country != 'Россия' ? true : false">
-                                    <input class="form-control"  type="text" placeholder="Город">
+                                    <input class="form-control"  @input="controlvalidOne" v-model="citynoRus" type="text" placeholder="Город">
                             </template>
                              <template v-if="valuecountryToSet.country == 'Россия' ? true : false">
                                 <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
@@ -118,7 +118,10 @@
 	      options: [],
 	      optionscountry: [],
 	      disabledcountrySet: false,
-	      disabledcountryGet: false
+		  disabledcountryGet: false,
+		  cityanother: '',
+		  cityToanother: '',
+		  citynoRus: ''
 	    }
 	  },
 	  mounted () {
@@ -151,9 +154,9 @@
 	     },
 	
 	     selectCountry () {
-	        console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
+	        //console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
 	
-	        console.log('sdfdff', JSON.stringify(this.valuecountryToSet))
+	        //console.log('sdfdff', JSON.stringify(this.valuecountryToSet))
 	         //проверкаа на страну
 	         if ( JSON.stringify(this.valuecountryToSet) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
 	            this.disabledcountrySet = true
@@ -169,7 +172,8 @@
 	     controlvalidOne () {
 			 this.$store.state.indexSet = this.index
 			 //форма валидна или нет
-	         if ((this.valuecountry || this.value.tarifid > 0 && this.options.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
+			 console.log('ВАЛИДАЦИЯ',this.options.tarifid)
+	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
 	            this.validateOneMut(true)
 	         } else { 
 	             this.validateOneMut(false)
@@ -178,7 +182,7 @@
 	     controlvalid () {
 			 this.$store.state.indexGet = this.indexReception
 			 //форма валидна или нет
-	         if ((this.valuecountry || this.value.tarifid > 0 && this.options.tarifid > 0 ) && this.indexReception.length == 6 && this.index.length == 6 ) {
+	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
 	            this.validateOneMut(true)
 	         } else { 
 	             this.validateOneMut(false)

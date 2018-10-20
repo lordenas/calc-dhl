@@ -55,8 +55,8 @@ export const store = new Vuex.Store({
         indexSet: '', //индекс отправитель
         indexGet: '', //индекс получатель
         flagConteiner: false, //флаг если выбрали контейнер
-        flagBasketContainer: false
-
+        flagBasketContainer: false,
+        documentUrlico: ''
     },
     getters: {
         backetDataState(state) {
@@ -92,6 +92,13 @@ export const store = new Vuex.Store({
 
     },
     mutations: {
+        onSubmit(state, valid) {
+            if (valid) {
+                //alert('Отправлено')
+            } else {
+                alert('Укажите почту')
+            }
+        },
         conteinerBoolMet (state) {
             for (let a = 0; a < state.backetData.length; a++) {
 
