@@ -28,7 +28,7 @@
                         <img src="/img/29.png" width="20px" />
                     </div>
                     <div class="col-sm-10">
-                         <div class="pointer">Ваша корзина</div>
+                         <div class="pointer"><a href="#basket" v-smooth-scroll>Ваша корзина</a></div>
                     </div>
                 </div>
                 <div class="col-sm-4 row text-right" style="margin: 0 -50px 0 0">
@@ -63,11 +63,24 @@
         },
         methods: {
             downloadPDF(){
-                varperem({zakazchik: this.$store.state.documentUrlico})
+                varperem(
+                    {
+                        vlice: this.$store.state.vlice, 
+                        zakazchik: this.$store.state.zakazchik,
+                        documentUrlico: this.$store.state.documentUrlico,
+                        inn: this.$store.state.inn,
+                        kpp: this.$store.state.kpp,
+                        ogrn:  this.$store.state.ogrn,
+                        rschet: this.$store.state.rschet,
+                        kschet: this.$store.state.kschet,
+                        bank: this.$store.state.bank,
+                        bik: this.$store.state.bik,
+                        tel: this.$store.state.tel,
+                        mailPoshta: this.$store.state.mailPoshta,
+                    }
+                    )
                 pdfMake.createPdf(docInfo).download('name.pdf');
-                /*setTimeout(() => {
-                    
-                }, 500) */
+
             }
         },
         components: {

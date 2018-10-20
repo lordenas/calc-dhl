@@ -169,8 +169,8 @@
 	        getToBacket() {
 	            if (this.presoptionState == 1) {
 	                let gabarit = {gabarit: null, weightel: this.weightel}
-	
-	                if(this.weightel < 0.5 || this.weightel > 50) {
+					console.log('test',  this.weightel, (this.weightel < 0.5 || this.weightel > 50))
+	                if((this.weightel < 0.5 || this.weightel > 50)) {
 	                    return false 
 	                } else {
 						this.backetDataArr(gabarit); 

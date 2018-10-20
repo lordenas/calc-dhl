@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="title-block-new">
+        <div id="basket" class="title-block-new">
             <div class="div-block-51 _500 w-clearfix">
                 <div class="heading-text-block _500">
                 <div class="div-line"></div>

@@ -37,10 +37,16 @@
 			<div class="radio"><input type="radio" name="radio" value="2" v-model="checked" id="two"  /><label for="two">Действующий клиент</label></div>
 		</div>
                 <b-form @submit="onSubmitValid">
+                    <div v-if="checked == 2 && presoptionStateFace == 1" class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Номер договора</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" >
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-3 col-form-label">ФИО</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" >
+                            <input type="text" @input="vliceinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -48,6 +54,7 @@
                         <div class="col-sm-9">
                             <input class="form-control" id="us-phone-number-ex" type="text" placeholder="+7 (000)-000-0000"
                             v-mask="'+7(###)-###-####'"
+                            @input="telinput"
                             v-model="telephone"
                             />
                         </div>
@@ -81,12 +88,12 @@
                     </div>
             </b-form>
         <template v-if="!this.$store.state.flagBasketContainer">
-            <div v-if="checked == 1">
+            <div v-if="checked != 2">
                 <div class="typepost" v-show="presoptionStateFace == 1">
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" >
+                            <input type="text" @input="zakazchikinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -110,11 +117,17 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ИНН</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input type="text" @input="inninput" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">КПП</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input type="text"  @input="kppinput" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">ОГРН</label>
+                        <div class="col-sm-11">
+                            <input type="text" @input="ogrnInput" class="form-control" >
                         </div>
                     </div>
                     <br>
@@ -123,21 +136,21 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Банк</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input @input="bankinput" type="text" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">БИК</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input @input="bikinput" type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">К/С</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input  @input="kschetinput" type="text" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">Р/С</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input @input="rschetinput" type="text" class="form-control" >
                         </div>
                     </div>
                 </div>
@@ -244,11 +257,47 @@
             ]),
             consoleinput (evt) {
                 this.$store.state.documentUrlico = evt.target.value
+                this.$store.state.mailPoshta =  this.email
                 //console.log(evt.target.value, '-', this.$store.state.documentUrlico)
             },
+            ogrnInput(evt) {
+                this.$store.state.ogrn =  evt.target.value
+                this.$store.state.mailPoshta =  this.email
+            },
+            vliceinput(evt) {
+                this.$store.state.vlice =  evt.target.value
+            },
+            zakazchikinput(evt) {
+                this.$store.state.zakazchik =  evt.target.value
+            },
+            kppinput(evt) {
+                this.$store.state.kpp =  evt.target.value
+            },
+            inninput(evt) {
+                this.$store.state.inn =  evt.target.value
+            },
+            rschetinput(evt) {
+                this.$store.state.rschet =  evt.target.value
+            },   
+            kschetinput(evt) {
+                this.$store.state.kschet =  evt.target.value
+                this.$store.state.mailPoshta =  this.email
+            },
+            bankinput(evt) {
+                this.$store.state.bank =  evt.target.value
+            },
+            bikinput(evt) {
+                this.$store.state.bik =  evt.target.value
+            },
+            telinput(evt) {
+                this.$store.state.tel =  this.telephone
+                this.$store.state.mailPoshta =  this.email
+            },
+            
             validmail() {
                 let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
                 this.validemeil = validMail.test(this.email)
+                
             },
             onSubmitValid() {
                 if(this.validemeil) {

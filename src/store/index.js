@@ -56,7 +56,19 @@ export const store = new Vuex.Store({
         indexGet: '', //индекс получатель
         flagConteiner: false, //флаг если выбрали контейнер
         flagBasketContainer: false,
-        documentUrlico: ''
+        documentUrlico: '____________________________',
+        vliceinput: '____________________________',
+        zakazchik: '____________________________',
+        inn: '',
+        kpp: '',
+        ogrn: '',
+        rschet: '',
+        kschet: '',
+        bank: '',
+        bik: '',
+        tel: '',
+        mailPoshta: '',
+        
     },
     getters: {
         backetDataState(state) {

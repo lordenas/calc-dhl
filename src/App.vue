@@ -62,7 +62,7 @@
 					<a href="#div2" v-smooth-scroll>
 					<input class="typepost-but-succes button-next" :disabled="!validate" v-show="!steponeEx" @click="nextstepX" value="Далее">
 					</a>
-					<transition name="fade">
+					<transition  name="fade">
 						<div v-show="steponeEx">
 							<div class="type-postcs">
 								

@@ -41,7 +41,7 @@ export default {
 			state.stepTree = !state.stepTree
 		  },
 		  addTobasketHide (state) {
-			state.stepTree = !state.stepTree
+			state.stepTree = false
 		  },
 		  validateOneMut (state, param) {
 			  console.log(param)

@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div id="basketaftter">
          <div class="typepost col-sm-12">
                 <div class="typepost-body row">
                     <div class="col-sm-6">

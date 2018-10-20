@@ -49,7 +49,7 @@
 												<div class="calendar__time-radio-item-img"></div>
 												<span>С 9.00 до 18.00</span>
 											</button>
-											<button class="calendar__time-radio-confirm" @click="selectedDateMeth">Подтвердить</button>
+											<button  class="calendar__time-radio-confirm" @click="selectedDateMeth">Подтвердить</button>
 										</div>
 									</div>
 								</slot>
