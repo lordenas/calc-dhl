@@ -69,6 +69,20 @@
 					<textarea class="standinput" placeholder="Описание вложения"></textarea>
 				</div>
 			</div>
+			<div class="form-group row"  v-show="presoptionState == 2">
+				<div class="col-auto my-1">
+					<div class="custom-control custom-checkbox mr-sm-3">
+						<input type="checkbox" class="custom-control-input" id="hrup">
+						<label   class="custom-control-label" for="hrup"><img src="/img/grup.png" style="margin: 0 5px" width="20px"/>Хрупкое</label>
+					</div>
+				</div>
+				<div class="col-auto my-1">
+					<div class="custom-control custom-checkbox mr-sm-3">
+						<input type="checkbox" class="custom-control-input" id="oblic">
+						<label   class="custom-control-label" for="oblic"><img src="/img/plus-big-512.png" style="margin: 0 5px" width="20px"/>Добавить облицовку упаковки</label>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="typepost-but">
 			<div class="typepost-but-cancel" @click="cancelInfo">Отмена</div>

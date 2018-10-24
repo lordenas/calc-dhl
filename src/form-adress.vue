@@ -29,7 +29,7 @@
 						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
 						<div class="col-sm-10">
                             <template v-if="disabledcountryGet">
-                                    <input class="form-control"  @input="controlvalidOne" type="text" placeholder="Город">
+                                    <input class="form-control" v-model="citynoRusSend" @input="controlvalidOne" type="text" placeholder="Город">
                             </template>
                             <template  v-if="!disabledcountryGet">
                                 <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
@@ -119,9 +119,9 @@
 	      optionscountry: [],
 	      disabledcountrySet: false,
 		  disabledcountryGet: false,
-		  cityanother: '',
-		  cityToanother: '',
-		  citynoRus: ''
+		  citynoRus: '',
+		  citynoRusSend: '',
+
 	    }
 	  },
 	  mounted () {
@@ -171,6 +171,8 @@
 		 },
 	     controlvalidOne () {
 			 this.$store.state.indexSet = this.index
+			 this.$store.state.citynoRusSendStore = this.citynoRusSend
+			 this.$store.state.citynoRusStore = this.citynoRus
 			 //форма валидна или нет
 			 console.log('ВАЛИДАЦИЯ',this.options.tarifid)
 	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
@@ -181,6 +183,8 @@
 	     },
 	     controlvalid () {
 			 this.$store.state.indexGet = this.indexReception
+			 this.$store.state.citynoRusSendStore = this.citynoRusSend
+			 this.$store.state.citynoRusStore = this.citynoRus
 			 //форма валидна или нет
 	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
 	            this.validateOneMut(true)

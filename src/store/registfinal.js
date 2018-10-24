@@ -23,6 +23,8 @@ export default {
         },
 	},
 	actions: {
-		
+		presoptionFace(context) {
+            context.commit('presoptionFace');
+        }
 	}
   }

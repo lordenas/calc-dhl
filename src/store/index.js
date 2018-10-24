@@ -68,6 +68,10 @@ export const store = new Vuex.Store({
         bik: '',
         tel: '',
         mailPoshta: '',
+        citynoRusSendStore: '',
+        citynoRusStore: '',
+        vliceDirinput: ''
+
         
     },
     getters: {
@@ -104,13 +108,6 @@ export const store = new Vuex.Store({
 
     },
     mutations: {
-        onSubmit(state, valid) {
-            if (valid) {
-                //alert('Отправлено')
-            } else {
-                alert('Укажите почту')
-            }
-        },
         conteinerBoolMet (state) {
             for (let a = 0; a < state.backetData.length; a++) {
 

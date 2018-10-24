@@ -35,8 +35,12 @@
                     <div class="col-sm-1 text-right">
                         <img src="/img/10.png" width="20px" />
                     </div>
-                    <div class="col-sm-10 text-left">
-                        <div @click="downloadPDF" class="pointer">Скачать накладную</div>
+                    
+                    <div  v-if="presoptionStateFace == 1" class="col-sm-10 text-left">
+                        <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать договор</div>
+                    </div>
+                    <div  v-if="presoptionStateFace == 2" class="col-sm-10 text-left">
+                        <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать накладную</div>
                     </div>
                 </div>
             </div>
@@ -48,7 +52,7 @@
     import {mapMutations} from 'vuex';
     import {mapGetters} from 'vuex';
 	import VueMask from 'v-mask'
-    import { varperem, docInfo, zakazchik } from '../js/script'
+    import { varperem, docInfo, docInfoFiz, varperemFiz, zakazchik } from '../js/script'
     export default {
         name: 'app',
         data () {
@@ -58,14 +62,20 @@
         },
         computed: {
             ...mapGetters([
-                'conteinerBool'
+                'conteinerBool', 'presoptionStateFace'
             ])
         },
         methods: {
-            downloadPDF(){
+            ...mapMutations([
+                'presoptionFace'
+            ]),
+            downloadPDF(type) {
+                 var adrress = 'Из ' +  this.$store.state.countryGetText  + ', город ' + (this.$store.state.citySetText ||  this.$store.state.citynoRusSendStore) + ', индекс ' + this.$store.state.indexSet+ ' '    + ' - в ' +  this.$store.state.countrySetText + ', город ' + (this.$store.state.cityGetText.length > 0 ? this.$store.state.cityGetText  :  this.$store.state.citynoRusStore) + ', индекс ' + this.$store.state.indexGet  
+                if( type == 1) {
+               
                 varperem(
                     {
-                        vlice: this.$store.state.vlice, 
+                        vliceDirinput: this.$store.state.vliceDirinput, 
                         zakazchik: this.$store.state.zakazchik,
                         documentUrlico: this.$store.state.documentUrlico,
                         inn: this.$store.state.inn,
@@ -79,7 +89,18 @@
                         mailPoshta: this.$store.state.mailPoshta,
                     }
                     )
-                pdfMake.createPdf(docInfo).download('name.pdf');
+                    pdfMake.createPdf(docInfo).download('name.pdf');
+                } else {
+                varperemFiz({
+                    adrress: adrress,
+                    zakazchik: this.$store.state.vliceinput,
+                    telephone: this.$store.state.tel,
+                    opis: this.$store.state.backetData
+                })
+                
+                pdfMake.createPdf(docInfoFiz).download('name.pdf');
+                }
+
 
             }
         },

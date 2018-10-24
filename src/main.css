@@ -1117,10 +1117,9 @@ video {
 #polina { 
   color: white;
   padding: 5px;
-  margin:2rem;
   float: none;
   font-size: 1.2rem;
-  margin: 18em auto;
+  margin: 28em auto;
   display: flex;
   justify-content: center;
 }

@@ -46,17 +46,29 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-3 col-form-label">ФИО</label>
                         <div class="col-sm-9">
-                            <input type="text" @input="vliceinput" class="form-control" >
+                            <b-form-input 
+                                id="exampleInput3"
+                                type="text"
+                                v-model="fio"
+                                placeholder="Введите данные"
+                                required
+                                @input="vliceinput">
+                                </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Телефон</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="us-phone-number-ex" type="text" placeholder="+7 (000)-000-0000"
-                            v-mask="'+7(###)-###-####'"
-                            @input="telinput"
+                            <b-form-input 
+                            class="form-control" 
+                            id="us-phone-number-ex" 
+                            type="text"
                             v-model="telephone"
-                            />
+                            required
+                            placeholder="+7 (000)-000-0000"
+                            v-mask="'+7(###)-###-####'"
+                            @input="validmail">
+                            </b-form-input>
                         </div>
                     </div>
                     
@@ -73,12 +85,12 @@
                             type="email"
                             v-model="email"
                             required
+                            placeholder="ex@mail.ru"
                             @input="validmail">
                             </b-form-input>
-                            <div v-show="classNoValid" class="classNoValid">Введите почту</div>
                         </div>
                     </div>
-                    <div class="col-sm-12 text-left">
+                    <div class="col-sm-12 text-left" v-show="presoptionStateFace == 2">
                         <b-form-checkbox id="checkbox1"
                             v-model="status"
                             value="accepted"
@@ -86,7 +98,7 @@
                         Я принимаю условия доставки
                         </b-form-checkbox>
                     </div>
-            </b-form>
+            
         <template v-if="!this.$store.state.flagBasketContainer">
             <div v-if="checked != 2">
                 <div class="typepost" v-show="presoptionStateFace == 1">
@@ -111,7 +123,7 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" >
+                            <input type="text" @input="vliceDirinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -186,7 +198,7 @@
                 </div>
             </div>
 
-            <div class="title-block-new">
+            <div class="title-block-new" v-show="presoptionStateFace == 2">
                 <div class="div-block-51 _500 w-clearfix">
                     <div class="heading-text-block _500">
                     <div class="div-line"></div>
@@ -198,7 +210,7 @@
                 </div>
             </div>
 
-            <div class="typestore-icon">
+            <div class="typestore-icon" v-show="presoptionStateFace == 2">
                     <div class="typestore-icon-step" v-on:click="presoptionBay(1)">
                         <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionStateBay == 1 }" @click="presoptionBay(1)"></div>
                         <div class="typestore-icon-step-body">
@@ -219,14 +231,17 @@
                     </div>
             </div>
         </template>
+        
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 			<registration v-show="calcRegistrGet"></registration>
-			<a href="#div-sank" v-show="calcRegistrGet" v-smooth-scroll>
-				<div style="width: 95%" @click="onSubmitValid()" class="typepost-but-succes button-next">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</div>
-			</a>
-		</div>
-        <sank id="div-sank" v-if="classNoValid"></sank>
 
+                 <b-button  v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
+
+		</div>
+        </b-form>
+        <div id="div-sank"></div>
+        <sank  v-if="classNoValid"></sank>
+        <div style="height: 300px"></div>
     </div>
 </template>
 <script>
@@ -240,6 +255,7 @@
             return {
                 telephone: '',
                 email: '',
+                fio: '',
                 validemeil: false,
                 classNoValid: false,
                 status: 'not_accepted',
@@ -253,7 +269,7 @@
         },
         methods: {
             ...mapMutations([
-                'presoptionFace', 'presoptionBay', 'onSubmit'
+                'presoptionFace', 'presoptionBay', 
             ]),
             consoleinput (evt) {
                 this.$store.state.documentUrlico = evt.target.value
@@ -265,7 +281,10 @@
                 this.$store.state.mailPoshta =  this.email
             },
             vliceinput(evt) {
-                this.$store.state.vlice =  evt.target.value
+                this.$store.state.vliceinput =  this.fio
+            },
+            vliceDirinput(evt) {
+                this.$store.state.vliceDirinput =  evt.target.value
             },
             zakazchikinput(evt) {
                 this.$store.state.zakazchik =  evt.target.value
@@ -292,20 +311,23 @@
             telinput(evt) {
                 this.$store.state.tel =  this.telephone
                 this.$store.state.mailPoshta =  this.email
+                this.$store.state.vliceinput =  this.fio
             },
             
             validmail() {
                 let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
                 this.validemeil = validMail.test(this.email)
-                
+                this.$store.state.tel =  this.telephone
             },
-            onSubmitValid() {
+            onSubmitValid(evt) {
+                evt.preventDefault();
+                //alert(JSON.stringify(this.form));
                 if(this.validemeil) {
                     this.classNoValid = true
-                    this.onSubmit(this.validemeil)
+                    window.scrollBy(0,800)
                 } else {
                     this.classNoValid = false
-                    this.onSubmit(this.validemeil)
+                    
                 }
             }
         },
