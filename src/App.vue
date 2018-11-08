@@ -13,8 +13,8 @@
 						<div class="wrapper">
 							<div class="flex-wrap">
 								<div class="left-block">
-									<h2 style="color: #FFF">Доставка грузов</h2>
-									<p style="color: #FFF">Расчет стоимости</p>
+									<h2 style="color: #FFF">Экспресс-доставка грузов, в том числе документов </h2>
+									<p style="color: #FFF"> </p>
 								</div>
 								<div class="right-block">
 								</div>

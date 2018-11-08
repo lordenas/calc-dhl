@@ -76,12 +76,12 @@
 						<label   class="custom-control-label" for="hrup"><img src="/img/grup.png" style="margin: 0 5px" width="20px"/>Хрупкое</label>
 					</div>
 				</div>
-				<div class="col-auto my-1">
+<!-- 				<div class="col-auto my-1">
 					<div class="custom-control custom-checkbox mr-sm-3">
 						<input type="checkbox" class="custom-control-input" id="oblic">
 						<label   class="custom-control-label" for="oblic"><img src="/img/plus-big-512.png" style="margin: 0 5px" width="20px"/>Добавить облицовку упаковки</label>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="typepost-but">
@@ -199,10 +199,10 @@
 	                ? false
 	                : this.backetDataArr(gabarit); 
 	            } else if (this.presoptionState == 3) {
-					console.log('dddddddd')
-					 let gabarit = {gabarit: null, weightel: '-'}
-					 this.backetDataArr(gabarit); 
-					  this.addTobasketHide()
+					this.$store.state.conteiner.returnvalid()
+					let gabarit = {gabarit: null, weightel: '-'}
+					this.backetDataArr(gabarit); 
+					this.addTobasketHide()
 				}
 	           //this.selecttarif()
 	           //скрываем блок после добавление товара в корзину

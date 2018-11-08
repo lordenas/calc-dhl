@@ -25,6 +25,7 @@
 							</multiselect>
 						</div>
 					</div>
+					
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
 						<div class="col-sm-10">
@@ -71,6 +72,8 @@
 							</multiselect>
 						</div>
 					</div>
+					
+					
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
 						<div class="col-sm-10">
@@ -137,7 +140,7 @@
 	  },
 	  methods: {
 	    ...mapMutations([
-	            'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc'
+	            'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc', 'mapDayToShiping'
 	     ]),
 	     //если страна отправки не Россия тогда блокируем поле страна получения, и ставим страну Россия
 	     countrydesebl () {
@@ -204,24 +207,32 @@
 	            this.options.push({
 	                'city': cityId.cityid[i].city.split('(')[0],
 	                'region': cityId.cityid[i].city.split('(')[1],
-	                'tarifid': cityId.cityid[i].tarifid
-	            })
+					'tarifid': cityId.cityid[i].tarifid,
+					'time': cityId.cityid[i].time || 5
+				})
+
+
 	            //this.options.push({'region': cityId.cityid[i].city.split('(')[1]})
 	            //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
-	        }
+			}
+
 	        console.log(this.options)
 	     },
 	     dispatchAction (typeSelectValue) {
-	         if (typeSelectValue == 'CitySending') {
+	        if (typeSelectValue == 'CitySending') {
 				this.toCitysending(this.value.tarifid)
 				this.$store.state.citySetText = this.value.city
-	         } else if (typeSelectValue == 'CityReception') {
+	        } else if (typeSelectValue == 'CityReception') {
 				this.toCityReception(this.valuetoSet.tarifid )
 				this.$store.state.cityGetText = this.valuetoSet.city
-	         }
-	         this.controlvalid ()
-	         this.tarifZone()
-	         this.selecttarif()
+	        }
+	        this.controlvalid ()
+			this.tarifZone()
+			this.mapDayToShiping({
+				"cityOme": this.value.time,
+				"cityTwo": this.valuetoSet.time
+			})
+	         //this.selecttarif()
 	     },
 	     countrycl() {
 	          for (var i=0; i<country.country.length; i++) {

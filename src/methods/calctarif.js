@@ -45,9 +45,9 @@ export function calctarifOne (basket, expressf, tarifzonevalue, parametr) {
             //округляем все + объемные вес
             let decimal2 = 1
             if (parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
-                decimal2 = 0;
-            } else {
                 decimal2 = 1;
+            } else {
+                decimal2 = 0;
             }
 
             mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)
@@ -120,9 +120,9 @@ export function calcTariImport (backed, importValue, valueCitySending, valueCity
                     let decimal = 1
                     //округляем вес
                     if (parseFloat(JSON.parse(JSON.stringify(parametr))) % 1 == 0) {
-                        decimal = 0;
-                    } else {
                         decimal = 1;
+                    } else {
+                        decimal = 0;
                     }
 
                     //расчет объемного веса

@@ -20,7 +20,7 @@
         <div v-if="!conteinerBool" class="toset col-sm-12 text-center" style="display: flex;justify-content: center; flex-direction: column;">
             <div class="colorTitle">
                 Наш специалист обработает полученные данные<br>
-                и свяжеться с Вами в ближайшее время
+                и свяжется с Вами в ближайшее время
             </div>
             <div class="block-down" style="display: flex;justify-content: space-between; flex-direction: row; margin: 20px 0;">
                 <div class="col-sm-6 row text-left">

@@ -70,9 +70,49 @@ export const store = new Vuex.Store({
         mailPoshta: '',
         citynoRusSendStore: '',
         citynoRusStore: '',
-        vliceDirinput: ''
-
-        
+        vliceDirinput: '',
+        countDay: 5,
+        fioinput: '',
+        telpoluchinput: '',
+        addressotp: '',
+        fiopoluchinput: '',
+        nazorginput: '',
+        conteiner: {
+            nazfabric: '',
+            tel: '',
+            Email: '',
+            contactlico: '',
+            imapostizv: '',
+            markgruznomer: '',
+            obshves: '',
+            obshstoimgruz: '',
+            kodtovaratnved: '',
+            modelartic: '',
+            torgmark: '',
+            firmaproz: '',
+            stranaiadresproz: '',
+            gruzmest: '',
+            koledinic: '',
+            kolshtuk: '',
+            vesbruto: '',
+            vesneto: '',
+            nalradov: '',
+            kakupak: '',
+            returnvalid () {
+                
+                let nerarr = []
+                nerarr.push(JSON.parse(JSON.stringify(this)))
+                console.log(JSON.parse(JSON.stringify(this)))
+                let test = nerarr.map((item, index) => {
+                    return item[index]
+                })
+                console.log(test[0], 'TEST ARR')
+                //let valid
+                //for (let i = 0; i<newarr.length; i++) {
+                //    if(nerarr[0].)
+                //}
+            }        
+        }
     },
     getters: {
         backetDataState(state) {
@@ -104,10 +144,27 @@ export const store = new Vuex.Store({
             return state.finalCalchide
         },
         
+        countDayState(state) {
+            return  state.countDay
+        },
+        
 
 
     },
     mutations: {
+        //колличесто дней доставки
+        mapDayToShiping(state, cityobj) {
+            console.log(cityobj)
+            if(cityobj.cityOme >= cityobj.cityTwo) {
+                state.countDay = cityobj.cityOme
+            } else if (cityobj.cityOme <= cityobj.cityTwo) {
+                state.countDay = cityobj.cityTwo
+            } else {
+                state.countDay = 5
+            }
+        },
+
+
         conteinerBoolMet (state) {
             for (let a = 0; a < state.backetData.length; a++) {
 
@@ -403,16 +460,16 @@ export const store = new Vuex.Store({
                     //округляем все + объемные вес
                     let decimal2 = 1
                     if (parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
-                        decimal2 = 0;
-                    } else {
                         decimal2 = 1;
+                    } else {
+                        decimal2 = 0;
                     }
 
                     mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)
 
 
 
-                    //console.log('ОБЪЁМНЫЙ ВЕС', mass)
+                    console.log('ОБЪЁМНЫЙ ВЕС', mass)
                     //если элемент прайса равен элементу корзины
                     if (parseFloat(express.pricelistdata[i].kg) == parseFloat(mass)) {
                         //console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))

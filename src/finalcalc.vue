@@ -4,7 +4,7 @@
                 <div class="typepost-body row">
                     <div class="col-sm-6">
                         <img src="/img/13.png" width="30px" />
-                        <div class="calcstr">Срок доставки: 5 рабочих дней</div>
+                        <div class="calcstr">Срок доставки: {{ countDayState }} рабочих дней</div>
                     </div>
                     <div class="col-sm-6">
                         <img src="/img/12.png" width="30px" />
@@ -29,7 +29,7 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'backetDataState', 'tarifcalcState'
+            'backetDataState', 'tarifcalcState', 'countDayState'
         ])
     },
     methods: {

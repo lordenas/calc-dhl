@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">ФИО</label>
+                        <label for="staticEmail" class="col-sm-3 col-form-label">ФИО отправителя</label>
                         <div class="col-sm-9">
                             <b-form-input 
                                 id="exampleInput3"
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Телефон</label>
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Телефон отправителя</label>
                         <div class="col-sm-9">
                             <b-form-input 
                             class="form-control" 
@@ -71,14 +71,97 @@
                             </b-form-input>
                         </div>
                     </div>
-                    
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Адрес отправления</label>
+                        <div class="col-sm-9">
+
+                                <b-form-input 
+                                id="exampleInput4"
+                                type="text"
+                                v-model="addressotprhis"
+                                placeholder="Введите данные"
+                                required
+                                >
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Организация отправитель</label>
+                        <div class="col-sm-9">
+
+                                <b-form-input 
+                                id="exampleInput15"
+                                type="text"
+                                v-model="orgotpravit"
+                                placeholder="Введите данные"
+                                required
+                                >
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">ФИО получателя</label>
+                        <div class="col-sm-9">
+                            <b-form-input 
+                                id="exampleInput5"
+                                type="text"
+                                v-model="fiopoluch"
+                                placeholder="Введите данные"
+                                required
+                                >
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Адрес получателя</label>
+                        <div class="col-sm-9">
+                            <b-form-input 
+                                id="exampleInput5"
+                                type="text"
+                                v-model="addresspoluch"
+                                placeholder="Введите данные"
+                                required
+                                >
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Организация получатель</label>
+                        <div class="col-sm-9">
+                            <b-form-input 
+                                id="exampleInput6"
+                                type="text"
+                                v-model="nazorg"
+                                placeholder="Введите данные"
+                                required
+                                >
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Телефон получателя</label>
+                        <div class="col-sm-9">
+                                <b-form-input 
+                                class="form-control" 
+                                id="us-phone-number-ex" 
+                                type="text"
+                                v-model="telpoluch"
+                                required
+                                placeholder="+7 (000)-000-0000"
+                                v-mask="'+7(###)-###-####'"
+                                @input="telpoluchinput">
+                                </b-form-input>
+                        </div>
+                    </div>
+                    <hr>
                     <div class="form-group row"
                             id="exampleInputGroup1"
-                            label="Email address:"
+                            label="Emeil address:"
                             label-for="exampleInput1"
                             description="We'll never share your email with anyone else."
                             >
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Email<span class="redstar">*</span></label>
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Ваш Email<span class="redstar">*</span></label>
                         <div class="col-sm-9 text-left">
                         
                             <b-form-input id="exampleInput1"
@@ -209,7 +292,7 @@
                     </div>
                 </div>
             </div>
-
+           
             <div class="typestore-icon" v-show="presoptionStateFace == 2">
                     <div class="typestore-icon-step" v-on:click="presoptionBay(1)">
                         <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionStateBay == 1 }" @click="presoptionBay(1)"></div>
@@ -235,7 +318,7 @@
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 			<registration v-show="calcRegistrGet"></registration>
 
-                 <b-button  v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
+                 <b-button @click="toaxios"  v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
 
 		</div>
         </b-form>
@@ -259,18 +342,132 @@
                 validemeil: false,
                 classNoValid: false,
                 status: 'not_accepted',
-                checked: 1
+                checked: 1,
+                fiootpr: '',
+                telpoluch: '',
+                addressotprhis: '',
+                nazorg: '',
+                fiopoluch: '',
+                orgotpravit: '',
+                addresspoluch: '',
             }
         },
         computed: {
             ...mapGetters([
-            'presoptionStateFace', 'presoptionStateBay', 'calcRegistrGet'
+            'presoptionStateFace', 'presoptionStateBay', 'calcRegistrGet', 'countDayState'
             ])
         },
         methods: {
             ...mapMutations([
                 'presoptionFace', 'presoptionBay', 
             ]),
+            toaxios() {
+                if(this.validemeil) {
+                    let newdata =  new Date()
+                    let today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
+                    let todayLast = ((parseInt(newdata.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt(newdata.getDate())+parseInt(this.countDayState)) + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
+                    let arrbask = this.$store.state.backetData.map((item, index) => {
+                        return '<tr><td colspan="4">'+ (item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер') + ', вес:' + item.parametr  + (item.gabarit ? ', габариты '  +  item.gabarit : '') +  '</td></tr>'
+                    })
+                    let html = `<html>
+                    <style>
+                        table td {
+                            border: 1px solid #000;
+                            padding: 5px;
+                            text-align: center;
+                            margin: 0px;
+                        }
+                    </style>
+                    <body>
+                        <h3>Добрый день!</h3>
+                        <b>Ваш заказ принят в работу. </b>
+                        <table cellspacing="0" cellpadding="0" style="width: 800px;">
+                            <tr>
+                                <td style="background: #1e457e; color: #fff">Отправитель<br></td>
+                                <td rowspan="2">` + this.telephone + `<br></td>
+                                <td rowspan="2">Дата отправки<br></td>
+                                <td rowspan="2">` + today + `</td>
+                            </tr>
+                            <tr>
+                                <td>` + this.fio + `<br></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Организация: ` + this.orgotpravit + `<br></td>
+                                <td rowspan="2">Предварительная дата доставки<br></td>
+                                <td rowspan="2">` + todayLast + `</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"> ` + this.addressotprhis + `<br></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Подпись отпраителя<br></td>
+                                <td rowspan="2"></td>
+                                <td colspan="2" style="background: #1e457e; color: #fff">Прием отправления<br></td>
+                            </tr>
+                            <tr>
+                                <td>ФИО сотрудника<br></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="background: #1e457e; color: #fff">получатель</td>
+                                <td rowspan="2"> ` + this.telpoluch + `<br></td>
+                                <td>Дата, время приёма<br></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>` + this.fiopoluch + `<br></td>
+                                <td colspan="2">Данные получателя<br></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Организация: ` + this.nazorg + `<br></td>
+                                <td>ФИО</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">` + this.addresspoluch + `</td>
+                                <td>Должность</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Дата, время получения</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Подпись получателя</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="background: #1e457e; color: #fff">Описание вложения<br></td>
+                            </tr>
+                            `+ arrbask +`
+                        </table>
+
+                       
+                    </body>
+                    </html>`
+
+                    
+                    this.axios({
+                            method: 'POST',
+                            url: 'http://api.mailhandler.ru/message/send/',
+                            headers: {
+                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
+                                "Accept": "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            data: {
+                            'from': 'lordenas@gmail.com',
+                            'to': [this.email],
+                            'subject': 'Заказ успешно принят в работу.',
+                            'html_body': html
+                        }
+                    }).then(response => {
+                        console.log(response)
+                    })
+                } else {
+                    return false
+                }
+            },
             consoleinput (evt) {
                 this.$store.state.documentUrlico = evt.target.value
                 this.$store.state.mailPoshta =  this.email
@@ -308,12 +505,11 @@
             bikinput(evt) {
                 this.$store.state.bik =  evt.target.value
             },
-            telinput(evt) {
-                this.$store.state.tel =  this.telephone
-                this.$store.state.mailPoshta =  this.email
-                this.$store.state.vliceinput =  this.fio
+
+            telpoluchinput(evt) {
+                this.$store.state.telpoluchinput =  evt.target.value
             },
-            
+
             validmail() {
                 let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
                 this.validemeil = validMail.test(this.email)
