@@ -52,7 +52,9 @@
                                 v-model="fio"
                                 placeholder="Введите данные"
                                 required
-                                @input="vliceinput">
+                                
+                                @input="Update($event, 'vliceinput')"
+                                >
                                 </b-form-input>
                         </div>
                     </div>
@@ -67,7 +69,8 @@
                             required
                             placeholder="+7 (000)-000-0000"
                             v-mask="'+7(###)-###-####'"
-                            @input="validmail">
+                            @input="Update($event, 'tel')"
+                            >
                             </b-form-input>
                         </div>
                     </div>
@@ -81,6 +84,7 @@
                                 v-model="addressotprhis"
                                 placeholder="Введите данные"
                                 required
+                                @input="Update($event, 'addressotprhis')"
                                 >
                                 </b-form-input>
                         </div>
@@ -95,6 +99,7 @@
                                 v-model="orgotpravit"
                                 placeholder="Введите данные"
                                 required
+                                @input="Update($event, 'orgotpravit')"
                                 >
                                 </b-form-input>
                         </div>
@@ -108,6 +113,7 @@
                                 type="text"
                                 v-model="fiopoluch"
                                 placeholder="Введите данные"
+                                @input="Update($event, 'fiopoluch')"
                                 required
                                 >
                                 </b-form-input>
@@ -121,6 +127,7 @@
                                 type="text"
                                 v-model="addresspoluch"
                                 placeholder="Введите данные"
+                                @input="Update($event, 'addresspoluch')"
                                 required
                                 >
                                 </b-form-input>
@@ -135,6 +142,7 @@
                                 v-model="nazorg"
                                 placeholder="Введите данные"
                                 required
+                                @input="Update($event, 'nazorg')"
                                 >
                                 </b-form-input>
                         </div>
@@ -150,7 +158,8 @@
                                 required
                                 placeholder="+7 (000)-000-0000"
                                 v-mask="'+7(###)-###-####'"
-                                @input="telpoluchinput">
+                                @input="Update($event, 'telpoluchinput')"
+                                >
                                 </b-form-input>
                         </div>
                     </div>
@@ -169,7 +178,8 @@
                             v-model="email"
                             required
                             placeholder="ex@mail.ru"
-                            @input="validmail">
+                            
+                             @input="Update($event, 'email')">
                             </b-form-input>
                         </div>
                     </div>
@@ -178,7 +188,7 @@
                             v-model="status"
                             value="accepted"
                             unchecked-value="not_accepted">
-                        Я принимаю условия доставки
+                        <a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Я принимаю условия доставки</a>
                         </b-form-checkbox>
                     </div>
             
@@ -206,7 +216,14 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора</label>
                         <div class="col-sm-7">
-                            <input type="text" @input="vliceDirinput" class="form-control" >
+                            <b-form-input 
+                                id="exampleInput6"
+                                type="text"
+                                 class="form-control"
+                                @input="Update($event, 'vliceDirinput')"
+                                >
+                            </b-form-input>
+                           
                         </div>
                     </div>
                     <div class="form-group row">
@@ -354,7 +371,7 @@
         },
         computed: {
             ...mapGetters([
-            'presoptionStateFace', 'presoptionStateBay', 'calcRegistrGet', 'countDayState'
+            'presoptionStateFace', 'presoptionStateBay', 'calcRegistrGet', 'countDayState', 'periodGetState', 'dateCalenStatePositionRS', 'timeGetState'
             ])
         },
         methods: {
@@ -369,6 +386,43 @@
                     let arrbask = this.$store.state.backetData.map((item, index) => {
                         return '<tr><td colspan="4">'+ (item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер') + ', вес:' + item.parametr  + (item.gabarit ? ', габариты '  +  item.gabarit : '') +  '</td></tr>'
                     })
+
+
+
+                    let regularpost = this.periodGetState > 1 ? cashregular : ''
+                    let cashregulararr =  {
+                            30: 'Каждый день',
+                            4: 'Раз в неделю',
+                            8: 'Два раза в неделю',
+                            1: 'Раз в месяц',
+                            2: 'Два раза в месяц'
+                        }
+
+                    let timerarr =  {
+                            1:"09:00 - 18:00",
+                            2:"09:00-14:00",
+                            3:"14:00-18:00"
+                        }
+                    
+                    let cashregular = 'Повторять ' +cashregulararr[this.periodGetState] + ', начинать повтор с ' + this.dateCalenStatePositionRS + ', время забора ' + timerarr[this.timeGetState]
+                    console.log(cashregular, 'TEST MAIL')
+                    let container = this.$store.state.conteiner.nazfabric.length > 1 ? cash : ''
+
+                    let cash = `
+                    <table cellspacing="0" cellpadding="0" width="800">
+                        <tr><td>Название фабрики / место загрузки</td><td>`+ this.$store.state.conteiner.nazfabric+`</td></tr>
+                        <tr><td>Контактное лицо на месте загрузки</td><td>`+ this.$store.state.conteiner.contactlico+`</td></tr>
+                        <tr><td>Имя, под которым Вы известны поставщику</td><td>`+ this.$store.state.conteiner.imapostizv+`</td></tr>
+                        <tr><td>Маркировка груза (№ заказа, инвойса, имя заказчиа)</td><td>`+ this.$store.state.conteiner.markgruznomer+`</td></tr>
+                        <tr><td>Общий объём груза</td><td>`+ this.$store.state.conteiner.obshobg+`</td></tr>
+                        <tr><td>Общий вес груза</td><td>`+ this.$store.state.conteiner.obshves+`</td></tr>
+                        <tr><td>Общая стоимость груза</td><td>`+ this.$store.state.conteiner.obshstoimgruz+`</td></tr>
+                        <tr><td>Код товара по ТНВЭД</td><td>`+ this.$store.state.conteiner.kodtovaratnved+`</td></tr>
+                        <tr><td>Полное наименование товара, технические характеристики, материал, размеры, назначение (ГРАФА 31)</td><td>`+ this.$store.state.conteiner.kodtovaratnved+`</td></tr>
+                        <tr><td>Модель или Артикул</td><td>`+ this.$store.state.conteiner.modelartic+`</td></tr>
+                        <tr><td>Торговая марка</td><td>`+ this.$store.state.conteiner.torgmark+`</td></tr>
+                    </table>`
+
                     let html = `<html>
                     <style>
                         table td {
@@ -381,7 +435,7 @@
                     <body>
                         <h3>Добрый день!</h3>
                         <b>Ваш заказ принят в работу. </b>
-                        <table cellspacing="0" cellpadding="0" style="width: 800px;">
+                        <table cellspacing="0" cellpadding="0" width="800">
                             <tr>
                                 <td style="background: #1e457e; color: #fff">Отправитель<br></td>
                                 <td rowspan="2">` + this.telephone + `<br></td>
@@ -441,7 +495,9 @@
                             </tr>
                             `+ arrbask +`
                         </table>
-
+                        <br><hr><br>
+                        ` + container + `<hr>
+                        ` + cashregular + `<hr>
                        
                     </body>
                     </html>`
@@ -473,16 +529,19 @@
                 this.$store.state.mailPoshta =  this.email
                 //console.log(evt.target.value, '-', this.$store.state.documentUrlico)
             },
+            Update(evt,item) {
+                //console.log(ind)
+                //console.log(evt)
+                this.$store.state.inputClintInfo[item] = evt
+                console.log(this.$store.state.inputClintInfo[item])
+                let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+                this.validemeil = validMail.test(this.email)
+            },
             ogrnInput(evt) {
                 this.$store.state.ogrn =  evt.target.value
                 this.$store.state.mailPoshta =  this.email
             },
-            vliceinput(evt) {
-                this.$store.state.vliceinput =  this.fio
-            },
-            vliceDirinput(evt) {
-                this.$store.state.vliceDirinput =  evt.target.value
-            },
+
             zakazchikinput(evt) {
                 this.$store.state.zakazchik =  evt.target.value
             },
@@ -506,15 +565,9 @@
                 this.$store.state.bik =  evt.target.value
             },
 
-            telpoluchinput(evt) {
-                this.$store.state.telpoluchinput =  evt.target.value
-            },
+            
 
-            validmail() {
-                let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
-                this.validemeil = validMail.test(this.email)
-                this.$store.state.tel =  this.telephone
-            },
+
             onSubmitValid(evt) {
                 evt.preventDefault();
                 //alert(JSON.stringify(this.form));

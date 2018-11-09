@@ -92,11 +92,11 @@
 					</div>
 					<div class="input-group mb-3">
 						<label class="regulat-lab">Время забора документов</label>
-						<select class="custom-select" id="inputGroupSelect01">
+						<select class="custom-select" id="inputGroupSelect01" @input="timeTo">
 							<option selected>Выберите значение</option>
-							<option value="1">09:00 - 18:00</option>
-							<option value="2">09:00-14:00</option>
-							<option value="3">14:00-18:00</option>
+							<option :value="1">09:00 - 18:00</option>
+							<option :value="2">09:00-14:00</option>
+							<option :value="3">14:00-18:00</option>
 						</select>
 					</div>
 					<div class="input-group mb-3">
@@ -167,7 +167,7 @@
 	    },
 	    methods: {
 	        ...mapMutations([
-                'calendarStateRegS',   'calendarStateRegD', 'periodMut'
+                'calendarStateRegS',   'calendarStateRegD', 'periodMut', 'timeToStore'
             ]),
             selectedDateMeth () {
                 this.showModalregS = false
@@ -181,7 +181,12 @@
 				//this.periodMut(this.periodselect)
 				this.periodMut(e.target.value)
 				//this.$store.state.period = this.periodselect
-			}
+			},
+			timeTo(e) {
+				//this.periodMut(this.periodselect)
+				this.timeToStore(e.target.value)
+				//this.$store.state.period = this.periodselect
+			},
 	    },
 	    components: {
 	        

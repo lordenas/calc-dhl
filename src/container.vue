@@ -257,6 +257,7 @@
                         type="text"
                         placeholder=""
                         required
+						:value="this.$store.state.conteiner.nalradov"
 						@input="Update($event, 'nalradov')"
 						>
                         </b-form-textarea>
@@ -270,12 +271,20 @@
                         type="text"
                         placeholder=""
                         required
+						:value="this.$store.state.conteiner.kakupak"
 						@input="Update($event, 'kakupak')"
 						>
                         </b-form-textarea>
                 </div>
             </div>
-			  <b-button type="submit" class="typepost-but-succes button-next" variant="primary">ghgh</b-button>
+			<div class="row">
+				<div class="col-sm-6">
+					<b-button @click="cancelInfo" class="btn typepost-but-cancel button-next" variant="primary">Отмена</b-button>
+				</div>
+				<div class="col-sm-6">
+					<b-button type="submit" class="typepost-but-succes button-next" variant="primary">Подтвердить</b-button>
+				</div>
+			</div>
 		</b-form>
 
 
@@ -302,7 +311,7 @@
 		</div> -->
 	</form>
 </template>
-<<script>
+<script>
 	import {mapMutations} from 'vuex';
 	import {mapGetters} from 'vuex';
 	
@@ -339,8 +348,18 @@
 			let gabarit = {gabarit: null, weightel: '-'}
 			this.backetDataArr(gabarit); 
 			this.addTobasketHide()
-		}
+		},
+	    cancelInfo () {
+	        this.addTobasketHide()
+	    },
 	}
 	}
 </script>
 
+<style>
+	.btn-primary{
+		color: #333 !important;
+		border: 1px solid #e2e2e2 !important;
+		box-shadow: 0 2px 0 0 rgba(188, 194, 189, 0.2) !important;
+	}
+</style>

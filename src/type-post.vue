@@ -84,7 +84,7 @@
 				</div> -->
 			</div>
 		</div>
-		<div class="typepost-but">
+		<div class="typepost-but" v-show="presoptionState != 3">
 			<div class="typepost-but-cancel" @click="cancelInfo">Отмена</div>
 			<div class="typepost-but-succes"  @click="getToBacket">Подтвердить</div>
 		</div>

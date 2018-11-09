@@ -73,7 +73,6 @@ export const store = new Vuex.Store({
         vliceDirinput: '',
         countDay: 5,
         fioinput: '',
-        telpoluchinput: '',
         addressotp: '',
         fiopoluchinput: '',
         nazorginput: '',
@@ -97,21 +96,19 @@ export const store = new Vuex.Store({
             vesbruto: '',
             vesneto: '',
             nalradov: '',
-            kakupak: '',
-            returnvalid () {
-                
-                let nerarr = []
-                nerarr.push(JSON.parse(JSON.stringify(this)))
-                console.log(JSON.parse(JSON.stringify(this)))
-                let test = nerarr.map((item, index) => {
-                    return item[index]
-                })
-                console.log(test[0], 'TEST ARR')
-                //let valid
-                //for (let i = 0; i<newarr.length; i++) {
-                //    if(nerarr[0].)
-                //}
-            }        
+            kakupak: ''      
+        },
+        inputClintInfo: {
+            nazorg: '',
+            vliceDirinput: '',
+            addressotprhis: '',
+            orgotpravit: '',
+            fiopoluch: '',
+            addresspoluch: '',
+            telpoluchinput: '',
+            tel: '',
+            telephoneotpr: '',
+            vliceinput: ''
         }
     },
     getters: {

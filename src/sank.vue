@@ -62,7 +62,7 @@
         },
         computed: {
             ...mapGetters([
-                'conteinerBool', 'presoptionStateFace'
+                'conteinerBool', 'presoptionStateFace',  'countDayState'
             ])
         },
         methods: {
@@ -75,7 +75,7 @@
                
                 varperem(
                     {
-                        vliceDirinput: this.$store.state.vliceDirinput, 
+                        vliceDirinput: this.$store.state.inputClintInfo.vliceDirinput, 
                         zakazchik: this.$store.state.zakazchik,
                         documentUrlico: this.$store.state.documentUrlico,
                         inn: this.$store.state.inn,
@@ -85,18 +85,31 @@
                         kschet: this.$store.state.kschet,
                         bank: this.$store.state.bank,
                         bik: this.$store.state.bik,
-                        tel: this.$store.state.tel,
+                        tel: this.$store.state.inputClintInfo.tel,
                         mailPoshta: this.$store.state.mailPoshta,
                     }
                     )
                     pdfMake.createPdf(docInfo).download('name.pdf');
                 } else {
-                varperemFiz({
-                    adrress: adrress,
-                    zakazchik: this.$store.state.vliceinput,
-                    telephone: this.$store.state.tel,
-                    opis: this.$store.state.backetData
-                })
+                    let newdata =  new Date()
+                    var today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
+                    var todayLast = ((parseInt(newdata.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt(newdata.getDate())+parseInt(this.countDayState)) + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
+                        
+                    varperemFiz({
+                        //adrress: this.$store.state.inputClintInfo.addressotprhis,
+                        zakazchik: this.$store.state.inputClintInfo.vliceinput,
+                        addressotprhis: this.$store.state.inputClintInfo.addressotprhis,
+                        orgotpravit: this.$store.state.inputClintInfo.orgotpravit,
+                        telephone: this.$store.state.inputClintInfo.tel,
+                        opis: this.$store.state.backetData,
+                        fiopoluch: this.$store.state.inputClintInfo.fiopoluch,
+                        nazorg: this.$store.state.inputClintInfo.nazorg,
+                        addresspoluch: this.$store.state.inputClintInfo.addresspoluch,
+                        todayLast: todayLast,
+                        today: today,
+                        telpoluchinput: this.$store.state.inputClintInfo.telpoluchinput
+                        
+                    })
                 
                 pdfMake.createPdf(docInfoFiz).download('name.pdf');
                 }

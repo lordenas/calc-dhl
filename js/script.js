@@ -790,60 +790,35 @@ export var docInfo = {
 
 export function varperemFiz (obj) {
 	console.log('PDF', obj, docInfo.content.length)
-	docInfoFiz.content[4] = { 
-		text:  '' + obj.adrress,
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	},
-	docInfoFiz.content[5] = { 
-		text:  '' + obj.zakazchik,
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	},
-	docInfoFiz.content[6] = { 
-		text:  '' + obj.telephone,
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	},
-	docInfoFiz.content[7] = { 
-		text:  '' +  (obj.opis[0].title == 1 ? 'Документы' : obj.opis[0].title == 2 ? 'Груз' : 'Контейнер') + ', вес ' +  obj.opis[0].parametr +  ' ' +  (obj.opis[0].gabarit == null ? '' :  ', габариты ' + obj.opis[0].gabarit ) +  ', цена: ' + obj.opis[0].price,
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	}
-	docInfoFiz.content[8] = { 
-		text:  '' +  obj.opis[1] != 'undefined' ? (obj.opis[1].title == 1 ? 'Документы' : obj.opis[1].title == 2 ? 'Груз' : 'Контейнер') + ', вес ' +  obj.opis[1].parametr +  ' ' +  (obj.opis[1].gabarit == null ? '' :  ', габариты ' + obj.opis[1].gabarit ) +  ', цена: ' + obj.opis[1].price : '',
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	}
-	docInfoFiz.content[9] = { 
-		text:  '' +  obj.opis[2] != 'undefined' ? (obj.opis[2].title == 1 ? 'Документы' : obj.opis[2].title == 2 ? 'Груз' : 'Контейнер') + ', вес ' +  obj.opis[2].parametr +  ' ' +  (obj.opis[2].gabarit == null ? '' :  ', габариты ' + obj.opis[2].gabarit ) +  ', цена: ' + obj.opis[2].price : '',
-		fontSize:14,
-		width: 'auto',
-		bold: false,
-		alignment: 'left',
-		color: '#0f3b83',
-		margin:[0,15, 0,0]
-	}
+	
+	docInfoFiz.content[2].table.body[0][1].text = obj.telephone
+	docInfoFiz.content[2].table.body[0][3].text = obj.today
+	docInfoFiz.content[2].table.body[1][0].text = obj.zakazchik
+	docInfoFiz.content[2].table.body[2][0].text = obj.orgotpravit
+	docInfoFiz.content[2].table.body[2][3].text = obj.todayLast
+	docInfoFiz.content[2].table.body[1][1].text = obj.zakazchik
+	docInfoFiz.content[2].table.body[3][0].text = obj.addressotprhis
+	docInfoFiz.content[2].table.body[6][1].text = obj.telpoluchinput
+	docInfoFiz.content[2].table.body[7][0].text = obj.fiopoluch
+	docInfoFiz.content[2].table.body[8][0].text = obj.nazorg
+	docInfoFiz.content[2].table.body[9][0].text = obj.addresspoluch
+	//docInfoFiz.content[2].table.body[10][0].text = obj.todayLast
+
+	let block = obj.opis.map((item, index) => {
+		return (item.title = 1 ? 'Документы' :  item.title = 2 ? 'Груз' : 'Контейнер') + ', ' + item.parametr +  item.gabarit ? ', ' + item.gabarit : ''
+	})
+	docInfoFiz.content.push(block)
+
+
+	//docInfoFiz.content[2].table.body[9] = { 
+	//	text:  '' +  (obj.opis[0].title == 1 ? 'Документы' : obj.opis[0].title == 2 ? 'Груз' : 'Контейнер') + ', вес ' +  obj.opis[0].parametr +  ' ' +  (obj.opis[0].gabarit == null ? '' :  ', габариты ' + obj.opis[0].gabarit ) +  ', цена: ' + obj.opis[0].price,
+	//	fontSize:14,
+	//	width: 'auto',
+	//	bold: false,
+	//	alignment: 'left',
+	//	color: '#0f3b83',
+	//	margin:[0,15, 0,0]
+	//}
 
 
 }
@@ -863,7 +838,7 @@ export var docInfoFiz = {
 	
 	header:function(currentPage,pageCount) {
 		return {
-			text: currentPage.toString() + 'из' + pageCount,
+			text: 'накладная №24523454',
 			alignment:'right',
 			margin:[0,30,10,50]
 		}
@@ -877,8 +852,6 @@ export var docInfoFiz = {
 	],
 	
 	content: [
-	
-
 		{
 			text:'',
 			style:'header'
@@ -891,69 +864,107 @@ export var docInfoFiz = {
 			alignment: 'left',
 		  },
 
-		{
-			text:'Накладная',
-			fontSize:25,
-			width: 'auto',
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,30, 0,30]
-			//pageBreak:'after'
-		},
-		{
-			text:'Отправка',
-			fontSize:14,
-			width: 'auto',
-			bold: true,
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,15, 0,0]
-			//pageBreak:'after'
-		},
-		{
-			text:'Из краснодара в Москву',
-			fontSize:12,
-			width: 'auto',
-			bold: false,
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,15, 0,0]
-			//pageBreak:'after'
-		},
-		{
-			text:'Иванов Иван Иванович',
-			fontSize:12,
-			width: 'auto',
-			bold: false,
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,15, 0,0]
-			//pageBreak:'after'
-		},
-		{
-			text:'+7 (123) 123 45 67',
-			fontSize:12,
-			width: 'auto',
-			bold: false,
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,15, 0,0]
-			//pageBreak:'after'
-		},
-		{
-			text:'Описание',
-			fontSize:12,
-			width: 'auto',
-			bold: false,
-			alignment: 'left',
-			color: '#0f3b83',
-			margin:[0,15, 0,0]
-			//pageBreak:'after'
-		},
+		  {
+			style: 'tableExample',
+			color: '#000',
+			table: {
+				widths: [125, 125, 125, 125],
+				headerRows: 3,
+				// keepWithHeaderRows: 1,
+				body: [
+					[
+					    {text: 'Отправитель', color: '#fff', fillColor: '#1e457e', alignment: 'center'}, 
+					    {text: '\n+7 (000) 000-00-00', rowSpan: 2,  alignment: 'center'}, 
+					    {text: '\nДата отправки', rowSpan: 2,  alignment: 'center'}, 
+					    {text: '\n05.10.2018', rowSpan: 2, alignment: 'center'}, 
+					],
+					
+					[
+					    {text: 'Иванов Иван Иванович', alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}
+					],
+					
+					[
+					    {text: 'Организация: ООО Транс',colSpan: 2, alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}, 
+					    {text: 'Предварительная дата доставки',rowSpan: 2, alignment: 'center'}, 
+					    {text: '\n06.12.2018',rowSpan: 2, alignment: 'center'}
+					],
+					
+					[
+					    {text: 'Москва ул. ленина д2',colSpan: 2, alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', alignment: 'center'}
+					],		
+					[
+					    {text: 'Подпись отправителя', rowSpan: 2, alignment: 'center'}, 
+					    {text: '', style: 'tableHeader', rowSpan: 2, alignment: 'center'}, 
+					    {text: 'Прием отправления', color: '#fff', fillColor: '#1e457e', colSpan: 2, alignment: 'center'}, 
+					    {text: '', alignment: 'center'}
+					],	
+
+					[
+					    {text: '',  alignment: 'center'}, 
+					    {text: '', rowSpan: 2,  alignment: 'center'}, 
+					    {text: 'ФИО сотрудника',  alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					[
+					    {text: 'Получатель',  color: '#fff', fillColor: '#1e457e', alignment: 'center'}, 
+					    {text: '\n+7 (000) 000-00-00',  rowSpan: 2, alignment: 'center'}, 
+					    {text: 'Дата, время прииема',  alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					],
+			////////////////////////////
+					[
+					    {text: 'Петро Петр Петрович',  alignment: 'center'}, 
+					    {text: '',  alignment: 'center'}, 
+					    {text: 'Данные получателя',   colSpan: 2, color: '#fff', fillColor: '#1e457e', alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					
+					[
+					    {text: 'Организация: ООО ТОРГ', colSpan: 2, alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					    {text: 'ФИО',  alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					
+				    [
+					    {text: 'Россия краснодар ул, Коммунаров 296', colSpan: 2, alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					    {text: 'Должность',  alignment: 'center'}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					
+					[
+					    {text: 'Дата, ввремя получения', colSpan: 2, alignment: 'center'}, 
+					    {text: '', alignment: 'center',  colSpan: 2}, 
+					    {text: '',  alignment: 'center',colSpan: 2}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					[
+					    {text: 'Подпись получателя', colSpan: 2, alignment: 'center'}, 
+					    {text: '', alignment: 'center',  colSpan: 2}, 
+					    {text: '',  alignment: 'center',colSpan: 2}, 
+					    {text: '', alignment: 'center'}, 
+					],
+					[
+					    {text: 'Описание вложения', color: '#fff', fillColor: '#1e457e', colSpan: 4, alignment: 'center'}, 
+					    {text: '', alignment: 'center',  colSpan: 0}, 
+					    {text: '',  alignment: 'center',colSpan: 0}, 
+					    {text: '', alignment: 'center'}, 
+					],
+				]
+			}
+		}
 
 
 
-		
+
 	],
 	
 	styles: {
