@@ -66,13 +66,13 @@
 			</div>
 			<div v-show="presoptionState != 3">
 				<div class="textareainfo">
-					<textarea class="standinput" placeholder="Описание вложения"></textarea>
+					<textarea v-model="commentsgruz" class="standinput" placeholder="Описание вложения"></textarea>
 				</div>
 			</div>
 			<div class="form-group row"  v-show="presoptionState == 2">
 				<div class="col-auto my-1">
 					<div class="custom-control custom-checkbox mr-sm-3">
-						<input type="checkbox" class="custom-control-input" id="hrup">
+						<input v-model="hrupkoe" type="checkbox" class="custom-control-input" id="hrup">
 						<label   class="custom-control-label" for="hrup"><img src="/img/grup.png" style="margin: 0 5px" width="20px"/>Хрупкое</label>
 					</div>
 				</div>
@@ -86,7 +86,9 @@
 		</div>
 		<div class="typepost-but" v-show="presoptionState != 3">
 			<div class="typepost-but-cancel" @click="cancelInfo">Отмена</div>
-			<div class="typepost-but-succes"  @click="getToBacket">Подтвердить</div>
+			<a href="#div-registr" v-smooth-scroll>
+				<div class="typepost-but-succes"  @click="getToBacket">Подтвердить</div>
+			</a>
 		</div>
 	</div>
 </template>
@@ -105,7 +107,9 @@
 	            width: '',
 	            depth: '',
 	            flagGabatir: false,
-	            flagWeight: false
+				flagWeight: false,
+				commentsgruz:'', 
+				hrupkoe: false
 	        }
 	    },
 	    computed: {
@@ -117,7 +121,7 @@
 	            this.weightel = this.weightel.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
 	        },
 	        heighttel(evn) {
-				console.log(evn)
+				//console.log(evn)
 	            //console.log( this.height.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
 	            this.height = this.height.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
 	        },
@@ -158,12 +162,12 @@
 	            'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 
 			]),
 			keypressOne() {
-				console.log('evt', this.$refs.center)
+				//console.log('evt', this.$refs.center)
 				this.$nextTick(() => this.$refs.center.focus())
 			},
 			keypressCenterOne(event) {
 				//this.$nextTick(() => this.$refs.right.focus())
-				console.log(event.key)
+				//console.log(event.key)
 				if(event.key == 'ArrowRight') {
 					this.$nextTick(() => this.$refs.right.focus())
 				} else if (event.key == 'ArrowLeft') {
@@ -182,8 +186,8 @@
 	        },
 	        getToBacket() {
 	            if (this.presoptionState == 1) {
-	                let gabarit = {gabarit: null, weightel: this.weightel}
-					console.log('test',  this.weightel, (this.weightel < 0.5 || this.weightel > 50))
+	                let gabarit = {gabarit: null, weightel: this.weightel, comment: this.commentsgruz, hrupkoe: false}
+					//console.log('test',  this.weightel, (this.weightel < 0.5 || this.weightel > 50))
 	                if((this.weightel < 0.5 || this.weightel > 50)) {
 	                    return false 
 	                } else {
@@ -193,14 +197,14 @@
 	                }
 	                
 	            } else if (this.presoptionState == 2) {
-	                let gabarit = {gabarit: this.height + 'x' + this.width + 'x' + this.depth + ' см', weightel: this.weightel}
+	                let gabarit = {gabarit: this.height + 'x' + this.width + 'x' + this.depth + ' см', weightel: this.weightel,  comment: this.commentsgruz,  hrupkoe: this.hrupkoe}
 	
 	                this.weightel < 0.5 || !this.flagGabatir
 	                ? false
 	                : this.backetDataArr(gabarit); 
 	            } else if (this.presoptionState == 3) {
 					this.$store.state.conteiner.returnvalid()
-					let gabarit = {gabarit: null, weightel: '-'}
+					let gabarit = {gabarit: null, weightel: '-',  hrupkoe: false}
 					this.backetDataArr(gabarit); 
 					this.addTobasketHide()
 				}

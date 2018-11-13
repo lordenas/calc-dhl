@@ -257,8 +257,9 @@
                         type="text"
                         placeholder=""
                         required
+                        v-model="nalradov"
 						:value="this.$store.state.conteiner.nalradov"
-						@input="Update($event, 'nalradov')"
+						@change="Update($event, 'nalradov')"
 						>
                         </b-form-textarea>
                 </div>
@@ -271,8 +272,8 @@
                         type="text"
                         placeholder=""
                         required
-						:value="this.$store.state.conteiner.kakupak"
-						@input="Update($event, 'kakupak')"
+						v-model="kakupak"
+						@change="Update($event, 'kakupak')"
 						>
                         </b-form-textarea>
                 </div>
@@ -326,7 +327,9 @@
 	        depth: '',
 	        flagGabatir: false,
 			flagWeight: false,
-			nazfabric: ''
+            nazfabric: '',
+            kakupak: '',
+            nalradov: '',
 	    }
 	},
 	computed: {
@@ -342,9 +345,11 @@
 			this.$store.state.conteiner[item] = evt
 			console.log(this.$store.state.conteiner[item])
 		},
-		onSubmitValid() {
+		onSubmitValid(evt) {
+            evt.preventDefault();
+            
 			console.log('fff')
-			this.$store.state.conteiner.returnvalid()
+			//this.$store.state.conteiner.returnvalid()
 			let gabarit = {gabarit: null, weightel: '-'}
 			this.backetDataArr(gabarit); 
 			this.addTobasketHide()

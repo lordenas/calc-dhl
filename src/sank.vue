@@ -36,10 +36,11 @@
                         <img src="/img/10.png" width="20px" />
                     </div>
                     
-                    <div  v-if="presoptionStateFace == 1" class="col-sm-10 text-left">
+                    <div  v-if="presoptionStateFace == 1 &&  this.$store.state.checkedclietn == 1" class="col-sm-10 text-left">
                         <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать договор</div>
                     </div>
-                    <div  v-if="presoptionStateFace == 2" class="col-sm-10 text-left">
+
+                    <div  v-if="presoptionStateFace == 2  ||  this.$store.state.checkedclietn == 2" class="col-sm-10 text-left">
                         <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать накладную</div>
                     </div>
                 </div>
@@ -60,9 +61,12 @@
                 
             }
         },
+        mounted(){
+            this.$store.state.backetData[0].title != 3 ? this.downloadPDF(this.presoptionStateFace) : false
+        },
         computed: {
             ...mapGetters([
-                'conteinerBool', 'presoptionStateFace',  'countDayState'
+                'conteinerBool', 'presoptionStateFace',  'countDayState','presoptionStateBay'
             ])
         },
         methods: {
@@ -71,7 +75,7 @@
             ]),
             downloadPDF(type) {
                  var adrress = 'Из ' +  this.$store.state.countryGetText  + ', город ' + (this.$store.state.citySetText ||  this.$store.state.citynoRusSendStore) + ', индекс ' + this.$store.state.indexSet+ ' '    + ' - в ' +  this.$store.state.countrySetText + ', город ' + (this.$store.state.cityGetText.length > 0 ? this.$store.state.cityGetText  :  this.$store.state.citynoRusStore) + ', индекс ' + this.$store.state.indexGet  
-                if( type == 1) {
+                if( type == 1 && this.$store.state.checkedclietn == 1) {
                
                 varperem(
                     {
@@ -89,7 +93,7 @@
                         mailPoshta: this.$store.state.mailPoshta,
                     }
                     )
-                    pdfMake.createPdf(docInfo).download('name.pdf');
+                    pdfMake.createPdf(docInfo).download('договор.pdf');
                 } else {
                     let newdata =  new Date()
                     var today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
@@ -107,11 +111,18 @@
                         addresspoluch: this.$store.state.inputClintInfo.addresspoluch,
                         todayLast: todayLast,
                         today: today,
-                        telpoluchinput: this.$store.state.inputClintInfo.telpoluchinput
-                        
+                        telpoluchinput: this.$store.state.inputClintInfo.telpoluchinput,
+                        sposoboplati: this.presoptionStateBay,
+                        commentszakaz: this.$store.state.commentszakaz,
+                        citySetText: this.$store.state.citySetText.length > 0 ? this.$store.state.citySetText : this.$store.state.citynoRusSendStore,
+                        cityGetText: this.$store.state.cityGetText.length  > 0 ? this.$store.state.cityGetText : this.$store.state.citynoRusStore,
+                        indexSet: this.$store.state.indexSet,
+                        indexGet: this.$store.state.indexGet,
+                        citynoRusSendStore: this.$store.state.citynoRusSendStore,
+                        citynoRusStore: this.$store.state.citynoRusStore,
                     })
                 
-                pdfMake.createPdf(docInfoFiz).download('name.pdf');
+                pdfMake.createPdf(docInfoFiz).download('накладная.pdf');
                 }
 
 

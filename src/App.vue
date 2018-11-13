@@ -191,7 +191,7 @@
 	      this.stepOneflag =  !this.stepOneflag;
 	    },
 	    getValueState (e) {
-	      console.log(e.target.value)
+	      //console.log(e.target.value)
 	      this.expressnoexpress(e.target.value)
 	    },
 	    openRegulat() {

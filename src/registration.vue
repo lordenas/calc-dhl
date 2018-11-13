@@ -33,14 +33,14 @@
         </div>
 
 		<div class="radio-btn-group client-urlic" v-show="presoptionStateFace == 1">
-			<div class="radio"><input type="radio" name="radio" value="1" checked="checked" v-model="checked" id="one" /><label for="one">Новый клиент</label></div>
-			<div class="radio"><input type="radio" name="radio" value="2" v-model="checked" id="two"  /><label for="two">Действующий клиент</label></div>
+			<div class="radio"><input type="radio" name="radio" value="1" checked="checked" v-model="checked" id="one" @change="updatevaluecheck($event)"/><label for="one">Новый клиент</label></div>
+			<div class="radio"><input type="radio" name="radio" value="2" v-model="checked" id="two"  @change="updatevaluecheck($event)" /><label for="two">Действующий клиент</label></div>
 		</div>
                 <b-form @submit="onSubmitValid">
                     <div v-if="checked == 2 && presoptionStateFace == 1" class="form-group row">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Номер договора</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" >
+                            <input v-model="deistvklient" type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -198,25 +198,26 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании</label>
                         <div class="col-sm-7">
-                            <input type="text" @input="zakazchikinput" class="form-control" >
+                            <input v-model="urlicorecvizit.nazvkomp" type="text" @input="zakazchikinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Юридический адрес Вашей компании</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" >
+                            <input v-model="urlicorecvizit.uradresskomp" ype="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Документ, на основании которого, лицо действует от имени юридического лица</label>
                         <div class="col-sm-7">
-                            <input type="text"  @input="consoleinput" class="form-control" >
+                            <input  v-model="urlicorecvizit.dolosnkomur" type="text"  @input="consoleinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора</label>
                         <div class="col-sm-7">
                             <b-form-input 
+                                v-model="urlicorecvizit.fiogeneral"
                                 id="exampleInput6"
                                 type="text"
                                  class="form-control"
@@ -229,17 +230,17 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ИНН</label>
                         <div class="col-sm-5">
-                            <input type="text" @input="inninput" class="form-control" >
+                            <input v-model="urlicorecvizit.inn" type="text" @input="inninput" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">КПП</label>
                         <div class="col-sm-5">
-                            <input type="text"  @input="kppinput" class="form-control" >
+                            <input v-model="urlicorecvizit.kpp" type="text"  @input="kppinput" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ОГРН</label>
                         <div class="col-sm-11">
-                            <input type="text" @input="ogrnInput" class="form-control" >
+                            <input v-model="urlicorecvizit.ogrn" type="text" @input="ogrnInput" class="form-control" >
                         </div>
                     </div>
                     <br>
@@ -248,21 +249,21 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Банк</label>
                         <div class="col-sm-5">
-                            <input @input="bankinput" type="text" class="form-control" >
+                            <input  v-model="urlicorecvizit.bank" @input="bankinput" type="text" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">БИК</label>
                         <div class="col-sm-5">
-                            <input @input="bikinput" type="text" class="form-control" >
+                            <input  v-model="urlicorecvizit.bik" @input="bikinput" type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">К/С</label>
                         <div class="col-sm-5">
-                            <input  @input="kschetinput" type="text" class="form-control" >
+                            <input v-model="urlicorecvizit.ks"  @input="kschetinput" type="text" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">Р/С</label>
                         <div class="col-sm-5">
-                            <input @input="rschetinput" type="text" class="form-control" >
+                            <input v-model="urlicorecvizit.rs" @input="rschetinput" type="text" class="form-control" >
                         </div>
                     </div>
                 </div>
@@ -282,17 +283,17 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Страна</label>
                         <div class="col-sm-11">
-                            <input type="text" class="form-control" >
+                            <input v-model="originaldocuments.strana" type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Город</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input  v-model="originaldocuments.gorod"  type="text" class="form-control" >
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">Индекс</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" >
+                            <input  v-model="originaldocuments.index" :maxlength="6" type="text" class="form-control" >
                         </div>
                     </div>
                 </div>
@@ -338,7 +339,9 @@
                  <b-button @click="toaxios"  v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
 
 		</div>
+       
         </b-form>
+        <div style="display: none">{{ this.$store.state.checkedclietn }}</div>
         <div id="div-sank"></div>
         <sank  v-if="classNoValid"></sank>
         <div style="height: 300px"></div>
@@ -367,27 +370,54 @@
                 fiopoluch: '',
                 orgotpravit: '',
                 addresspoluch: '',
+                deistvklient: '',
+                originaldocuments: {
+                    strana: '',
+                    gorod: '',
+                    index: ''
+                },
+                urlicorecvizit: {
+                    nazvkomp: '',
+                    uradresskomp: '',
+                    dolosnkomur: '',
+                    fiogeneral: '',
+                    inn: '',
+                    kpp: '',
+                    ogrn: '',
+                    bank: '',
+                    bik: '',
+                    ks: '',
+                    rs: ''
+                }
             }
         },
         computed: {
             ...mapGetters([
             'presoptionStateFace', 'presoptionStateBay', 'calcRegistrGet', 'countDayState', 'periodGetState', 'dateCalenStatePositionRS', 'timeGetState'
-            ])
+            ]),
+            returnstr() {
+                return this.originaldocuments.strana.length > 0 ? 'Оригинал доставить: Страна' + this.originaldocuments.strana + ', город ' + this.originaldocuments.gorod  + ', индекс: ' + this.originaldocuments.index : ''
+            },
+
         },
         methods: {
             ...mapMutations([
                 'presoptionFace', 'presoptionBay', 
             ]),
+            updatevaluecheck(evt) {
+                //console.log('клиент', evt.target.value)
+                this.$store.state.checkedclietn = evt.target.value
+            },
             toaxios() {
                 if(this.validemeil) {
                     let newdata =  new Date()
                     let today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
                     let todayLast = ((parseInt(newdata.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt(newdata.getDate())+parseInt(this.countDayState)) + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
                     let arrbask = this.$store.state.backetData.map((item, index) => {
-                        return '<tr><td colspan="4">'+ (item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер') + ', вес:' + item.parametr  + (item.gabarit ? ', габариты '  +  item.gabarit : '') +  '</td></tr>'
+                        return '<tr><td colspan="4">'+ (item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер') + ', вес:' + item.parametr  + (item.gabarit ? ', габариты '  +  item.gabarit : '') +  (item.comments ? item.comments : '')+ '</td></tr>'
                     })
-
-
+                    
+                    let deistvklientlet = this.deistvklient.length > 0 ? 'Номер договора ' + this.deistvklient : ''
 
                     let regularpost = this.periodGetState > 1 ? cashregular : ''
                     let cashregulararr =  {
@@ -404,9 +434,34 @@
                             3:"14:00-18:00"
                         }
                     
-                    let cashregular = 'Повторять ' +cashregulararr[this.periodGetState] + ', начинать повтор с ' + this.dateCalenStatePositionRS + ', время забора ' + timerarr[this.timeGetState]
-                    console.log(cashregular, 'TEST MAIL')
-                    let container = this.$store.state.conteiner.nazfabric.length > 1 ? cash : ''
+
+                    let cashurlico = `
+                    <table cellspacing="0" cellpadding="0" width="800">
+                        <tr><td>Наименование Вашей компании</td><td>`+ this.urlicorecvizit.nazvkomp +`</td></tr>
+                        <tr><td>Юридический адрес Вашей компании</td><td>`+ this.urlicorecvizit.uradresskomp +`</td></tr>
+                        <tr><td>Документ, на основании которого, лицо действует от имени юридического лица</td><td>`+ this.urlicorecvizit.dolosnkomur +`</td></tr>
+                        <tr><td>ФИО генерального директора</td><td>`+ this.urlicorecvizit.fiogeneral +`</td></tr>
+                        <tr><td>ИНН</td><td>`+ this.urlicorecvizit.inn +`</td></tr>
+                        <tr><td>КПП</td><td>`+ this.urlicorecvizit.kpp +`</td></tr>
+                        <tr><td>ОГРН</td><td>`+ this.urlicorecvizit.ogrn +`</td></tr>
+                        <tr><td colspan="2">Банковские реквизиты</td></tr>
+                        <tr><td>Банк</td><td>`+ this.urlicorecvizit.bank +`</td></tr>
+                        <tr><td>БИК</td><td>`+ this.urlicorecvizit.bik +`</td></tr>
+                        <tr><td>К/С</td><td>`+ this.urlicorecvizit.ks +`</td></tr>
+                        <tr><td>Р/С</td><td>`+ this.urlicorecvizit.rs +`</td></tr>
+                    </table>`
+
+
+                    let cashurlicoContainder = this.urlicorecvizit.nazvkomp.length > 0 ? cashurlico : ''
+
+
+
+
+
+
+                    let cashregular = timerarr[this.timeGetState] ? ('<hr>Повторять ' +cashregulararr[this.periodGetState] + ', начинать повтор с ' + this.dateCalenStatePositionRS + ', время забора ' + timerarr[this.timeGetState]) : ''
+                    //console.log(cashregular, 'TEST MAIL')
+                    let container = this.$store.state.conteiner.nazfabric.length > 1 ? '<hr>' + cash : ''
 
                     let cash = `
                     <table cellspacing="0" cellpadding="0" width="800">
@@ -423,19 +478,76 @@
                         <tr><td>Торговая марка</td><td>`+ this.$store.state.conteiner.torgmark+`</td></tr>
                     </table>`
 
+                    let cashblock =  this.$store.state.backetData.map((item, index) => {
+                        let title = item.title == 1 ? 'Документы' : item.title == 2 ? 'Груз' : 'Контейнер'
+                        let gabarit = item.gabarit ? item.gabarit : ''
+                        let hrupkoe = item.hrupkoe ? 'Хрупкое' : ''
+                        let parametr = item.parametr
+                        let price = item.price + 'р. '
+                        let comments = item.comments ? item.comments : ''
+                        console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
+                        return '<tr><td colspan="4">' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>'
+                    })
+
+                    let cashblocklet = ''
+                    let arrbasklet = ''
+
+                    let urlicorekvizit = () => {
+                        if(this.$store.state.zakazchik.length > 0) {
+                            return 'Компания: ' + this.$store.state.zakazchik + ', ' + 'Юридический адрес Вашей компании'
+                        }
+                    }
+
+
+
+                    function cashblockfunc() {
+                        for(let i = 0; i<cashblock.length; i++) {
+                            //console.log(cashblock[i])
+                            cashblocklet+=cashblock[i]
+                        }
+                    }
+
+                    function arrbaskfunc() {
+                        for(let i = 0; i<arrbask.length; i++) {
+                            //console.log(arrbask[i])
+                            arrbasklet+=arrbask[i]
+                        }
+                    }
+                    cashblockfunc()
+                    arrbaskfunc()
+
+                    let htmlcont = `
+                    <html>
+                        <style>
+                            table td {
+                                border: 1px solid #1e457e;
+                                padding: 5px;
+                                text-align: center;
+                                margin: 0px;
+                                border-collapse: collapse;
+                            }
+                        </style>
+                        <body>
+                            <h4>Ваша заявка принята в работу! Наши специалисты подготовят расчет стоимости в течение 24 часов.</h4>
+                        </body>
+                    </html>`
+                      
+                    
                     let html = `<html>
                     <style>
                         table td {
-                            border: 1px solid #000;
+                            border: 1px solid #1e457e;
                             padding: 5px;
                             text-align: center;
                             margin: 0px;
+                            border-collapse: collapse;
                         }
                     </style>
                     <body>
-                        <h3>Добрый день!</h3>
+                        <h2>Добрый день!</h3>
                         <b>Ваш заказ принят в работу. </b>
-                        <table cellspacing="0" cellpadding="0" width="800">
+
+                        <table cellspacing="0" cellpadding="0" width="800" style="border-collapse: collapse;">
                             <tr>
                                 <td style="background: #1e457e; color: #fff">Отправитель<br></td>
                                 <td rowspan="2">` + this.telephone + `<br></td>
@@ -451,7 +563,7 @@
                                 <td rowspan="2">` + todayLast + `</td>
                             </tr>
                             <tr>
-                                <td colspan="2"> ` + this.addressotprhis + `<br></td>
+                                <td colspan="2"> ` + ( this.$store.state.citySetText.length > 0 ? this.$store.state.citySetText : this.$store.state.citynoRusSendStore) + ', '+ this.addressotprhis + ', '+ this.$store.state.indexSet+`<br></td>
                             </tr>
                             <tr>
                                 <td rowspan="2">Подпись отпраителя<br></td>
@@ -478,31 +590,33 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="2">` + this.addresspoluch + `</td>
+                                <td colspan="2">` + ( this.$store.state.cityGetText.length  > 0 ? this.$store.state.cityGetText : this.$store.state.citynoRusStore) + ', ' + this.addresspoluch +', '+ this.$store.state.indexGet+`</td>
                                 <td>Должность</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="2">Дата, время получения</td>
-                                <td colspan="2"></td>
+                                <td>Дата, время получения</td>
+                                <td></td>
+                                <td rowspan="2" colspan="2">`+this.$store.state.commentszakaz+`</td>
+                                
                             </tr>
                             <tr>
-                                <td colspan="2">Подпись получателя</td>
-                                <td colspan="2"></td>
+                                <td>Подпись получателя</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="background: #1e457e; color: #fff">Описание вложения<br></td>
                             </tr>
-                            `+ arrbask +`
+                            `+ cashblocklet +`
                         </table>
-                        <br><hr><br>
-                        ` + container + `<hr>
-                        ` + cashregular + `<hr>
-                       
+                        <br><br>
+                        `+ deistvklientlet +`
+                         
                     </body>
                     </html>`
-
-                    
+//<table cellspacing="0" cellpadding="0" width="800"><tr><td>Описание груза</td></tr>` + cashblocklet + `</table>
+                    let basketdatab = this.$store.state.backetData[0].title
+                    console.log('MAIL', this.$store.state.backetData[0].title)
                     this.axios({
                             method: 'POST',
                             url: 'http://api.mailhandler.ru/message/send/',
@@ -515,7 +629,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': [this.email],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body': html
+                            'html_body':  basketdatab == 3 ? htmlcont : html
                         }
                     }).then(response => {
                         console.log(response)

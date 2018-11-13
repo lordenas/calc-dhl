@@ -109,7 +109,9 @@ export const store = new Vuex.Store({
             tel: '',
             telephoneotpr: '',
             vliceinput: ''
-        }
+        },
+        commentszakaz: '', //глобальный комментарий
+        checkedclietn: 1
     },
     getters: {
         backetDataState(state) {
@@ -202,6 +204,8 @@ export const store = new Vuex.Store({
                 title: this.state.curentvalue,
                 parametr: gabarit.weightel + ' кг.',
                 gabarit: gabarit.gabarit,
+                comments: gabarit.comment,
+                hrupkoe: gabarit.hrupkoe,
                 price:  state.import ? 
                 calcTariImport(gabarit, state.import, state.valueCitySending, state.valueCityReception, state.countrySeter, gabarit.weightel + ' кг.')
                 :

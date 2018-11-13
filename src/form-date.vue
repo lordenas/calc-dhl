@@ -72,7 +72,7 @@
 		</div>
 		<div class="textareainfo">
 			<div class="todate-title">Комментарий к заказу</div>
-			<textarea class="standinput" placeholder="Комментарий"></textarea>
+			<textarea class="standinput" @input="editcomments($event)" placeholder="Комментарий"></textarea>
 		</div>
 	</div>
 </template>
@@ -137,7 +137,11 @@
 	    selectedDateMeth () {
 	        this.showModal = false
 	        this.calendarState(this.selectedDate)
-	    }
+		},
+		editcomments(evt) {
+			this.$store.state.commentszakaz =  evt.target.value
+			//console.log(this.$store.state.commentszakaz)
+		}
 	},
 	}
 </script>
