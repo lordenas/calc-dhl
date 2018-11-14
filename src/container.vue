@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчиа)<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчика)<span class="redstar">*</span></label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"

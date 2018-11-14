@@ -32,7 +32,7 @@
                 </div>
         </div>
 
-		<div class="radio-btn-group client-urlic" v-show="presoptionStateFace == 1">
+		<div class="radio-btn-group client-urlic" v-show="presoptionStateFace == 1"  v-if="!this.$store.state.flagBasketContainer">
 			<div class="radio"><input type="radio" name="radio" value="1" checked="checked" v-model="checked" id="one" @change="updatevaluecheck($event)"/><label for="one">Новый клиент</label></div>
 			<div class="radio"><input type="radio" name="radio" value="2" v-model="checked" id="two"  @change="updatevaluecheck($event)" /><label for="two">Действующий клиент</label></div>
 		</div>
@@ -74,7 +74,7 @@
                             </b-form-input>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Адрес отправления</label>
                         <div class="col-sm-9">
 
@@ -89,7 +89,7 @@
                                 </b-form-input>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Организация отправитель</label>
                         <div class="col-sm-9">
 
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">ФИО получателя</label>
                         <div class="col-sm-9">
                             <b-form-input 
@@ -119,7 +119,7 @@
                                 </b-form-input>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Адрес получателя</label>
                         <div class="col-sm-9">
                             <b-form-input 
@@ -133,7 +133,7 @@
                                 </b-form-input>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Организация получатель</label>
                         <div class="col-sm-9">
                             <b-form-input 
@@ -147,7 +147,7 @@
                                 </b-form-input>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
                         <label for="staticEmail" class="col-sm-3 col-form-label">Телефон получателя</label>
                         <div class="col-sm-9">
                                 <b-form-input 
@@ -163,7 +163,9 @@
                                 </b-form-input>
                         </div>
                     </div>
+					<div v-if="!this.$store.state.flagBasketContainer">
                     <hr>
+					</div>
                     <div class="form-group row"
                             id="exampleInputGroup1"
                             label="Emeil address:"
@@ -183,7 +185,7 @@
                             </b-form-input>
                         </div>
                     </div>
-                    <div class="col-sm-12 text-left" v-show="presoptionStateFace == 2">
+                    <div class="col-sm-12 text-left" v-show="presoptionStateFace == 2"  v-if="!this.$store.state.flagBasketContainer">
                         <b-form-checkbox id="checkbox1"
                             v-model="status"
                             value="accepted"
@@ -268,7 +270,7 @@
                     </div>
                 </div>
             
-                <div class="title-block-new" v-show="presoptionStateFace == 1">
+                <div class="title-block-new" style="display: none" v-show="presoptionStateFace == 1">
                     <div class="div-block-51 _500 w-clearfix">
                         <div class="heading-text-block _500">
                         <div class="div-line"></div>
@@ -279,7 +281,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="typepost" v-show="presoptionStateFace == 1">
+                <div class="typepost" style="display: none  !important;" v-show="presoptionStateFace == 1">
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Страна</label>
                         <div class="col-sm-11">
@@ -582,7 +584,7 @@
                             </tr>
                             <tr>
                                 <td>` + this.fiopoluch + `<br></td>
-                                <td colspan="2">Данные получателя<br></td>
+                                <td colspan="2"  style="background: #1e457e; color: #fff">Данные получателя<br></td>
                             </tr>
                             <tr>
                                 <td colspan="2">Организация: ` + this.nazorg + `<br></td>
@@ -619,7 +621,7 @@
                     console.log('MAIL', this.$store.state.backetData[0].title)
                     this.axios({
                             method: 'POST',
-                            url: 'http://api.mailhandler.ru/message/send/',
+                            url: 'https://api.mailhandler.ru/message/send/',
                             headers: {
                                 "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
                                 "Accept": "application/json",
