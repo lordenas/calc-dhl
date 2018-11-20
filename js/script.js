@@ -837,13 +837,13 @@ export function varperemFiz (obj) {
 	docInfoFiz.content[2].table.body[0][1].text = '\n' + obj.telephone
 	docInfoFiz.content[2].table.body[0][3].text = '\n' + obj.today
 	docInfoFiz.content[2].table.body[1][0].text = obj.zakazchik
-	docInfoFiz.content[2].table.body[2][0].text = obj.orgotpravit
+	docInfoFiz.content[2].table.body[2][0].text = obj.orgotpravit || ' '
 	docInfoFiz.content[2].table.body[2][3].text = '\n' + obj.todayLast
 	docInfoFiz.content[2].table.body[1][1].text = obj.zakazchik
 	docInfoFiz.content[2].table.body[3][0].text = obj.citySetText + ', ' + obj.addressotprhis + ', ' + obj.indexSet
 	docInfoFiz.content[2].table.body[6][1].text = '\n' + obj.telpoluchinput
 	docInfoFiz.content[2].table.body[7][0].text = obj.fiopoluch
-	docInfoFiz.content[2].table.body[8][0].text = obj.nazorg
+	docInfoFiz.content[2].table.body[8][0].text = obj.nazorg || ' '
 	docInfoFiz.content[2].table.body[9][0].text = obj.cityGetText + ', '+ obj.addresspoluch + ', ' + obj.indexGet
 	docInfoFiz.content[2].table.body[10][2].text = obj.commentszakaz
 	docInfoFiz.content[2].table.body[13][0].text = obj.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн'

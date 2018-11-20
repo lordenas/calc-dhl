@@ -139,7 +139,8 @@
                         id="exampleInput3"
                         type="text"
                         placeholder=""
-                        required
+                        v-validate="true"
+                        value=""
 						@input="Update($event, 'modelartic')"
 						>
                         </b-form-input>
@@ -178,7 +179,7 @@
                         id="exampleInput3"
                         type="text"
                         placeholder=""
-                        required
+                        value=""
 						@input="Update($event, 'stranaiadresproz')"
 						>
                         </b-form-input>
@@ -191,7 +192,7 @@
                         id="exampleInput3"
                         type="text"
                         placeholder=""
-                        required
+                        value=""
 						@input="Update($event, 'gruzmest')"
 						>
                         </b-form-input>
@@ -242,8 +243,8 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
+                        value=""
                         placeholder=""
-                        required
 						@input="Update($event, 'vesneto')"
 						>
                         </b-form-input>

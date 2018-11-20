@@ -111,7 +111,8 @@ export const store = new Vuex.Store({
             vliceinput: ''
         },
         commentszakaz: '', //глобальный комментарий
-        checkedclietn: 1
+        checkedclietn: 1,
+        datestateregular: newdata,
     },
     getters: {
         backetDataState(state) {
@@ -368,6 +369,8 @@ export const store = new Vuex.Store({
         //  регулятор даты
         calendarState(state, param) {
             state.selectedDate = (param.getDate() < 10 ? '0' : '') + param.getDate() + '.' + ((param.getMonth() + 1) < 10 ? '0' : '') + (param.getMonth() + 1) + '.' + param.getUTCFullYear()
+            state.datestateregular = param
+            console.log(param, state.datestateregular)
             //console.log(state.selectedDate, param.getUTCFullYear())
         },
 

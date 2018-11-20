@@ -67,8 +67,8 @@
                             type="text"
                             v-model="telephone"
                             required
-                            placeholder="+7 (000)-000-0000"
-                            v-mask="'+7(###)-###-####'"
+                            placeholder="+7 (000) 000-0000"
+                            v-mask="'+7(###) ###-####'"
                             @input="Update($event, 'tel')"
                             >
                             </b-form-input>
@@ -82,7 +82,7 @@
                                 id="exampleInput4"
                                 type="text"
                                 v-model="addressotprhis"
-                                placeholder="Введите данные"
+                                placeholder="Улица, дом"
                                 required
                                 @input="Update($event, 'addressotprhis')"
                                 >
@@ -96,9 +96,9 @@
                                 <b-form-input 
                                 id="exampleInput15"
                                 type="text"
+                                :required="presoptionStateFace == 1 ? true : false"
                                 v-model="orgotpravit"
                                 placeholder="Введите данные"
-                                required
                                 @input="Update($event, 'orgotpravit')"
                                 >
                                 </b-form-input>
@@ -126,7 +126,7 @@
                                 id="exampleInput5"
                                 type="text"
                                 v-model="addresspoluch"
-                                placeholder="Введите данные"
+                                placeholder="Улица, дом"
                                 @input="Update($event, 'addresspoluch')"
                                 required
                                 >
@@ -139,9 +139,9 @@
                             <b-form-input 
                                 id="exampleInput6"
                                 type="text"
+                                :required="presoptionStateFace == 1 ? true : false"
                                 v-model="nazorg"
                                 placeholder="Введите данные"
-                                required
                                 @input="Update($event, 'nazorg')"
                                 >
                                 </b-form-input>
@@ -156,8 +156,8 @@
                                 type="text"
                                 v-model="telpoluch"
                                 required
-                                placeholder="+7 (000)-000-0000"
-                                v-mask="'+7(###)-###-####'"
+                                placeholder="+7 (000) 000-0000"
+                                v-mask="'+7(###) ###-####'"
                                 @input="Update($event, 'telpoluchinput')"
                                 >
                                 </b-form-input>
@@ -270,7 +270,7 @@
                     </div>
                 </div>
             
-                <div class="title-block-new" style="display: none" v-show="presoptionStateFace == 1">
+                <div class="title-block-new" style="display: none" v-if="1==3" v-show="presoptionStateFace == 1">
                     <div class="div-block-51 _500 w-clearfix">
                         <div class="heading-text-block _500">
                         <div class="div-line"></div>
@@ -281,7 +281,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="typepost" style="display: none  !important;" v-show="presoptionStateFace == 1">
+                <div class="typepost" style="display: none  !important;" v-if="1==3" v-show="presoptionStateFace == 1">
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Страна</label>
                         <div class="col-sm-11">
@@ -312,7 +312,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="typestore-icon" v-show="presoptionStateFace == 2">
                     <div class="typestore-icon-step" v-on:click="presoptionBay(1)">
                         <div class="typestore-icon-step-radio" v-bind:class="{ active: presoptionStateBay == 1 }" @click="presoptionBay(1)"></div>
@@ -338,7 +338,7 @@
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 			<registration v-show="calcRegistrGet"></registration>
 
-                 <b-button @click="toaxios"  v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
+                 <b-button @click="toaxios" :disabled="this.status != 'accepted'" v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
 
 		</div>
        
@@ -413,8 +413,8 @@
             toaxios() {
                 if(this.validemeil) {
                     let newdata =  new Date()
-                    let today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
-                    let todayLast = ((parseInt(newdata.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt(newdata.getDate())+parseInt(this.countDayState)) + '.' + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1) + '.' + newdata.getUTCFullYear()
+                    let today = ( this.$store.state.datestateregular.getDate() < 10 ? '0' : '') +  this.$store.state.datestateregular.getDate() + '.' + (( this.$store.state.datestateregular.getMonth() + 1) < 10 ? '0' : '') + ( this.$store.state.datestateregular.getMonth() + 1) + '.' +  this.$store.state.datestateregular.getUTCFullYear()
+                    let todayLast = ((parseInt( this.$store.state.datestateregular.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt( this.$store.state.datestateregular.getDate())+parseInt(this.countDayState)) + '.' + (( this.$store.state.datestateregular.getMonth() + 1) < 10 ? '0' : '') + ( this.$store.state.datestateregular.getMonth() + 1) + '.' +  this.$store.state.datestateregular.getUTCFullYear()
                     let arrbask = this.$store.state.backetData.map((item, index) => {
                         return '<tr><td colspan="4">'+ (item.title == 1 ? 'Документы' :  item.title == 2 ? 'Груз' : 'Контейнер') + ', вес:' + item.parametr  + (item.gabarit ? ', габариты '  +  item.gabarit : '') +  (item.comments ? item.comments : '')+ '</td></tr>'
                     })
@@ -613,7 +613,7 @@
                         </table>
                         <br><br>
                         `+ deistvklientlet +`
-                         
+                        <br><br><a href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Условия доставки</a>
                     </body>
                     </html>`
 //<table cellspacing="0" cellpadding="0" width="800"><tr><td>Описание груза</td></tr>` + cashblocklet + `</table>
