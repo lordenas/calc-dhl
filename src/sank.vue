@@ -91,6 +91,7 @@
                         bik: this.$store.state.bik,
                         tel: this.$store.state.inputClintInfo.tel,
                         mailPoshta: this.$store.state.mailPoshta,
+                        random: this.$store.state.randomnumber,
                     }
                     )
                     pdfMake.createPdf(docInfo).download('договор.pdf');
@@ -98,7 +99,9 @@
                     let newdata =  new Date()
                     var today = ( this.$store.state.datestateregular.getDate() < 10 ? '0' : '') +  this.$store.state.datestateregular.getDate() + '.' + (( this.$store.state.datestateregular.getMonth() + 1) < 10 ? '0' : '') + ( this.$store.state.datestateregular.getMonth() + 1) + '.' +  this.$store.state.datestateregular.getUTCFullYear()
                     var todayLast = ((parseInt( this.$store.state.datestateregular.getDate())+parseInt(this.countDayState)) < 10 ? '0' : '') + (parseInt( this.$store.state.datestateregular.getDate())+parseInt(this.countDayState)) + '.' + (( this.$store.state.datestateregular.getMonth() + 1) < 10 ? '0' : '') + ( this.$store.state.datestateregular.getMonth() + 1) + '.' +  this.$store.state.datestateregular.getUTCFullYear()
-                        
+                    
+
+
                     varperemFiz({
                         //adrress: this.$store.state.inputClintInfo.addressotprhis,
                         zakazchik: this.$store.state.inputClintInfo.vliceinput,
@@ -120,8 +123,10 @@
                         indexGet: this.$store.state.indexGet,
                         citynoRusSendStore: this.$store.state.citynoRusSendStore,
                         citynoRusStore: this.$store.state.citynoRusStore,
+                        price: this.$store.state.tarifcalc,
+                        random: this.$store.state.randomnumber,
                     })
-                
+                   
                 pdfMake.createPdf(docInfoFiz).download('накладная.pdf');
                 }
 

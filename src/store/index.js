@@ -108,7 +108,9 @@ export const store = new Vuex.Store({
             telpoluchinput: '',
             tel: '',
             telephoneotpr: '',
-            vliceinput: ''
+            vliceinput: '',
+            randomnumber: 1,
+            newnumbernak: ''
         },
         commentszakaz: '', //глобальный комментарий
         checkedclietn: 1,
@@ -163,7 +165,28 @@ export const store = new Vuex.Store({
                 state.countDay = 5
             }
         },
+        randomInteger(state) {
 
+
+            let randomnew = 0
+
+            var rand = 1 - 0.5 + Math.random() * (100 - 1 + 1)
+            rand = Math.round(rand);
+            if(rand < 9) {
+                randomnew = '00'+rand;
+            }else if(rand > 9 && rand < 99) {
+                randomnew = '0'+rand;
+            } else {
+                randomnew = rand;
+            }
+
+            let newdata =  new Date()    
+            let ear = newdata.getUTCFullYear()+''
+            ear = ear.split('')
+            let newtoday = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1)  + ear[2] + ear[3] +  randomnew 
+            state.randomnumber = newtoday
+        
+        },
 
         conteinerBoolMet (state) {
             for (let a = 0; a < state.backetData.length; a++) {

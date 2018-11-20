@@ -3,11 +3,11 @@
 <template>
 	<form class="needs-validation" novalidate>
 		<div class="form-group row">
-			<label for="staticEmail" class="col-sm-5 col-form-label">Контакт<span class="redstar">*</span></label>
+			<label for="staticEmail" class="col-sm-5 col-form-label">Контракт<span class="redstar">*</span></label>
 			<div class="col-sm-7">
 				<select class="custom-select" id="inputGroupSelect01">
-					<option selected>Выберите значение</option>
 					<option value="1">Брокер</option>
+					<option value="2">Напрямую</option>
 				</select>
 			</div>
 		</div>
@@ -26,39 +26,39 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Контактное лицо на месте загрузки<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Контактное лицо на месте загрузки</label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
-                        required
+                        placeholder="Введите данные"
+                        
 						@input="Update($event, 'contactlico')"
 						>
                         </b-form-input>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Имя, под которым Вы известны поставщику<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Имя, под которым Вы известны поставщику</label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
-                        required
+                        placeholder="Введите данные"
+                        
 						@input="Update($event, 'imapostizv')"
 						>
                         </b-form-input>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчика)<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Маркировка груза (№ заказа, инвойса, имя заказчика)</label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
-                        required
+                        placeholder="Введите данные"
+                        
 						@input="Update($event, 'markgruznomer')"
 						>
                         </b-form-input>
@@ -70,7 +70,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'obshobg')"
 						>
@@ -83,7 +83,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'obshves')"
 						>
@@ -96,7 +96,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'obshstoimgruz')"
 						>
@@ -107,13 +107,13 @@
 				<h5>Расчет таможенного оформления</h5>
 			<br>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Код товара по ТНВЭД<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Код товара по ТНВЭД (если известен)</label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
-                        required
+                        placeholder="Введите данные"
+                        
 						@input="Update($event, 'kodtovaratnved')"
 						>
                         </b-form-input>
@@ -125,7 +125,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'kodtovaratnved')"
 						>
@@ -138,8 +138,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
-                        v-validate="true"
+                        placeholder="Введите данные"
                         value=""
 						@input="Update($event, 'modelartic')"
 						>
@@ -152,7 +151,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'torgmark')"
 						>
@@ -165,7 +164,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'firmaproz')"
 						>
@@ -178,7 +177,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         value=""
 						@input="Update($event, 'stranaiadresproz')"
 						>
@@ -191,7 +190,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         value=""
 						@input="Update($event, 'gruzmest')"
 						>
@@ -204,7 +203,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'koledinic')"
 						>
@@ -212,12 +211,12 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-5 col-form-label">Количество шт. м, м2, и т.д.<span class="redstar">*</span></label>
+                <label for="staticEmail" class="col-sm-5 col-form-label">Количество шт., м, м2 и т.д.<span class="redstar">*</span></label>
                 <div class="col-sm-7">
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'kolshtuk')"
 						>
@@ -230,7 +229,7 @@
                     <b-form-input 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						@input="Update($event, 'vesbruto')"
 						>
@@ -244,7 +243,7 @@
                         id="exampleInput3"
                         type="text"
                         value=""
-                        placeholder=""
+                        placeholder="Введите данные"
 						@input="Update($event, 'vesneto')"
 						>
                         </b-form-input>
@@ -256,7 +255,7 @@
                     <b-form-textarea 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
                         v-model="nalradov"
 						:value="this.$store.state.conteiner.nalradov"
@@ -271,7 +270,7 @@
                     <b-form-textarea 
                         id="exampleInput3"
                         type="text"
-                        placeholder=""
+                        placeholder="Введите данные"
                         required
 						v-model="kakupak"
 						@change="Update($event, 'kakupak')"

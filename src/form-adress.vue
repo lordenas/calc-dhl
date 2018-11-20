@@ -10,7 +10,7 @@
 					<div class="div-rad"></div>
 					<div class="div-block-50"></div>
 					<div class="div-rad min"></div>
-					<h2 class="heading-13">Откуда отправляете груз?<br></h2>
+					<h2 class="heading-13">Отправитель<br></h2>
 				</div>
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 			<div class="blocktwo">
 				<div class="country">
 					<div class="form-group row">
-						<label for="staticEmail" class="col-sm-2 col-form-label">Страна</label>
+						<label for="staticEmail" class="col-sm-2 col-form-label">Страна<span class="redstar">*</span></label>
 						<div class="col-sm-10">
 							<multiselect :disabled="disabledcountrySet" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="countrydesebl">
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
@@ -27,7 +27,7 @@
 					</div>
 					
 					<div class="form-group row">
-						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
+						<label for="staticEmail" class="col-sm-2 col-form-label">Город<span class="redstar">*</span></label>
 						<div class="col-sm-10">
                             <template v-if="disabledcountryGet">
                                     <input class="form-control" v-model="citynoRusSend" @input="controlvalidOne" type="text" placeholder="Город">
@@ -56,7 +56,7 @@
 					<div class="div-rad"></div>
 					<div class="div-block-50"></div>
 					<div class="div-rad min"></div>
-					<h2 class="heading-13">Куда доставить груз?<br></h2>
+					<h2 class="heading-13">Получатель<br></h2>
 				</div>
 			</div>
 		</div>
@@ -64,7 +64,7 @@
 			<div class="blocktwo">
 				<div class="country">
 					<div class="form-group row">
-						<label for="staticEmail" class="col-sm-2 col-form-label">Страна</label>
+						<label for="staticEmail" class="col-sm-2 col-form-label">Страна<span class="redstar">*</span></label>
 						<div class="col-sm-10">
 							<multiselect :disabled="disabledcountryGet"  v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
@@ -75,7 +75,7 @@
 					
 					
 					<div class="form-group row">
-						<label for="staticEmail" class="col-sm-2 col-form-label">Город</label>
+						<label for="staticEmail" class="col-sm-2 col-form-label">Город<span class="redstar">*</span></label>
 						<div class="col-sm-10">
                             <template v-if="valuecountryToSet.country != 'Россия' ? true : false">
                                     <input class="form-control"  @input="controlvalidOne" v-model="citynoRus" type="text" placeholder="Город">
@@ -88,6 +88,7 @@
                              </template>
 						</div>
 					</div>
+					
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Индекс</label>
 						<div class="col-sm-10">
@@ -130,17 +131,18 @@
 	  mounted () {
 	      this.cicl()
 	      this.countrycl()
+	      this.randomInteger()
 	  },
 	  computed: {
 	    indextel() {
-	        console.log( this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
+	        //console.log( this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
 	        this.index = this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
 	        this.controlvalid ()
 	    },
 	  },
 	  methods: {
 	    ...mapMutations([
-	            'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc', 'mapDayToShiping'
+	            'toCitysending', 'toCityReception', 'tarifZone', 'selecttarif', 'validateOneMut', 'importmut', 'importcalc', 'mapDayToShiping', 'randomInteger'
 	     ]),
 	     //если страна отправки не Россия тогда блокируем поле страна получения, и ставим страну Россия
 	     countrydesebl () {
@@ -178,7 +180,7 @@
 			 this.$store.state.citynoRusStore = this.citynoRus
 			 //форма валидна или нет
 			 console.log('ВАЛИДАЦИЯ',this.options.tarifid)
-	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
+	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 ) {
 	            this.validateOneMut(true)
 	         } else { 
 	             this.validateOneMut(false)
@@ -189,7 +191,7 @@
 			 this.$store.state.citynoRusSendStore = this.citynoRusSend
 			 this.$store.state.citynoRusStore = this.citynoRus
 			 //форма валидна или нет
-	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 && this.indexReception.length == 6 && this.index.length == 6 ) {
+	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0  ) {
 	            this.validateOneMut(true)
 	         } else { 
 	             this.validateOneMut(false)

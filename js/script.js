@@ -21,6 +21,7 @@ let random = randomInteger(0, 100)
 
 let today = (newdata.getDate() < 10 ? '0' : '') + newdata.getDate() + ((newdata.getMonth() + 1) < 10 ? '0' : '') + (newdata.getMonth() + 1)  + ear[2] + ear[3] + random 
 let datedogovot = (newdata.getUTCDate()<10? '0':'') + newdata.getUTCDate() + '.' + ((newdata.getUTCMonth()+1)<10? '0':'') + (newdata.getUTCMonth()+1) + '.'+ newdata.getUTCFullYear() 
+
 export function varperem (obj) {
 
 	console.log('PDF', obj, docInfo.content.length)
@@ -828,7 +829,7 @@ export var docInfo = {
 
 
 export function varperemFiz (obj) {
-
+	today = obj.random
 	console.log('PDF', obj, docInfo.content.length)
 	
 
@@ -847,6 +848,7 @@ export function varperemFiz (obj) {
 	docInfoFiz.content[2].table.body[9][0].text = obj.cityGetText + ', '+ obj.addresspoluch + ', ' + obj.indexGet
 	docInfoFiz.content[2].table.body[10][2].text = obj.commentszakaz
 	docInfoFiz.content[2].table.body[13][0].text = obj.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн'
+	docInfoFiz.content[2].table.body[13][2].text = obj.price+' руб.'
 	//docInfoFiz.content[2].table.body[10][0].text = obj.todayLast
 
 	//let block = obj.opis.map((item, index) => {
@@ -1079,15 +1081,15 @@ export var docInfoFiz = {
 					    { fontSize:8, text: '', alignment: 'center'}, 
 					],
 					[
-					    { fontSize:8, text: 'Способ оплаты', color: '#fff', fillColor: '#1e457e', colSpan: 4, alignment: 'center'}, 
+					    { fontSize:8, text: 'Способ оплаты', color: '#fff', fillColor: '#1e457e', colSpan: 2, alignment: 'center'}, 
 					    { fontSize:8, text: '', alignment: 'center',  colSpan: 0}, 
-					    { fontSize:8, text: '',  alignment: 'center',colSpan: 0}, 
+					    { fontSize:8, text: 'Стоимость доставки', color: '#fff', fillColor: '#1e457e', colSpan: 2, alignment: 'center'}, 
 					    { fontSize:8, text: '', alignment: 'center'}, 
 					],
 					[
-					    { fontSize:8, text: '',  colSpan: 4, alignment: 'center'}, 
+					    { fontSize:8, text: '',  colSpan: 2, alignment: 'center'}, 
 					    { fontSize:8, text: '', alignment: 'center',  colSpan: 0}, 
-					    { fontSize:8, text: '',  alignment: 'center',colSpan: 0}, 
+						{ fontSize:8, text: '',  colSpan: 2, alignment: 'center'}, 
 					    { fontSize:8, text: '', alignment: 'center'}, 
 					],
 					[

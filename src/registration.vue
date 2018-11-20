@@ -38,14 +38,14 @@
 		</div>
                 <b-form @submit="onSubmitValid">
                     <div v-if="checked == 2 && presoptionStateFace == 1" class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Номер договора</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Номер договора</label>
+                        <div class="col-sm-8">
                             <input v-model="deistvklient" type="text" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">ФИО отправителя</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">ФИО отправителя<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
                             <b-form-input 
                                 id="exampleInput3"
                                 type="text"
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Телефон отправителя</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Телефон отправителя<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
                             <b-form-input 
                             class="form-control" 
                             id="us-phone-number-ex" 
@@ -75,8 +75,8 @@
                         </div>
                     </div>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Адрес отправления</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Адрес отправления<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
 
                                 <b-form-input 
                                 id="exampleInput4"
@@ -90,8 +90,8 @@
                         </div>
                     </div>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Организация отправитель</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Организация отправитель<span  v-show="presoptionStateFace == 1" class="redstar">*</span></label>
+                        <div class="col-sm-8">
 
                                 <b-form-input 
                                 id="exampleInput15"
@@ -106,8 +106,8 @@
                     </div>
                     <hr>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">ФИО получателя</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">ФИО получателя<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
                             <b-form-input 
                                 id="exampleInput5"
                                 type="text"
@@ -120,8 +120,8 @@
                         </div>
                     </div>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Адрес получателя</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Адрес получателя<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
                             <b-form-input 
                                 id="exampleInput5"
                                 type="text"
@@ -134,8 +134,8 @@
                         </div>
                     </div>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Организация получатель</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Организация получатель<span  v-show="presoptionStateFace == 1" class="redstar">*</span></label>
+                        <div class="col-sm-8">
                             <b-form-input 
                                 id="exampleInput6"
                                 type="text"
@@ -148,8 +148,8 @@
                         </div>
                     </div>
                     <div class="form-group row"  v-if="!this.$store.state.flagBasketContainer">
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Телефон получателя</label>
-                        <div class="col-sm-9">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Телефон получателя<span class="redstar">*</span></label>
+                        <div class="col-sm-8">
                                 <b-form-input 
                                 class="form-control" 
                                 id="us-phone-number-ex" 
@@ -172,57 +172,50 @@
                             label-for="exampleInput1"
                             description="We'll never share your email with anyone else."
                             >
-                        <label for="staticEmail" class="col-sm-3 col-form-label">Ваш Email<span class="redstar">*</span></label>
-                        <div class="col-sm-9 text-left">
+                        <label for="staticEmail" class="col-sm-4 col-form-label">Ваш Email<span class="redstar">*</span></label>
+                        <div class="col-sm-8 text-left">
                         
                             <b-form-input id="exampleInput1"
                             type="email"
                             v-model="email"
                             required
                             placeholder="ex@mail.ru"
-                            
-                             @input="Update($event, 'email')">
+                            @input="Update($event, 'email')">
                             </b-form-input>
                         </div>
                     </div>
-                    <div class="col-sm-12 text-left" v-show="presoptionStateFace == 2"  v-if="!this.$store.state.flagBasketContainer">
-                        <b-form-checkbox id="checkbox1"
-                            v-model="status"
-                            value="accepted"
-                            unchecked-value="not_accepted">
-                        <a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Я принимаю условия доставки</a>
-                        </b-form-checkbox>
-                    </div>
+
             
         <template v-if="!this.$store.state.flagBasketContainer">
             <div v-if="checked != 2">
                 <div class="typepost" v-show="presoptionStateFace == 1">
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании<span class="redstar">*</span></label>
                         <div class="col-sm-7">
-                            <input v-model="urlicorecvizit.nazvkomp" type="text" @input="zakazchikinput" class="form-control" >
+                             <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.nazvkomp"  type="text" @input="zakazchikinput" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">Юридический адрес Вашей компании</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">Юридический адрес Вашей компании<span class="redstar">*</span></label>
                         <div class="col-sm-7">
-                            <input v-model="urlicorecvizit.uradresskomp" ype="text" class="form-control" >
+                             <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.uradresskomp" ype="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">Документ, на основании которого, лицо действует от имени юридического лица</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">Документ, на основании которого, лицо действует от имени юридического лица<span class="redstar">*</span></label>
                         <div class="col-sm-7">
-                            <input  v-model="urlicorecvizit.dolosnkomur" type="text"  @input="consoleinput" class="form-control" >
+                            <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.dolosnkomur" type="text"  @input="consoleinput" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора</label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора<span class="redstar">*</span></label>
                         <div class="col-sm-7">
                             <b-form-input 
                                 v-model="urlicorecvizit.fiogeneral"
                                 id="exampleInput6"
                                 type="text"
-                                 class="form-control"
+                                :required="presoptionStateFace == 1 ? true : false"
+                                class="form-control"
                                 @input="Update($event, 'vliceDirinput')"
                                 >
                             </b-form-input>
@@ -230,42 +223,42 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-1 col-form-label">ИНН</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">ИНН<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input v-model="urlicorecvizit.inn" type="text" @input="inninput" class="form-control" >
+                            <b-form-input v-model="urlicorecvizit.inn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="inninput" class="form-control" > </b-form-input>
                         </div>
-                        <label for="staticEmail" class="col-sm-1 col-form-label">КПП</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">КПП<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input v-model="urlicorecvizit.kpp" type="text"  @input="kppinput" class="form-control" >
+                            <b-form-input  v-model="urlicorecvizit.kpp" :required="presoptionStateFace == 1 ? true : false" type="text"  @input="kppinput" class="form-control" ></b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-1 col-form-label">ОГРН</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">ОГРН<span class="redstar">*</span></label>
                         <div class="col-sm-11">
-                            <input v-model="urlicorecvizit.ogrn" type="text" @input="ogrnInput" class="form-control" >
+                            <b-form-input  v-model="urlicorecvizit.ogrn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="ogrnInput" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <br>
                     <h5>Банковские реквизиты</h5>
                     <br>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-1 col-form-label">Банк</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Банк<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input  v-model="urlicorecvizit.bank" @input="bankinput" type="text" class="form-control" >
+                             <b-form-input  v-model="urlicorecvizit.bank" :required="presoptionStateFace == 1 ? true : false" @input="bankinput" type="text" class="form-control" > </b-form-input>
                         </div>
-                        <label for="staticEmail" class="col-sm-1 col-form-label">БИК</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">БИК<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input  v-model="urlicorecvizit.bik" @input="bikinput" type="text" class="form-control" >
+                             <b-form-input   v-model="urlicorecvizit.bik" :required="presoptionStateFace == 1 ? true : false" @input="bikinput" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-1 col-form-label">К/С</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">К/С<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input v-model="urlicorecvizit.ks"  @input="kschetinput" type="text" class="form-control" >
+                             <b-form-input  v-model="urlicorecvizit.ks" :required="presoptionStateFace == 1 ? true : false" @input="kschetinput" type="text" class="form-control" > </b-form-input>
                         </div>
-                        <label for="staticEmail" class="col-sm-1 col-form-label">Р/С</label>
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Р/С<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <input v-model="urlicorecvizit.rs" @input="rschetinput" type="text" class="form-control" >
+                             <b-form-input  v-model="urlicorecvizit.rs" :required="presoptionStateFace == 1 ? true : false" @input="rschetinput" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                 </div>
@@ -285,22 +278,30 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Страна</label>
                         <div class="col-sm-11">
-                            <input v-model="originaldocuments.strana" type="text" class="form-control" >
+                              <b-form-input v-model="originaldocuments.strana" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Город</label>
                         <div class="col-sm-5">
-                            <input  v-model="originaldocuments.gorod"  type="text" class="form-control" >
+                             <b-form-input   v-model="originaldocuments.gorod"  type="text" class="form-control" > </b-form-input>
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">Индекс</label>
                         <div class="col-sm-5">
-                            <input  v-model="originaldocuments.index" :maxlength="6" type="text" class="form-control" >
+                             <b-form-input  v-model="originaldocuments.index" :maxlength="6" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                 </div>
             </div>
-
+        <br><br>
+                    <div class="col-sm-12 text-left"  v-if="!this.$store.state.flagBasketContainer">
+                        <b-form-checkbox id="checkbox1"
+                            v-model="status"
+                            value="accepted"
+                            unchecked-value="not_accepted">
+                        <a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Я принимаю условия доставки</a>
+                        </b-form-checkbox>
+                    </div>
             <div class="title-block-new" v-show="presoptionStateFace == 2">
                 <div class="div-block-51 _500 w-clearfix">
                     <div class="heading-text-block _500">
@@ -334,7 +335,7 @@
                     </div>
             </div>
         </template>
-        
+
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 			<registration v-show="calcRegistrGet"></registration>
 
@@ -517,7 +518,7 @@
                     }
                     cashblockfunc()
                     arrbaskfunc()
-
+                    let randmail = this.$store.state.randomnumber + ' '
                     let htmlcont = `
                     <html>
                         <style>
@@ -531,6 +532,7 @@
                         </style>
                         <body>
                             <h4>Ваша заявка принята в работу! Наши специалисты подготовят расчет стоимости в течение 24 часов.</h4>
+                            <h6>`+this.$store.state.randomnumber+' '+`</h6>
                         </body>
                     </html>`
                       
@@ -548,7 +550,15 @@
                     <body>
                         <h2>Добрый день!</h3>
                         <b>Ваш заказ принят в работу. </b>
+                        
+                        <table  cellspacing="0" cellpadding="0" width="800" style="border-collapse: collapse;">
+                            <tr>
+                                <td style="border: none !important"><img src="http://tester123123.ucoz.ru/hosting/Screenshot_1.jpg" width="400" /></td>
+                                <td style="border: none !important"><h3 style="color: #1e457e">Номер заказа: `+this.$store.state.randomnumber+' '+`</h3></td>
+                            </tr> 
+                        </table>
 
+                        <br><br><br>
                         <table cellspacing="0" cellpadding="0" width="800" style="border-collapse: collapse;">
                             <tr>
                                 <td style="background: #1e457e; color: #fff">Отправитель<br></td>
@@ -605,6 +615,15 @@
                             <tr>
                                 <td>Подпись получателя</td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td  colspan="2" style="background: #1e457e; color: #fff">Способ оплаты<br></td>
+                                <td  colspan="2"  style="background: #1e457e; color: #fff">Стоимость доставки</td>
+
+                            </tr>
+                            <tr>
+                                <td  colspan="2">`+ (this.$store.state.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн') + `</td>
+                                <td  colspan="2">`+ this.$store.state.tarifcalc + `</td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="background: #1e457e; color: #fff">Описание вложения<br></td>
