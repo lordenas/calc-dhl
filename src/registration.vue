@@ -637,7 +637,7 @@
                     </html>`
 //<table cellspacing="0" cellpadding="0" width="800"><tr><td>Описание груза</td></tr>` + cashblocklet + `</table>
                     let basketdatab = this.$store.state.backetData[0].title
-                    console.log('MAIL', this.$store.state.backetData[0].title)
+                    //console.log('MAIL', this.$store.state.backetData[0].title)
                     this.axios({
                             method: 'POST',
                             url: 'https://api.mailhandler.ru/message/send/',
@@ -650,11 +650,32 @@
                             'from': 'lordenas@gmail.com',
                             'to': [this.email],
                             'subject': 'Заказ успешно принят в работу.',
+                            'html_body': html
+                        }
+                    }).then(response => {
+                        console.log(response)
+                    })
+                    //отправка организации
+                    this.axios({
+                            method: 'POST',
+                            url: 'https://api.mailhandler.ru/message/send/',
+                            headers: {
+                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
+                                "Accept": "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            data: {
+                            'from': 'lordenas@gmail.com',
+                            'to': ['lordenas@gmail.com'],
+                            'subject': 'Заказ успешно принят в работу.',
                             'html_body':  basketdatab == 3 ? htmlcont : html
                         }
                     }).then(response => {
                         console.log(response)
                     })
+
+
+
                 } else {
                     return false
                 }
