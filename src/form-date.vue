@@ -27,6 +27,7 @@
 											:min-date='new Date()'
 											v-model='selectedDate'
 											:theme-styles='themeStyles'
+											:disabled-dates='{ weekdays: [1, 7] }'
 											is-inline>
 										</v-date-picker>
 									</div>
