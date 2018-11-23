@@ -654,7 +654,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': [this.email],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body': html
+                            'html_body': basketdatab == 3 ? htmlcont : html
                         }
                     }).then(response => {
                         console.log(response)
