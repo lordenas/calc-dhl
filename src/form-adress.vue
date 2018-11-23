@@ -147,7 +147,7 @@
 	     //если страна отправки не Россия тогда блокируем поле страна получения, и ставим страну Россия
 	     countrydesebl () {
 	         if ( JSON.stringify(this.valuecountry) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
-	            console.log(JSON.stringify(this.valuecountry))
+	            //console.log(JSON.stringify(this.valuecountry))
 	            this.disabledcountryGet = true
 	            this.valuecountryToSet = {"country":"Россия","zone":"0"}
 				this.importmut(this.valuecountry.zone)
@@ -218,7 +218,7 @@
 	            //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
 			}
 
-	        console.log(this.options)
+	        //console.log(this.options)
 	     },
 	     dispatchAction (typeSelectValue) {
 	        if (typeSelectValue == 'CitySending') {
@@ -245,7 +245,7 @@
 	            //this.options.push({'region': cityId.cityid[i].city.split('(')[1]})
 	            //this.options.push(cityId.cityid[i].cityregion = '(' + cityId.cityid[i].city.split('(')[1])
 	        }
-	        console.log(this.optionscountry)
+	        //console.log(this.optionscountry)
          },
 
          toaxios () {
@@ -287,7 +287,7 @@
                     'html_body': '<html><body>Это тестовое письмо. </body></html>'
                 }
             }).then(response => {
-                console.log(response)
+                //console.log(response)
             })
             /*
             var sss = axios.create({

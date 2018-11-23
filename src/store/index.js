@@ -156,7 +156,7 @@ export const store = new Vuex.Store({
     mutations: {
         //колличесто дней доставки
         mapDayToShiping(state, cityobj) {
-            console.log(cityobj)
+            //console.log(cityobj)
             if(cityobj.cityOme >= cityobj.cityTwo) {
                 state.countDay = cityobj.cityOme
             } else if (cityobj.cityOme <= cityobj.cityTwo) {
@@ -193,11 +193,11 @@ export const store = new Vuex.Store({
 
                 if(state.backetData[a].title == "3") {
                     state.flagBasketContainer = true
-                    console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
-                    console.log(state.flagBasketContainer)
+                    //console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
+                    //console.log(state.flagBasketContainer)
                     break
                 } else {
-                    console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
+                    //console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
                     state.flagBasketContainer = false
                 }
                
@@ -210,11 +210,11 @@ export const store = new Vuex.Store({
 
                     if(state.backetData[a].title == "3") {
                         state.flagBasketContainer = true
-                        console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
-                        console.log(state.flagBasketContainer)
+                        //console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
+                        //console.log(state.flagBasketContainer)
                         break
                     } else {
-                        console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
+                        //console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
                         state.flagBasketContainer = false
                     }
                 
@@ -239,11 +239,11 @@ export const store = new Vuex.Store({
 
                 if(state.backetData[a].title == "3") {
                     state.flagBasketContainer = true
-                    console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
-                    console.log(state.flagBasketContainer)
+                    //console.log('TEST5', JSON.parse(JSON.stringify(state.backetData[a])))
+                    //console.log(state.flagBasketContainer)
                     break
                 } else {
-                    console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
+                    //console.log('TEST6', JSON.parse(JSON.stringify(state.backetData[a])))
                     state.flagBasketContainer = false
                 }
 
@@ -496,7 +496,7 @@ export const store = new Vuex.Store({
 
 
 
-                    console.log('ОБЪЁМНЫЙ ВЕС', mass)
+                    //console.log('ОБЪЁМНЫЙ ВЕС', mass)
                     //если элемент прайса равен элементу корзины
                     if (parseFloat(express.pricelistdata[i].kg) == parseFloat(mass)) {
                         //console.log('кг прайс', parseFloat(express.pricelistdata[i].kg), 'кг корзина', parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))))

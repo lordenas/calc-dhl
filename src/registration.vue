@@ -82,7 +82,7 @@
                                 id="exampleInput4"
                                 type="text"
                                 v-model="addressotprhis"
-                                placeholder="Улица, дом"
+                                placeholder="Улица, дом, кв/офис"
                                 required
                                 @input="Update($event, 'addressotprhis')"
                                 >
@@ -126,7 +126,7 @@
                                 id="exampleInput5"
                                 type="text"
                                 v-model="addresspoluch"
-                                placeholder="Улица, дом"
+                                placeholder="Улица, дом, кв/офис"
                                 @input="Update($event, 'addresspoluch')"
                                 required
                                 >
@@ -487,7 +487,7 @@
                         let hrupkoe = item.hrupkoe ? 'Хрупкое' : ''
                         let parametr = item.parametr
                         let price = item.price + 'р. '
-                        let comments = item.comments ? item.comments : ''
+                        let comments = item.comments ? '<br>'+item.comments : ''
                         console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
                         return '<tr><td colspan="4">' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>'
                     })
@@ -548,37 +548,38 @@
                         }
                     </style>
                     <body>
-                        <h2>Добрый день!</h3>
-                        <b>Ваш заказ принят в работу. </b>
+                        <h2 style="font-size: 16px">Добрый день!</h3>
+                        
+                        <p><span style="font-size: 16px">Ваш заказ принят в работу. </span></p>
                         
                         <table  cellspacing="0" cellpadding="0" width="800" style="border-collapse: collapse;">
                             <tr>
-                                <td style="border: none !important"><img src="http://tester123123.ucoz.ru/hosting/Screenshot_1.jpg" width="400" /></td>
-                                <td style="border: none !important"><h3 style="color: #1e457e">Номер заказа: `+this.$store.state.randomnumber+' '+`</h3></td>
+                                <td style="border: none !important; text-align: left;"  width="500" ><img src="http://tester123123.ucoz.ru/hosting/Screenshot_1.jpg" width="500" /></td>
+                                <td style="border: none !important; text-align: right;"><h3 style="color: #1e457e">Накладная:<br> № `+this.$store.state.randomnumber+' '+`</h3></td>
                             </tr> 
                         </table>
 
-                        <br><br><br>
+                        <br>
                         <table cellspacing="0" cellpadding="0" width="800" style="border-collapse: collapse;">
                             <tr>
                                 <td style="background: #1e457e; color: #fff">Отправитель<br></td>
                                 <td rowspan="2">` + this.telephone + `<br></td>
-                                <td rowspan="2">Дата отправки<br></td>
+                                <td rowspan="2"  style="color: #1e457e">Дата отправки<br></td>
                                 <td rowspan="2">` + today + `</td>
                             </tr>
                             <tr>
                                 <td>` + this.fio + `<br></td>
                             </tr>
                             <tr>
-                                <td colspan="2">Организация: ` + this.orgotpravit + `<br></td>
-                                <td rowspan="2">Предварительная дата доставки<br></td>
+                                <td colspan="2">` + (this.orgotpravit.length > 0 ? 'Организация: ' + this.orgotpravit : '') + `<br></td>
+                                <td rowspan="2"  style="color: #1e457e">Предварительная дата<br> доставки<br></td>
                                 <td rowspan="2">` + todayLast + `</td>
                             </tr>
                             <tr>
                                 <td colspan="2"> ` + ( this.$store.state.citySetText.length > 0 ? this.$store.state.citySetText : this.$store.state.citynoRusSendStore) + ', '+ this.addressotprhis + ', '+ this.$store.state.indexSet+`<br></td>
                             </tr>
                             <tr>
-                                <td rowspan="2">Подпись отпраителя<br></td>
+                                <td rowspan="2"  style="color: #1e457e">Подпись<br> отпраителя<br></td>
                                 <td rowspan="2"></td>
                                 <td colspan="2" style="background: #1e457e; color: #fff">Прием отправления<br></td>
                             </tr>
@@ -597,7 +598,7 @@
                                 <td colspan="2"  style="background: #1e457e; color: #fff">Данные получателя<br></td>
                             </tr>
                             <tr>
-                                <td colspan="2">Организация: ` + this.nazorg + `<br></td>
+                                <td colspan="2">` + (this.nazorg.length > 0 ? 'Организация: ' + this.nazorg : '') +`<br></td>
                                 <td>ФИО</td>
                                 <td></td>
                             </tr>
@@ -613,7 +614,7 @@
                                 
                             </tr>
                             <tr>
-                                <td>Подпись получателя</td>
+                                <td  style="color: #1e457e">Подпись <br>получателя</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -623,7 +624,7 @@
                             </tr>
                             <tr>
                                 <td  colspan="2">`+ (this.$store.state.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн') + `</td>
-                                <td  colspan="2">`+ this.$store.state.tarifcalc + `</td>
+                                <td  colspan="2">`+ this.$store.state.tarifcalc + ` руб. </td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="background: #1e457e; color: #fff">Описание вложения<br></td>
@@ -632,7 +633,7 @@
                         </table>
                         <br><br>
                         `+ deistvklientlet +`
-                        <br><br><a href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Условия доставки</a>
+                        <br><a href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Ознакомиться с условиями доставки</a>
                     </body>
                     </html>`
 //<table cellspacing="0" cellpadding="0" width="800"><tr><td>Описание груза</td></tr>` + cashblocklet + `</table>

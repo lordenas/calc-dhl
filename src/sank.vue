@@ -39,7 +39,7 @@
                     <div  v-if="presoptionStateFace == 1 &&  this.$store.state.checkedclietn == 1" class="col-sm-10 text-left">
                         <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать договор</div>
                     </div>
-
+                    
                     <div  v-if="presoptionStateFace == 2  ||  this.$store.state.checkedclietn == 2" class="col-sm-10 text-left">
                         <div @click="downloadPDF(presoptionStateFace)" class="pointer">Скачать накладную</div>
                     </div>

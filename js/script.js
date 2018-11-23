@@ -829,23 +829,24 @@ export var docInfo = {
 
 
 export function varperemFiz (obj) {
-	today = obj.random
+	//today = obj.random
 	console.log('PDF', obj, docInfo.content.length)
 	
 
 	 
 
+	docInfoFiz.content[1].columns[2].text = 'Накладная \n №'+obj.random,
 	docInfoFiz.content[2].table.body[0][1].text = '\n' + obj.telephone
 	docInfoFiz.content[2].table.body[0][3].text = '\n' + obj.today
 	docInfoFiz.content[2].table.body[1][0].text = obj.zakazchik
 	docInfoFiz.content[2].table.body[2][0].text = obj.orgotpravit || ' '
 	docInfoFiz.content[2].table.body[2][3].text = '\n' + obj.todayLast
 	docInfoFiz.content[2].table.body[1][1].text = obj.zakazchik
-	docInfoFiz.content[2].table.body[3][0].text = obj.citySetText + ', ' + obj.addressotprhis + ', ' + obj.indexSet
+	docInfoFiz.content[2].table.body[3][0].text = obj.citySetText + ', ' + obj.addressotprhis + ' ' + obj.indexSet
 	docInfoFiz.content[2].table.body[6][1].text = '\n' + obj.telpoluchinput
 	docInfoFiz.content[2].table.body[7][0].text = obj.fiopoluch
 	docInfoFiz.content[2].table.body[8][0].text = obj.nazorg || ' '
-	docInfoFiz.content[2].table.body[9][0].text = obj.cityGetText + ', '+ obj.addresspoluch + ', ' + obj.indexGet
+	docInfoFiz.content[2].table.body[9][0].text = obj.cityGetText + ', '+ obj.addresspoluch + ' ' + obj.indexGet
 	docInfoFiz.content[2].table.body[10][2].text = obj.commentszakaz
 	docInfoFiz.content[2].table.body[13][0].text = obj.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн'
 	docInfoFiz.content[2].table.body[13][2].text = obj.price+' руб.'
@@ -1140,7 +1141,7 @@ export var docInfoFiz = {
 					-	груз запрещен или ограничен в обороте на территории Российской Федерации и иных государств, по территории которых будет осуществлена перевозка груза. Не принимаются к перевозке: животные, в том числе млекопитающих, рептилий, пауков, рыб и птац; золото и серебро в слитках, наличные деньги: банкноты и монеты; драгоценные камни, ювелирные изделия из драгоценных/полудрагоценных металлов и камней; огнестрельное и холодное оружие, взрывчатые вещества и боеприпасы; человеческие останки, прах; запрещенные вложения, включая слоновую кость, пиратские копии соответствующих товаров, наркотики, а также курительные смеси; электронные сигареты и их составные части, скоропортящиеся грузы, в том числе продукты питания и напитки; грузы, относящиеся к категории опасных веществ или грузов, а также в случае, если в их отношении действуют запреты или ограничения, предусмотренные международными организациями; грузы, которые содержат иные вложения, в отношении которых, по мнению Исполнителя, не может быть обеспечена безопасность или законность перевозки.
 					ость содержимого, в случае отсутствия повреждения упаковки.
 					`,
-					fontSize:6.5,
+					fontSize:6.2,
 					bold:false,
 				},
 				{
@@ -1162,7 +1163,7 @@ export var docInfoFiz = {
 					Исполнитель несет ответственность за утрату и/или порчу груза в размере объявленной ценности. Объявленная ценность груза не может превышать 3000 руб.
 					Исполнитель принимает и сдает грузы по количеству мест без пересчета/сверки внутреннего содержимого. Исполнитель не несет ответственность за сохранность содержимого, в случае отсутствия повреждений упаковки.
 					`,
-					fontSize:6.5,
+					fontSize:6.2,
 					bold:false,
 				}
 			],
