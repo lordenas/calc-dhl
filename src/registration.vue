@@ -534,7 +534,8 @@
                         </style>
                         <body>
                             <h4>Ваша заявка принята в работу! Наши специалисты подготовят расчет стоимости в течение 24 часов.</h4>
-                            <h6>`+this.$store.state.randomnumber+' '+`</h6>
+                            <p><span style="font-size: 16px">`+this.$store.state.randomnumber+' '+`<</span></p>
+
                         </body>
                     </html>`
                       
