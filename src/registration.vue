@@ -339,8 +339,10 @@
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 			<registration v-show="calcRegistrGet"></registration>
 
+            <template v-if="!this.$store.state.flagBasketContainer">
                  <b-button @click="toaxios" :disabled="this.status != 'accepted'" v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
-
+            </template>
+                <b-button @click="toaxios" :disabled="!this.$store.state.flagBasketContainer" v-show="this.$store.state.flagBasketContainer" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
 		</div>
        
         </b-form>
@@ -488,8 +490,8 @@
                         let parametr = item.parametr
                         let price = item.price + 'р. '
                         let comments = item.comments ? '<br>'+item.comments : ''
-                        console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
-                        return '<tr><td colspan="4">' + title +'  '+ gabarit + ' ' + parametr + ' '+ price + ' '+ hrupkoe + ' ' + comments +'</td></tr>'
+                        console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
+                        return '<tr><td colspan="4">' + title +'  '+ gabarit + ' ' + parametr + ' '+ hrupkoe + ' ' + comments +'</td></tr>'
                     })
 
                     let cashblocklet = ''
@@ -576,7 +578,7 @@
                                 <td rowspan="2">` + todayLast + `</td>
                             </tr>
                             <tr>
-                                <td colspan="2"> ` + ( this.$store.state.citySetText.length > 0 ? this.$store.state.citySetText : this.$store.state.citynoRusSendStore) + ', '+ this.addressotprhis + ', '+ this.$store.state.indexSet+`<br></td>
+                                <td colspan="2"> ` + ( this.$store.state.citySetText.length > 0 ? this.$store.state.citySetText : this.$store.state.citynoRusSendStore) + ', '+ this.addressotprhis + ' '+ this.$store.state.indexSet+`<br></td>
                             </tr>
                             <tr>
                                 <td rowspan="2"  style="color: #1e457e">Подпись<br> отпраителя<br></td>
@@ -588,7 +590,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td style="background: #1e457e; color: #fff">получатель</td>
+                                <td style="background: #1e457e; color: #fff">Получатель</td>
                                 <td rowspan="2"> ` + this.telpoluch + `<br></td>
                                 <td>Дата, время приёма<br></td>
                                 <td></td>
@@ -603,7 +605,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="2">` + ( this.$store.state.cityGetText.length  > 0 ? this.$store.state.cityGetText : this.$store.state.citynoRusStore) + ', ' + this.addresspoluch +', '+ this.$store.state.indexGet+`</td>
+                                <td colspan="2">` + ( this.$store.state.cityGetText.length  > 0 ? this.$store.state.cityGetText : this.$store.state.citynoRusStore) + ', ' + this.addresspoluch +' '+ this.$store.state.indexGet+`</td>
                                 <td>Должность</td>
                                 <td></td>
                             </tr>
@@ -623,7 +625,7 @@
 
                             </tr>
                             <tr>
-                                <td  colspan="2">`+ (this.$store.state.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн') + `</td>
+                                <td  colspan="2">`+ (this.presoptionStateBay == 1 ? 'Наличными курьеру' : 'Картой онлайн') + `</td>
                                 <td  colspan="2">`+ this.$store.state.tarifcalc + ` руб. </td>
                             </tr>
                             <tr>
