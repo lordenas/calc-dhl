@@ -672,7 +672,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': ['lordenas@gmail.com'],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body':  basketdatab == 3 ? htmlcont : html
+                            'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlico: html + cash + cashurlico
                         }
                     }).then(response => {
                         console.log(response)
