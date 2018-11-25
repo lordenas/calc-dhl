@@ -1,5 +1,5 @@
-export var zakazchik = '____________________________'
-export var vlice = '____________________________'
+var zakazchik = '____________________________'
+ var vlice = '____________________________'
 let newdata =  new Date()
 let ear = newdata.getUTCFullYear()+''
 ear = ear.split('')

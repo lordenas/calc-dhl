@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-        <!-- <input type="button" value="mail" @click="toaxios"> -->
+       
 		<div class="title-block-new">
 			<div class="div-block-51 _500 w-clearfix">
 				<div class="heading-text-block _500">
@@ -20,7 +20,18 @@
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Страна<span class="redstar">*</span></label>
 						<div class="col-sm-10">
-							<multiselect :disabled="disabledcountrySet" v-model="valuecountry" selectLabel=" " :hideSelected="false" noResult="Ничего не найдено" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="countrydesebl">
+							<multiselect 
+							:disabled="disabledcountrySet" 
+							v-model="valuecountry" 
+							selectLabel=" " 
+							:hideSelected="false" 
+							noResult="Ничего не найдено" 
+							label="country" 
+							placeholder="Страна" 
+							:options="optionscountry" 
+							:searchable="true" 
+							:allow-empty="false" 
+							@input="countrydesebl">
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
 							</multiselect>
 						</div>
@@ -66,7 +77,19 @@
 					<div class="form-group row">
 						<label for="staticEmail" class="col-sm-2 col-form-label">Страна<span class="redstar">*</span></label>
 						<div class="col-sm-10">
-							<multiselect :disabled="disabledcountryGet"  v-model="valuecountryToSet" selectLabel=" " noResult="Ничего не найдено" :hideSelected="false" label="country" placeholder="Страна" :options="optionscountry" :searchable="true" :allow-empty="false" @input="selectCountry">
+							<multiselect 
+							:disabled="disabledcountryGet"  
+							v-model="valuecountryToSet" 
+							selectLabel=" " 
+							noResult="Ничего не найдено" 
+							:hideSelected="false" 
+							label="country" 
+							placeholder="Страна" 
+							:options="optionscountry" 
+							:searchable="true" 
+							:allow-empty="false" 
+							@input="selectCountry"
+							>
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
 								<span slot="noResult">Ничего не найдено.</span>
 							</multiselect>
@@ -134,11 +157,11 @@
 	      this.randomInteger()
 	  },
 	  computed: {
-	    indextel() {
-	        //console.log( this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
-	        this.index = this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
-	        this.controlvalid ()
-	    },
+	    //indextel() {
+	    //    //console.log( this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, ''))
+	    //    this.index = this.index.replace(',','.').replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g, '');
+	    //    this.controlvalid ()
+	    //},
 	  },
 	  methods: {
 	    ...mapMutations([
@@ -146,7 +169,14 @@
 	     ]),
 	     //если страна отправки не Россия тогда блокируем поле страна получения, и ставим страну Россия
 	     countrydesebl () {
-	         if ( JSON.stringify(this.valuecountry) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
+			 this.citynoRusSend = ''
+			 this.citynoRus = ''
+			this.$store.state.citynoRusSendStore = ''
+			this.$store.state.citynoRusStore = ''
+			this.$store.state.citySetText = ''
+			this.$store.state.countrySetText = this.valuecountry.country
+			
+	    	if ( JSON.stringify(this.valuecountry) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
 	            //console.log(JSON.stringify(this.valuecountry))
 	            this.disabledcountryGet = true
 	            this.valuecountryToSet = {"country":"Россия","zone":"0"}
@@ -154,23 +184,27 @@
 				this.$store.state.countrySetText = this.valuecountry.country
 	            //this.importcalc(this.valuecountry.zone)
 	         } else {
-	              this.disabledcountryGet = false
+				  this.disabledcountryGet = false
+				  
 	         } 
 	     },
 	
 	     selectCountry () {
-	        //console.log('TEST TEST TEST', JSON.parse(JSON.stringify(this.valuecountryToSet.zone)))
-	
-	        //console.log('sdfdff', JSON.stringify(this.valuecountryToSet))
+			this.citynoRusSend = ''
+			 this.citynoRus = ''
+			this.$store.state.citynoRusSendStore = ''
+			this.$store.state.citynoRusStore = ''
+			this.$store.state.cityGetText  = ''
 	         //проверкаа на страну
 	         if ( JSON.stringify(this.valuecountryToSet) !=  JSON.stringify({"country":"Россия","zone":"0"})) {
 	            this.disabledcountrySet = true
 	            this.valuecountry = {"country":"Россия","zone":"0"}
 				this.importmut(this.valuecountryToSet.zone)
-				this.$store.state.countrySetText = this.valuecountryToSet.country
+				this.$store.state.countryGetText = this.valuecountryToSet.country
 	            //this.importcalc(this.valuecountryToSet.zone)
 	         } else {
-	            this.disabledcountrySet = false
+				this.disabledcountrySet = false
+				this.$store.state.countryGetText = this.valuecountryToSet.country
 	         }
 	
 		 },
@@ -179,10 +213,10 @@
 			 this.$store.state.citynoRusSendStore = this.citynoRusSend
 			 this.$store.state.citynoRusStore = this.citynoRus
 			 //форма валидна или нет
-			 console.log('ВАЛИДАЦИЯ',this.options.tarifid)
+			 //console.log('ВАЛИДАЦИЯ',this.options.tarifid)
 	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0 ) {
 	            this.validateOneMut(true)
-	         } else { 
+	         } else {
 	             this.validateOneMut(false)
 	         }
 	     },
@@ -193,17 +227,10 @@
 			 //форма валидна или нет
 	         if ((this.valuecountry || this.value.tarifid > 0 ) && (this.valuetoSet.tarifid || this.citynoRus.length > 0) > 0  ) {
 	            this.validateOneMut(true)
-	         } else { 
+	         } else {
 	             this.validateOneMut(false)
 	         }
 	     },
-	     disabledinput () {
-	          if (this.valuecountry ==  {"country": "Россия" }) {
-	              return false
-	          } else {
-	              return true
-	          }
-	    },
 	     cicl() {
 	          for (var i=0; i<cityId.cityid.length; i++) {
 	            this.options.push({
@@ -221,6 +248,7 @@
 	        //console.log(this.options)
 	     },
 	     dispatchAction (typeSelectValue) {
+
 	        if (typeSelectValue == 'CitySending') {
 				this.toCitysending(this.value.tarifid)
 				this.$store.state.citySetText = this.value.city
@@ -248,64 +276,6 @@
 	        //console.log(this.optionscountry)
          },
 
-         toaxios () {
-             /*
-             console.log('sfsf')
-             axios.post('http://api.mailhandler.ru/message/send/', {
-                headers: {
-                'X-Secure-Token': 'cff7fac0-37de-48ea-abb4-d30d3d29f803',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
-                data: {
-                    'from': 'lordenas@gmail.com',
-                    'to': ['lordenas@gmail.com'],
-                    'subject': 'Hello world!',
-                    'html_body': '<html><body>Hello dear user.</body></html>'
-                }
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    */				
-				
-            this.axios({
-					method: 'POST',
-					url: 'http://api.mailhandler.ru/message/send/',
-					headers: {
-                        "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
-                        "Accept": "application/json",
-                        "Content-Type": "application/json",
-					},
-                    data: {
-                    'from': 'lordenas@gmail.com',
-                    'to': ['lordenas@gmail.com'],
-                    'subject': 'ТЕстовое письмо апи',
-                    'html_body': '<html><body>Это тестовое письмо. </body></html>'
-                }
-            }).then(response => {
-                //console.log(response)
-            })
-            /*
-            var sss = axios.create({
-                baseURL: 'http://api.mailhandler.ru/message/send/',
-                headers: {
-                    'X-Secure-Token': 'cff7fac0-37de-48ea-abb4-d30d3d29f803',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: {
-                    'from': 'lordenas@gmail.com',
-                    'to': ['lordenas@gmail.com'],
-                    'subject': 'Hello world!',
-                    'html_body': '<html><body>Hello dear user.</body></html>'
-                }
-            });
-            sss()*/
-        }
 	  },
 	  components: {
 	      Multiselect 

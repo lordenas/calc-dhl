@@ -128,7 +128,7 @@
 	    },
 	    computed: {
 	        ...mapGetters([
-	            'dateStatePosition', 'dateCalenStatePosition'
+	            'dateStatePosition'
 	        ])
 	    },
 	    methods: {

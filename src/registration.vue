@@ -225,17 +225,17 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ИНН<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <b-form-input v-model="urlicorecvizit.inn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="inninput" class="form-control" > </b-form-input>
+                            <b-form-input v-model="urlicorecvizit.inn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="inninput($event)" class="form-control" > </b-form-input>
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">КПП<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                            <b-form-input  v-model="urlicorecvizit.kpp" :required="presoptionStateFace == 1 ? true : false" type="text"  @input="kppinput" class="form-control" ></b-form-input>
+                            <b-form-input  v-model="urlicorecvizit.kpp" :required="presoptionStateFace == 1 ? true : false" type="text"  @input="kppinput($event)" class="form-control" ></b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ОГРН<span class="redstar">*</span></label>
                         <div class="col-sm-11">
-                            <b-form-input  v-model="urlicorecvizit.ogrn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="ogrnInput" class="form-control" > </b-form-input>
+                            <b-form-input  v-model="urlicorecvizit.ogrn" :required="presoptionStateFace == 1 ? true : false" type="text" @input="ogrnInput($event)" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <br>
@@ -244,21 +244,21 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">Банк<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                             <b-form-input  v-model="urlicorecvizit.bank" :required="presoptionStateFace == 1 ? true : false" @input="bankinput" type="text" class="form-control" > </b-form-input>
+                             <b-form-input  v-model="urlicorecvizit.bank" :required="presoptionStateFace == 1 ? true : false" @input="bankinput($event)" type="text" class="form-control" > </b-form-input>
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">БИК<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                             <b-form-input   v-model="urlicorecvizit.bik" :required="presoptionStateFace == 1 ? true : false" @input="bikinput" type="text" class="form-control" > </b-form-input>
+                             <b-form-input   v-model="urlicorecvizit.bik" :required="presoptionStateFace == 1 ? true : false" @input="bikinput($event)" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">К/С<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                             <b-form-input  v-model="urlicorecvizit.ks" :required="presoptionStateFace == 1 ? true : false" @input="kschetinput" type="text" class="form-control" > </b-form-input>
+                             <b-form-input  v-model="urlicorecvizit.ks" :required="presoptionStateFace == 1 ? true : false" @input="kschetinput($event)" type="text" class="form-control" > </b-form-input>
                         </div>
                         <label for="staticEmail" class="col-sm-1 col-form-label">Р/С<span class="redstar">*</span></label>
                         <div class="col-sm-5">
-                             <b-form-input  v-model="urlicorecvizit.rs" :required="presoptionStateFace == 1 ? true : false" @input="rschetinput" type="text" class="form-control" > </b-form-input>
+                             <b-form-input  v-model="urlicorecvizit.rs" :required="presoptionStateFace == 1 ? true : false" @input="rschetinput($event)" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                 </div>
@@ -337,7 +337,7 @@
         </template>
 
 		<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
-			<registration v-show="calcRegistrGet"></registration>
+			
 
             <template v-if="!this.$store.state.flagBasketContainer">
                  <b-button @click="toaxios" :disabled="this.status != 'accepted'" v-show="calcRegistrGet" type="submit" class="typepost-but-succes button-next" variant="primary">{{ this.presoptionStateBay == 1 ? 'Отправить' : 'Отправить и оплатить'}}</b-button>
@@ -410,7 +410,7 @@
                 'presoptionFace', 'presoptionBay', 
             ]),
             updatevaluecheck(evt) {
-                //console.log('клиент', evt.target.value)
+                console.log('клиент', evt.target.value)
                 this.$store.state.checkedclietn = evt.target.value
             },
             toaxios() {
@@ -490,7 +490,7 @@
                         let parametr = item.parametr
                         let price = item.price + 'р. '
                         let comments = item.comments ? '<br>'+item.comments : ''
-                        console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
+                        //console.log('bask', '<tr><td>' + title +'  '+ gabarit + ' ' + parametr + ' '+ hrupkoe + ' ' + comments +'</td></tr>', this.$store.state.backetData)
                         return '<tr><td colspan="4">' + title +'  '+ gabarit + ' ' + parametr + ' '+ hrupkoe + ' ' + comments +'</td></tr>'
                     })
 
@@ -672,7 +672,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': ['lordenas@gmail.com'],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlico: html + cash + cashurlico
+                            'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlicoContainder: html + cash + cashurlicoContainder
                         }
                     }).then(response => {
                         console.log(response)
@@ -685,7 +685,7 @@
                 }
             },
             consoleinput (evt) {
-                this.$store.state.documentUrlico = evt.target.value
+                this.$store.state.documentUrlico = evt
                 this.$store.state.mailPoshta =  this.email
                 //console.log(evt.target.value, '-', this.$store.state.documentUrlico)
             },
@@ -693,36 +693,36 @@
                 //console.log(ind)
                 //console.log(evt)
                 this.$store.state.inputClintInfo[item] = evt
-                console.log(this.$store.state.inputClintInfo[item])
+                //console.log(this.$store.state.inputClintInfo[item])
                 let validMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
                 this.validemeil = validMail.test(this.email)
             },
             ogrnInput(evt) {
-                this.$store.state.ogrn =  evt.target.value
+                this.$store.state.ogrn =  evt
                 this.$store.state.mailPoshta =  this.email
             },
 
             zakazchikinput(evt) {
-                this.$store.state.zakazchik =  evt.target.value
+                this.$store.state.zakazchik =  evt
             },
             kppinput(evt) {
-                this.$store.state.kpp =  evt.target.value
+                this.$store.state.kpp =  evt
             },
             inninput(evt) {
-                this.$store.state.inn =  evt.target.value
+                this.$store.state.inn =  evt
             },
             rschetinput(evt) {
-                this.$store.state.rschet =  evt.target.value
+                this.$store.state.rschet =  evt
             },   
             kschetinput(evt) {
-                this.$store.state.kschet =  evt.target.value
+                this.$store.state.kschet =  evt
                 this.$store.state.mailPoshta =  this.email
             },
             bankinput(evt) {
-                this.$store.state.bank =  evt.target.value
+                this.$store.state.bank =  evt
             },
             bikinput(evt) {
-                this.$store.state.bik =  evt.target.value
+                this.$store.state.bik =  evt
             },
 
             

@@ -136,9 +136,9 @@ export const store = new Vuex.Store({
         dateStatePosition(state) {
             return state.curentTime; // переключатель времени 
         },
-        dateCalenStatePosition(state) {
-            return state.selectedDate.getUTCFullYear() + ' - ' + state.selectedDate.getUTCFullYear(); // выбор даты 
-        },
+        //dateCalenStatePosition(state) {
+        //    return state.selectedDate.getUTCFullYear() + ' - ' + state.selectedDate.getUTCFullYear(); // выбор даты 
+        //},
         tarifcalcState(state) {
             return state.tarifcalc
         },
@@ -393,7 +393,7 @@ export const store = new Vuex.Store({
         calendarState(state, param) {
             state.selectedDate = (param.getDate() < 10 ? '0' : '') + param.getDate() + '.' + ((param.getMonth() + 1) < 10 ? '0' : '') + (param.getMonth() + 1) + '.' + param.getUTCFullYear()
             state.datestateregular = param
-            console.log(param, state.datestateregular)
+            //console.log(param, state.datestateregular)
             //console.log(state.selectedDate, param.getUTCFullYear())
         },
 
@@ -443,12 +443,12 @@ export const store = new Vuex.Store({
         selecttarif(state) {
             let express = state.express == 1 ? pricelist : srochtarig
             //console.log('прайсссс', express.pricelistdata)
-            let parseWeight = parseFloat(state.backetData[0].parametr)
+            
             var summ = 0
             //console.log('basket', JSON.parse(JSON.stringify(state.backetData)))
             //колличество товаров в корзине
             for (var a = 0; a < state.backetData.length; a++) {
-                console.log('TESTTTT', state.backetData[a].price)
+                //console.log('TESTTTT', state.backetData[a].price)
                 if(state.backetData[a].price == 'Расчет в течении 24 часов') {
                     state.finalCalchide = true
                     state.tarifcalc = 'Расчет в течении 24 часов'

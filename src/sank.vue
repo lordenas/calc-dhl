@@ -53,7 +53,7 @@
     import {mapMutations} from 'vuex';
     import {mapGetters} from 'vuex';
 	import VueMask from 'v-mask'
-    import { varperem, docInfo, docInfoFiz, varperemFiz, zakazchik } from '../js/script'
+    import { varperem, docInfo, docInfoFiz, varperemFiz } from '../js/script'
     export default {
         name: 'app',
         data () {
