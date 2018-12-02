@@ -49,7 +49,11 @@ export default {
 		  },
 		  registrStateShow (state) {
 			  state.calcRegistr = ! state.calcRegistr
-		  }
+			},
+			
+			registrStateShowFalse(state) {
+				state.calcRegistr = false
+			}
 	},
 	actions: {
 		

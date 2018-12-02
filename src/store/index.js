@@ -50,8 +50,8 @@ export const store = new Vuex.Store({
         calcEdTarif: 0, //стоимость одной позиции товара
         citySetText: '', //город отправитель текст
         cityGetText: '', //город получатель текст
-        countrySetText: 'России', //страна отправитель текст
-        countryGetText: 'Россию', //страна получатель текст
+        countrySetText: 'Россия', //страна отправитель текст
+        countryGetText: 'Россия', //страна получатель текст
         indexSet: '', //индекс отправитель
         indexGet: '', //индекс получатель
         flagConteiner: false, //флаг если выбрали контейнер
@@ -522,6 +522,9 @@ export const store = new Vuex.Store({
             }
             }
         },
+        restartcalc() {
+            
+        }
     },
     actions: {
 

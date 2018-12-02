@@ -104,6 +104,7 @@
 
                     varperemFiz({
                         //adrress: this.$store.state.inputClintInfo.addressotprhis,
+                        presoptionStateFace: this.presoptionStateFace,
                         zakazchik: this.$store.state.inputClintInfo.vliceinput,
                         addressotprhis: this.$store.state.inputClintInfo.addressotprhis,
                         orgotpravit: this.$store.state.inputClintInfo.orgotpravit,

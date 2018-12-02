@@ -626,7 +626,7 @@
 
                             </tr>
                             <tr>
-                                <td  colspan="2">`+ (this.presoptionStateBay == 1 ? 'Наличными курьеру' : 'Картой онлайн') + `</td>
+                                <td  colspan="2">`+ (this.presoptionStateFace == 1 ? 'По договору' : (this.presoptionStateBay == 1 ? 'Наличными курьеру' : 'Картой онлайн')) + `</td>
                                 <td  colspan="2">`+ this.$store.state.tarifcalc + ` руб. </td>
                             </tr>
                             <tr>

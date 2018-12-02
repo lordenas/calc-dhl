@@ -3,7 +3,7 @@
 <template>
 	<div>
        
-		<div class="title-block-new">
+		<div  class="title-block-new">
 			<div class="div-block-51 _500 w-clearfix">
 				<div class="heading-text-block _500">
 					<div class="div-line"></div>
@@ -30,7 +30,8 @@
 							placeholder="Страна" 
 							:options="optionscountry" 
 							:searchable="true" 
-							:allow-empty="false" 
+							:allow-empty="false"
+							deselectLabel="Уже выбран"
 							@input="countrydesebl">
 								<template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.country }}</strong></template>
 							</multiselect>
@@ -44,7 +45,7 @@
                                     <input class="form-control" v-model="citynoRusSend" @input="controlvalidOne" type="text" placeholder="Город">
                             </template>
                             <template  v-if="!disabledcountryGet">
-                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
+                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" deselectLabel="Уже выбран" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                                     <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
@@ -83,7 +84,8 @@
 							selectLabel=" " 
 							noResult="Ничего не найдено" 
 							:hideSelected="false" 
-							label="country" 
+							label="country"
+							deselectLabel="Уже выбран"
 							placeholder="Страна" 
 							:options="optionscountry" 
 							:searchable="true" 
@@ -104,7 +106,7 @@
                                     <input class="form-control"  @input="controlvalidOne" v-model="citynoRus" type="text" placeholder="Город">
                             </template>
                              <template v-if="valuecountryToSet.country == 'Россия' ? true : false">
-                                <multiselect  v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
+                                <multiselect  deselectLabel="Уже выбран" v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
                                     <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
@@ -285,11 +287,44 @@
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 	.multiselect__option--highlight {
-	background: #e9f0f8 !important;
-	color: #000 !important;
+		background: #e9f0f8 !important;
+		color: #000 !important;
 	}
 	.toset .col-form-label {
-	text-align: center;
+		text-align: center;
 	}
+	.multiselect__option--selected.multiselect__option--highlight {
+		background: #41b883 !important;
+		outline: none;
+		color: #fff;
+	}
+
+	.multiselect__option--highlight:hover {
+		background: #41b883 !important;
+		color: #fff;
+	}
+
+	.multiselect__element {
+		background: #41b883 !important;
+	}
+
+	.multiselect__option--selected.multiselect__option--highlight {
+		background: #41b883 !important;
+		color: #fff;
+	}
+	.multiselect__option--selected.multiselect__option--highlight:after {
+		background: #41b883 !important;
+		color: #fff;
+	}
+
+	.multiselect__option--selected.multiselect__option--highlight {
+		background: #41b883 !important;
+		color: #fff;
+	}
+	.multiselect__option--selected.multiselect__option--highlight{background:#41b883 !important;color:#fff}
+	.multiselect__option--selected.multiselect__option--highlight{background:#41b883 !important;color:#fff}
+	.multiselect__option--selected.multiselect__option--highlight:after{background:#41b883 !important;content:attr(data-deselect);color:#fff}
+	.multiselect__option--group-selected.multiselect__option--highlight{background:#c6cac8 !important;color:#fff}
+.multiselect__option--group-selected.multiselect__option--highlight:after{background:#41b883 !important;content:attr(data-deselect);color:#fff}
 </style>
 

@@ -188,7 +188,7 @@
 	            if (this.presoptionState == 1) {
 	                let gabarit = {gabarit: null, weightel: this.weightel, comment: this.commentsgruz, hrupkoe: false}
 					//console.log('test',  this.weightel, (this.weightel < 0.5 || this.weightel > 50))
-	                if((this.weightel < 0.5 || this.weightel > 50)) {
+	                if((this.weightel < this.$store.state.minweight || this.weightel > 50)) {
 	                    return false 
 	                } else {
 						this.backetDataArr(gabarit); 
@@ -199,7 +199,7 @@
 	            } else if (this.presoptionState == 2) {
 	                let gabarit = {gabarit: this.height + 'x' + this.width + 'x' + this.depth + ' см', weightel: this.weightel,  comment: this.commentsgruz,  hrupkoe: this.hrupkoe}
 	
-	                this.weightel < 0.5 || !this.flagGabatir
+	                this.weightel < this.$store.state.minweight || !this.flagGabatir
 	                ? false
 	                : this.backetDataArr(gabarit); 
 	            } else if (this.presoptionState == 3) {

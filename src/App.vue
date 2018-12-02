@@ -56,8 +56,11 @@
 		<div id="app">
 			<transition name="fade">
 				<div  v-show="!stepOneflag" class="stepOne">
-					<form-adress></form-adress>
+					
+					<form-adress v-show="!this.$store.state.backetData.length > 0"></form-adress>
+
 					<form-date></form-date>
+
 					<div id="div2"></div>
 					<a href="#div2" v-smooth-scroll>
 					<input class="typepost-but-succes button-next" :disabled="!validate" v-show="!steponeEx" @click="nextstepX" value="Далее">
@@ -116,11 +119,20 @@
 					<transition name="fade" v-if="this.$store.state.curentvalue != 3 && this.$store.state.backetData.length > 0">
 						<Finalcalc v-show="finalCalchideState"></Finalcalc>
 					</transition>
-					<div @click="registrStateShow" v-if="finalCalchideState || (this.$store.state.curentvalue == 3 && this.$store.state.backetData.length > 0)">
-						<a href="#div-registr" v-smooth-scroll >
-							<div style="width: 95%" class="typepost-but-succes button-next" >Перейти к оформлению</div>
-						</a>
+					<div style="display: flex; justify-content: space-around;">
+						<div @click="restartcalcAPP" v-if="finalCalchideState || (this.$store.state.curentvalue == 3 && this.$store.state.backetData.length > 0)">
+							<a href="#app" v-smooth-scroll >
+								<div style="width: 95%" class="typepost-but-succes button-next" >Изменить адрес</div>
+							</a>
+						</div>
+						
+						<div @click="registrStateShow" v-if="finalCalchideState || (this.$store.state.curentvalue == 3 && this.$store.state.backetData.length > 0)">
+							<a href="#div-registr" v-smooth-scroll >
+								<div style="width: 95%" class="typepost-but-succes button-next" >Перейти к оформлению</div>
+							</a>
+						</div>
 					</div>
+					
 					<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 						<registration v-show="calcRegistrGet"></registration>
 						
@@ -181,7 +193,7 @@
 	  },
 	  methods: {
 	    ...mapMutations([
-	        'nextstepX', 'periodMut', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow', 'onSubmit'
+	        'nextstepX', 'periodMut', 'nextstepTreeX', 'selecttarif', 'expressnoexpress', 'importcalc', 'registrStateShow', 'onSubmit', 'restartcalc', 'registrStateShowFalse'
 	    ]),
 	    clickcalctarif() {
 	        this.$store.state.import ? this.importcalc() : this.selecttarif()
@@ -202,7 +214,16 @@
 	    nextCalcBacket() {
 	        this.nextstepTreeX()
 	        this.$store.state.import ? this.importcalc() : this.selecttarif()
-	    }
+		},
+        restartcalcAPP() {
+			this.nextstepX()
+			this.addTobasketHide
+			this.$store.state.flagBasketContainer = false
+			this.$store.state.backetData = []
+			this.$store.state.finalCalchide = false
+			this.regularcheck = false
+			this.registrStateShowFalse()
+		}
 	  },
 	  components: {
 	      TypePost, TypeStore, FormAdress, FormDate, Multiselect, bascket, Finalcalc, regular, registration
