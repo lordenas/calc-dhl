@@ -159,7 +159,7 @@
 	    },
 	    methods: {
 	        ...mapMutations([
-	            'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 
+	            'presoption', 'backetDataArr', 'selecttarif', 'addTobasketHide', 'importcalc',
 			]),
 			keypressOne() {
 				//console.log('evt', this.$refs.center)
@@ -210,7 +210,7 @@
 				}
 	           //this.selecttarif()
 	           //скрываем блок после добавление товара в корзину
-	
+				this.$store.state.import ? this.importcalc() : this.selecttarif()
 	
 	            if(this.flagGabatir) {
 	                this.addTobasketHide()

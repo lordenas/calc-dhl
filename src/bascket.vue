@@ -40,7 +40,7 @@
                 <div class="basket-block-position-row">
                     <div class="basket-block-position-row-button">
                         <!-- <button @click="editpost(index)" class="summary__link summary__link_edit" style="background-image:url('https://zakaz.dhl.ru/assets/img/summary-edit.png');">Изменить</button> -->
-                        <button @click="deletepost(index)" class="summary__link summary__link_remove" style="background-image:url('/img/summary-remove.png');">Удалить</button>
+                        <button @click="deleteBask(index)" class="summary__link summary__link_remove" style="background-image:url('/img/summary-remove.png');">Удалить</button>
                     </div>
                 </div>
             </div>
@@ -67,8 +67,12 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'presoption', 'deletepost','editpost'
-        ])
+            'presoption', 'deletepost','editpost', 'importcalc', 'selecttarif'
+        ]),
+        deleteBask(index) {
+            this.deletepost(index)
+	        this.$store.state.import ? this.importcalc() : this.selecttarif()
+        }
     },
 }
 </script>

@@ -45,8 +45,28 @@
                                     <input class="form-control" v-model="citynoRusSend" @input="controlvalidOne" type="text" placeholder="Город">
                             </template>
                             <template  v-if="!disabledcountryGet">
-                                <multiselect :disabled="valuecountry.country == 'Россия' ? false : true" v-model="value" deselectLabel="Уже выбран" noResult="Ничего не найдено" selectLabel=" " :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CitySending')">
+                                <multiselect 
+									:disabled="valuecountry.country == 'Россия' ? false : true" 
+									v-model="value" 
+									deselectLabel="Уже выбран" 
+									noResult="Ничего не найдено" 
+									selectLabel=" " 
+									:hideSelected="false" 
+									:showLabels="false" 
+									:multiple="false"  
+									track-by="region" 
+									label="city" 
+									placeholder="Город" 
+									:options="options" 
+									:searchable="true" 
+									:allow-empty="false" 
+									@input="dispatchAction('CitySending')"
+									>
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+									
+									<template slot="option" slot-scope="props">
+										<div class="option__desc"><span class="option__title">{{ props.option.city }}</span><span class="option__small">{{'(' +  props.option.region }}</span></div>
+									</template>
                                     <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
                             </template>
@@ -106,10 +126,32 @@
                                     <input class="form-control"  @input="controlvalidOne" v-model="citynoRus" type="text" placeholder="Город">
                             </template>
                              <template v-if="valuecountryToSet.country == 'Россия' ? true : false">
-                                <multiselect  deselectLabel="Уже выбран" v-model="valuetoSet" :disabled="valuecountryToSet.country == 'Россия' ? false : true" selectLabel=" " noResult="Ничего не найдено"  :hideSelected="false" :showLabels="false" :multiple="false"  track-by="region" label="city" placeholder="Город" :options="options" :searchable="true" :allow-empty="false" @input="dispatchAction('CityReception')">
+                                <multiselect 
+								deselectLabel="Уже выбран" 
+								v-model="valuetoSet" 
+								:disabled="valuecountryToSet.country == 'Россия' ? false : true" 
+								selectLabel=" " 
+								noResult="Ничего не найдено"  
+								:hideSelected="false" 
+								:showLabels="false" 
+								:multiple="false"  
+								track-by="region" 
+								label="city"
+								placeholder="Город" 
+								:options="options" 
+								:searchable="true" 
+								:allow-empty="false" 
+								@input="dispatchAction('CityReception')"
+								>
                                     <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.city }}  {{ '(' + option.region }}</strong></template>
+									
+									<template slot="option" slot-scope="props">
+										<div class="option__desc"><span class="option__title">{{ props.option.city }}</span><span class="option__small">{{'(' +  props.option.region }}</span></div>
+									</template>
                                     <span slot="noResult">Ничего не найдено.</span>
                                 </multiselect>
+
+								
                              </template>
 						</div>
 					</div>
@@ -239,7 +281,8 @@
 	                'city': cityId.cityid[i].city.split('(')[0],
 	                'region': cityId.cityid[i].city.split('(')[1],
 					'tarifid': cityId.cityid[i].tarifid,
-					'time': cityId.cityid[i].time || 5
+					'time': cityId.cityid[i].time || 5,
+					'fullName': cityId.cityid[i].city.split('(')[0] + ' ('+ cityId.cityid[i].city.split('(')[1]
 				})
 
 
