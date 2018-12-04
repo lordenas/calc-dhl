@@ -171,11 +171,17 @@
             ]),
             selectedDateMeth () {
                 this.showModalregS = false
-                this.calendarStateRegS(this.selectedDate)
+				this.calendarStateRegS(this.selectedDate)
+				setTimeout(()=>{
+					window.scrollTo( 0, 1000 );
+				},)
             },
             selectedDateMethD () {
                 this.showModalregD = false
-                this.calendarStateRegD(this.selectedDate)
+				this.calendarStateRegD(this.selectedDate)
+				setTimeout(()=>{
+					window.scrollTo( 0, 1000 );
+				},)
 			},
 			periodToStore(e) {
 				//this.periodMut(this.periodselect)
