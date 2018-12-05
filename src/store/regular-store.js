@@ -35,11 +35,11 @@ export default {
 		},
 		periodMut (state, id) {
 			state.period = id
-			console.log(state.period)
+			//console.log(state.period)
 		},
 		timeToStore (state, id) {
 			state.time = id
-			console.log(state.period)
+			//console.log(state.period)
 		},
 		
 	},

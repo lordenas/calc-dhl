@@ -189,6 +189,9 @@
         <template v-if="!this.$store.state.flagBasketContainer">
             <div v-if="checked != 2">
                 <div class="typepost" v-show="presoptionStateFace == 1">
+                      <div>{{ checked == 1 && presoptionStateFace == 1 ? 'Все поля заполняются в родительном падеже' : '' }}</div>
+                        <br>
+                        <br>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании<span class="redstar">*</span></label>
                         <div class="col-sm-7">
@@ -208,7 +211,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора<span class="redstar">*</span></label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора <span class="redstar">*</span></label>
                         <div class="col-sm-7">
                             <b-form-input 
                                 v-model="urlicorecvizit.fiogeneral"

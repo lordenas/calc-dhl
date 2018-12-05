@@ -66,7 +66,7 @@
         },
         computed: {
             ...mapGetters([
-                'conteinerBool', 'presoptionStateFace',  'countDayState','presoptionStateBay'
+                'conteinerBool', 'presoptionStateFace',  'countDayState','presoptionStateBay', 'periodGetState'
             ])
         },
         methods: {
@@ -105,6 +105,7 @@
                     varperemFiz({
                         //adrress: this.$store.state.inputClintInfo.addressotprhis,
                         presoptionStateFace: this.presoptionStateFace,
+                        regulat: this.periodGetState,
                         zakazchik: this.$store.state.inputClintInfo.vliceinput,
                         addressotprhis: this.$store.state.inputClintInfo.addressotprhis,
                         orgotpravit: this.$store.state.inputClintInfo.orgotpravit,

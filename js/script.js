@@ -25,6 +25,15 @@ let datedogovot = (newdata.getUTCDate()<10? '0':'') + newdata.getUTCDate() + '.'
 export function varperem (obj) {
 
 	console.log('PDF', obj, docInfo.content.length)
+	docInfo.content[0] = {
+			text:'ДОГОВОР №'+ obj.random+'',
+			fontSize:10,
+			width: 'auto',
+			alignment: 'center',
+			//margin:[260,30, 30,0]
+			//pageBreak:'after'
+		},
+	
 	docInfo.content[3] = { 
 		text: 'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемый в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411, с одной стороны, и "' + (obj.zakazchik || zakazchik) + '" именуемое в дальнейшем «Заказчик», в лице ' + (obj.vliceDirinput || vlice) + ' действующего на основании,'+ obj.documentUrlico +' с другой стороны, заключили настоящий Договор о нижеследующем:',
 		fontSize:10,
@@ -40,12 +49,12 @@ export function varperem (obj) {
 		
 			{
 				width: '50%',
-				text:'ИП Жижин Р.В.,',
+				text:'ИП Жижин Р.В.',
 				fontSize:10
 			},
 			{
 				width: '50%',
-				text:'ООО «' + (obj.zakazchik || zakazchik) + '», Место нахождения (ЕГРЮЛ): ',
+				text:'ООО «' + (obj.zakazchik || zakazchik) + '», \nМесто нахождения (ЕГРЮЛ): ',
 				fontSize:10
 			},
 
@@ -250,7 +259,7 @@ export function varperem (obj) {
 			columns:[
 				{
 					width: '50%',
-					text:'ООО «ЦЕНТР СЕРТИФИКАЦИИ И ИСПЫТАНИЙ»',
+					text:'Жижин Р. В.',
 					fontSize:10
 				},
 				{
@@ -295,7 +304,7 @@ export function varperem (obj) {
 			columns:[
 				{
 					width: '50%',
-					text:'__________________ /Устименко В.А./',
+					text:'__________________ /ИП Жижин Р. В.',
 					fontSize:10
 				},
 				{
@@ -381,7 +390,7 @@ export var docInfo = {
 			columnGap: 20
 		},
 		{
-			text:'Общество с ограниченной ответственностью «ЦЕНТР СЕРТИФИКАЦИИ И ИСПЫТАНИЙ»,  именуемое в дальнейшем  «Исполнитель»,  в лице Генерального директора Устименко Виктории Андреевны, действующего на основании Устава, с одной стороны, и "' + zakazchik + '" именуемое в дальнейшем «Заказчик», в лице ' + vlice + ' действующего на основании ______________________________, с другой стороны, заключили настоящий Договор о нижеследующем:',
+			text:'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемое в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411,, с одной стороны, и "' + zakazchik + '" именуемое в дальнейшем «Заказчик», в лице ' + vlice + ' действующего на основании ______________________________, с другой стороны, заключили настоящий Договор о нижеследующем:',
 			fontSize:10,
 			width: 'auto',
 			alignment: 'left',
@@ -849,7 +858,7 @@ export function varperemFiz (obj) {
 	docInfoFiz.content[2].table.body[9][0].text = obj.cityGetText + ', '+ obj.addresspoluch + ' ' + obj.indexGet
 	docInfoFiz.content[2].table.body[10][2].text = obj.commentszakaz
 	docInfoFiz.content[2].table.body[13][0].text = obj.presoptionStateFace ==  1 ? 'По договору' : (obj.sposoboplati == 1 ? 'Наличными курьеру' : 'Картой онлайн')
-	docInfoFiz.content[2].table.body[13][2].text = obj.price+' руб.'
+	docInfoFiz.content[2].table.body[13][2].text = obj.regulat > 1 && obj.presoptionStateFace ==  1 ? obj.price+' руб.' :  obj.price / obj.regulat +' руб.'
 	//docInfoFiz.content[2].table.body[10][0].text = obj.todayLast
 
 	//let block = obj.opis.map((item, index) => {
