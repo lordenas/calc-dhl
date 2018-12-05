@@ -4,7 +4,7 @@
                 <div class="typepost-body row">
                     <div class="col-sm-6">
                         <img src="/img/13.png" width="30px" />
-                        <div class="calcstr">Срок доставки: {{ countDayState }} рабочих дней</div>
+                        <div class="calcstr">Срок доставки: {{ countDayState }} рабочих {{countDayState == '1' ? 'День' : countDayState == '3' ? 'Дня' : 'Дней'}}</div>
                     </div>
                     <div class="col-sm-6">
                         <img src="/img/12.png" width="30px" />
