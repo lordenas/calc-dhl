@@ -476,7 +476,7 @@
             //Запрос информации по адресу
 			fetchResults(val) {
                 this.fioarr(val)
-				//this.$refs.autocomplete[0].setCurrentIndex(0)
+				this.$refs.autocomplete.setCurrentIndex(0)
 				clearTimeout(this.timeout)
 				
 				this.timeout = setTimeout( () => {
@@ -831,7 +831,16 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .autosuggest__results .autosuggest__results_item {
+        cursor: pointer;
+    }
+    .autosuggest__results ul {
+        list-style: none;
+    }
+    .autosuggest__results {
+        font-weight: 300;
+    }
     .col-form-label {
         text-align: left;
     }
@@ -843,5 +852,35 @@
     }
     .client-urlic {
         margin: 50px 0;
+    }
+    .autosuggest__results {
+        font-weight: 300;
+        margin: 0;
+        position: absolute;
+        z-index: 10000001;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        background: white;
+        padding: 0px;
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .autosuggest__results ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+    #autosuggest ul:nth-child(1) > .autosuggest__results_title {
+        border-top: none;
+    }
+    .autosuggest__results .autosuggest__results_title {
+        color: gray;
+        font-size: 11px;
+        margin-left: 0;
+        padding: 15px 13px 5px;
+        border-top: 1px solid lightgray;
     }
 </style>
