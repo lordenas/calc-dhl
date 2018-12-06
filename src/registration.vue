@@ -835,23 +835,12 @@
     .autosuggest__results .autosuggest__results_item {
         cursor: pointer;
     }
+    
     .autosuggest__results ul {
         list-style: none;
     }
     .autosuggest__results {
         font-weight: 300;
-    }
-    .col-form-label {
-        text-align: left;
-    }
-    .typestore-icon-step {
-        width: 45%;
-    }
-    .classNoValid {
-        color: red;
-    }
-    .client-urlic {
-        margin: 50px 0;
     }
     .autosuggest__results {
         font-weight: 300;
@@ -885,6 +874,19 @@
     .autosuggest__results ul {
         list-style: none;
     }
+
+    .autosuggest__results ul li {
+        display: block;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        text-align: left;
+    }
+
+    .autosuggest__results ul li:hover {
+        background: #CCC;
+    }
+
     .autosuggest__results .autosuggest__results_title {
         color: gray;
         font-size: 11px;
@@ -892,4 +894,21 @@
         padding: 15px 13px 5px;
         border-top: 1px solid lightgray;
     }
+</style>
+
+<style scoped>
+
+    .col-form-label {
+        text-align: left;
+    }
+    .typestore-icon-step {
+        width: 45%;
+    }
+    .classNoValid {
+        color: red;
+    }
+    .client-urlic {
+        margin: 50px 0;
+    }
+    
 </style>
