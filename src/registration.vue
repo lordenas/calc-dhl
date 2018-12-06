@@ -189,9 +189,7 @@
         <template v-if="!this.$store.state.flagBasketContainer">
             <div v-if="checked != 2">
                 <div class="typepost" v-show="presoptionStateFace == 1">
-                      <div>{{ checked == 1 && presoptionStateFace == 1 ? 'Все поля заполняются в родительном падеже' : '' }}</div>
-                        <br>
-                        <br>
+
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Наименование Вашей компании<span class="redstar">*</span></label>
                         <div class="col-sm-7">
@@ -214,7 +212,6 @@
                         <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора <span class="redstar">*</span></label>
                         <div class="col-sm-7">
                             <b-form-input 
-                                v-model="urlicorecvizit.fiogeneral"
                                 id="exampleInput6"
                                 type="text"
                                 :required="presoptionStateFace == 1 ? true : false"
@@ -225,20 +222,7 @@
 
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">ФИО генерального директора <span class="redstar">*</span></label>
-                        <div class="col-sm-7">
-                            <vue-autosuggest
-                                ref="autocomplete"
-                                :suggestions="suggestions"
-                                :inputProps="inputProps"
-                                :sectionConfigs="sectionConfigs"
-                                :renderSuggestion="renderSuggestion"
-                                :getSuggestionValue="getSuggestionValue"
-                            />
 
-                        </div>
-                    </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-1 col-form-label">ИНН<span class="redstar">*</span></label>
                         <div class="col-sm-5">
@@ -374,7 +358,8 @@
     import {mapGetters} from 'vuex';
 	import VueMask from 'v-mask'
     import sank from './sank'
-    
+    import { RussianNameProcessorN } from './methods/russsklon'
+
     export default {
         name: 'app',
         data () {
@@ -425,10 +410,7 @@
 					destinations: {
 					limit: 10,
 					onSelected: selected => {
-						this.formData[1].value = selected.label.data.postal_code
-						this.formData[2].value = selected.label.data.city
-						this.formData[3].value = selected.label.data.street
-						this.formData[4].value = selected.label.data.house
+                        this.$store.state.fiovroditpad = selected
 						this.selected = selected;
 					}
 					},
@@ -456,48 +438,10 @@
             ]),
             updatevaluecheck(evt) {
                 console.log('клиент', evt.target.value)
+
                 this.$store.state.checkedclietn = evt.target.value
             },
-            fioarr(val){
-                this.axios({
-                    method: 'POST',
-                    url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio',
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                        "Authorization": "Token " + '4d511777467edbf3f9c0e05e17e996d1bed2a197',
-                    },
-                    data: { "query": val, "count": 10 }
-                }).then(response => {
-                    this.dadataprop = response.data
-                    console.log(response, )
-                })
-            },
-            //Запрос информации по адресу
-			fetchResults(val) {
-                this.fioarr(val)
-				this.$refs.autocomplete.setCurrentIndex(0)
-				clearTimeout(this.timeout)
-				
-				this.timeout = setTimeout( () => {
-					const AddressPromise = this.dadataprop
-					
-					Promise.all([AddressPromise]).then(() => {
-					this.suggestions = [];
-					
-					AddressPromise.suggestions.length &&
-					this.suggestions.push({ name: "destinations", data: AddressPromise.suggestions })
-					});
-				}, this.debounceMilliseconds)
-				
-			},
-			renderSuggestion(suggestion) {
-				return suggestion.item.value
-			},
-			getSuggestionValue(suggestion) {
-				let { item } = suggestion
-				return item.value;
-			},
+
             toaxios() {
                 if(this.validemeil) {
                     let newdata =  new Date()
@@ -776,6 +720,9 @@
             },
             Update(evt,item) {
                 //console.log(ind)
+                if(item == 'vliceDirinput') {
+                    RussianNameProcessorN(evt)
+                }
                 //console.log(evt)
                 this.$store.state.inputClintInfo[item] = evt
                 //console.log(this.$store.state.inputClintInfo[item])

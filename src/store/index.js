@@ -115,6 +115,7 @@ export const store = new Vuex.Store({
         commentszakaz: '', //глобальный комментарий
         checkedclietn: 1,
         datestateregular: newdata,
+        fiovroditpad: ''
     },
     getters: {
         backetDataState(state) {

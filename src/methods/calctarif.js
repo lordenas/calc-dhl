@@ -144,9 +144,9 @@ export function calcTariImport (backed, importValue, valueCitySending, valueCity
                     //округляем все + объемные вес
                     let decimal2 = 1
                     if (parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
-                        decimal2 = 0;
-                    } else {
                         decimal2 = 1;
+                    } else {
+                        decimal2 = 0;
                     }
 
                     mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)

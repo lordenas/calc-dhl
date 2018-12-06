@@ -168,8 +168,7 @@
 	import vueSmoothScroll from 'vue-smooth-scroll'
 	Vue.use(vueSmoothScroll)
 	Vue.use(VueAxios, axios)
-	import VueAutosuggest from "vue-autosuggest"
-	Vue.use(VueAutosuggest)
+
 	export default {
 	  name: 'app',
 	  store: store,
