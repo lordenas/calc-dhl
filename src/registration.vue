@@ -413,8 +413,7 @@
                     rs: ''
                 },
                 debounceMilliseconds: 50,
-                dadataprop: [],
-				inputProps: {
+               inputProps: {
 					id: "autosuggest__input",
 					onInputChange: this.fetchResults,
 					placeholder: "Введите адрес",
@@ -438,9 +437,9 @@
 							this.searchText = selected.item.name;
 							this.doSearch(this);
 						}
-                    }
-                }
-            }
+					}
+				}
+			}	
         },
         computed: {
             ...mapGetters([
@@ -459,28 +458,29 @@
                 console.log('клиент', evt.target.value)
                 this.$store.state.checkedclietn = evt.target.value
             },
-            fioarr(){
+            fioarr(val){
                 this.axios({
                     method: 'POST',
                     url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio',
                     headers: {
-                        "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
-                        "Accept": "application/json",
                         "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Token " + '4d511777467edbf3f9c0e05e17e996d1bed2a197',
                     },
-                    data: { "query": this.urlicorecvizit.fiogeneral, "count": 10 }
+                    data: { "query": val, "count": 10 }
                 }).then(response => {
                     this.dadataprop = response.data
-                    console.log(response)
+                    console.log(response, )
                 })
             },
             //Запрос информации по адресу
-			async fetchResults(val) {
-				this.$refs.autocomplete[0].setCurrentIndex(0)
+			fetchResults(val) {
+                this.fioarr(val)
+				//this.$refs.autocomplete[0].setCurrentIndex(0)
 				clearTimeout(this.timeout)
 				
-				this.timeout = setTimeout( async () => {
-					const AddressPromise = await getParseCustomerAddress(val)
+				this.timeout = setTimeout( () => {
+					const AddressPromise = this.dadataprop
 					
 					Promise.all([AddressPromise]).then(() => {
 					this.suggestions = [];
