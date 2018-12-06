@@ -199,11 +199,11 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-5 col-form-label">Юридический адрес Вашей компании<span class="redstar">*</span></label>
                         <div class="col-sm-7">
-                             <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.uradresskomp" ype="text" class="form-control" > </b-form-input>
+                             <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.uradresskomp"  @input="Update($event, 'uradresskomp')" type="text" class="form-control" > </b-form-input>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-5 col-form-label">Документ, на основании которого, лицо действует от имени юридического лица<span class="redstar">*</span></label>
+                        <label for="staticEmail" class="col-sm-5 col-form-label">Документ, на основании которого, лицо действует от имени юр. лица (в род. падеже)<span class="redstar">*</span></label>
                         <div class="col-sm-7">
                             <b-form-input :required="presoptionStateFace == 1 ? true : false" v-model="urlicorecvizit.dolosnkomur" type="text"  @input="consoleinput" class="form-control" > </b-form-input>
                         </div>
@@ -358,7 +358,7 @@
     import {mapGetters} from 'vuex';
 	import VueMask from 'v-mask'
     import sank from './sank'
-    import { RussianNameProcessorN } from './methods/russsklon'
+    //import { RussianNameProcessorN } from './methods/russsklon'
 
     export default {
         name: 'app',
@@ -721,7 +721,14 @@
             Update(evt,item) {
                 //console.log(ind)
                 if(item == 'vliceDirinput') {
-                    RussianNameProcessorN(evt)
+                    	try {
+                            var rn = new RussianName(evt);
+                            var pred = rn.fullName(rn.gcaseRod);
+                            console.log(pred)
+                            this.$store.state.fiovroditpad = pred
+                        } catch(e) {
+                             this.$store.state.fiovroditpad = evt
+                        }
                 }
                 //console.log(evt)
                 this.$store.state.inputClintInfo[item] = evt
@@ -844,7 +851,12 @@
 </style>
 
 <style scoped>
-
+    .redstar {
+        font-size: 19px;
+        color: red;
+        position: relative;
+        top: 0;
+    }
     .col-form-label {
         text-align: left;
     }

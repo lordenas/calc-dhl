@@ -110,7 +110,8 @@ export const store = new Vuex.Store({
             telephoneotpr: '',
             vliceinput: '',
             randomnumber: 1,
-            newnumbernak: ''
+            newnumbernak: '',
+            uradresskomp: 'f',
         },
         commentszakaz: '', //глобальный комментарий
         checkedclietn: 1,

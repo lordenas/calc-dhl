@@ -79,7 +79,8 @@
                
                 varperem(
                     {
-                        roditelpadej: this.$store.state.fiovroditpad,
+                        uradresskomp: this.$store.state.inputClintInfo.uradresskomp,
+                        fiovroditpad: this.$store.state.fiovroditpad,
                         vliceDirinput: this.$store.state.inputClintInfo.vliceDirinput, 
                         zakazchik: this.$store.state.zakazchik,
                         documentUrlico: this.$store.state.documentUrlico,

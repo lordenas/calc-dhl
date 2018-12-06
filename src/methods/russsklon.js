@@ -272,7 +272,7 @@ RussianName.prototype = {
 
 export let RussianNameProcessorN =  function (val) {
     console.log(val)
-    var rn = new RussianName('Паниковский Михаил Самуэльевич');
+    var rn = new RussianName('Паниковский Михаил Самуэлевич');
     console.log(rn.fullName(rn.gcaseRod)); // Паниковского Михаила Самуэльевича
     return val
 }

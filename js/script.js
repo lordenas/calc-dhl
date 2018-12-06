@@ -35,7 +35,7 @@ export function varperem (obj) {
 		},
 	
 	docInfo.content[3] = { 
-		text: 'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемый в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411, с одной стороны, и "' + (obj.zakazchik || zakazchik) + '" именуемое в дальнейшем «Заказчик», в лице ' + (obj.roditelpadej || vlice) + ' действующего на основании '+ obj.documentUrlico +', с другой стороны, заключили настоящий Договор о нижеследующем:',
+		text: 'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемый в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411, с одной стороны, и "' + (obj.zakazchik || zakazchik) + '" именуемое в дальнейшем «Заказчик», в лице ' + (obj.fiovroditpad || vlice) + ' действующего на основании'+ obj.documentUrlico +' с другой стороны, заключили настоящий Договор о нижеследующем:',
 		fontSize:10,
 		width: 'auto',
 		alignment: 'left',
@@ -54,7 +54,7 @@ export function varperem (obj) {
 			},
 			{
 				width: '50%',
-				text:'ООО «' + (obj.zakazchik || zakazchik) + '», \nМесто нахождения (ЕГРЮЛ): ',
+				text:'ООО «' + (obj.zakazchik || zakazchik) + '»',
 				fontSize:10
 			},
 
@@ -72,7 +72,7 @@ export function varperem (obj) {
 			},
 			{
 				width: '50%',
-				text:'Фактический адрес: ',
+				text:'Юридический адрес: '  + obj.uradresskomp,
 				fontSize:10
 			},
 			
@@ -259,7 +259,7 @@ export function varperem (obj) {
 			columns:[
 				{
 					width: '50%',
-					text:'ИП Жижин Роман Валерьевич' ,
+					text:'ИП Жижин Роман Валерьевич',
 					fontSize:10
 				},
 				{
@@ -300,9 +300,9 @@ export function varperem (obj) {
 			//pageBreak:'after'
 		}
 
-		let inicial  = obj.vliceDirinput.split(' ') + ' '
-		let inicName = (inicial[1].split('')[0] + '. ' ) || ''
-		let vliceotch =  (inicial[2].split('')[0] + '. ' ) || ''
+		let inicial  = obj.vliceDirinput.split(' ')
+		let inicName = (inicial[1] ? inicial[1].split('')[0] + '. '  : '')  || ''
+		let vliceotch =  (inicial[2] ? inicial[2].split('')[0] + '. ' : ''  ) || ''
 
 		docInfo.content[71] = {
 			columns:[
@@ -313,7 +313,7 @@ export function varperem (obj) {
 				},
 				{
 					width: '50%',
-					text:'__________________ /'+inicial[0]+ inicName + vliceotch+'/', 
+					text:'__________________ /'+inicial[0] + ' '+ inicName + vliceotch+'/', 
 					fontSize:10
 				},
 				
@@ -336,7 +336,7 @@ export var docInfo = {
 	
 	pageSize:'A4',
 	pageOrientation:'portrait',//'portrait'
-	pageMargins:[50,50,30,60],
+	pageMargins:[50,30,40,60],
 	
 	header:function(currentPage,pageCount) {
 		return {
@@ -394,7 +394,7 @@ export var docInfo = {
 			columnGap: 20
 		},
 		{
-			text:'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемое в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411,, с одной стороны, и "' + zakazchik + '" именуемое в дальнейшем «Заказчик», в лице ' + vlice + ' действующего на основании, ______________________________ с другой стороны, заключили настоящий Договор о нижеследующем:',
+			text:'Индивидуальный предприниматель Жижин Роман Валерьевич,  именуемое в дальнейшем  «Исполнитель»,  зарегистрированный в качестве ИП 02.04.2018г. ОГРНИП 318784700101411,, с одной стороны, и "' + zakazchik + '" именуемое в дальнейшем «Заказчик», в лице ' + vlice + ' действующего на основании ______________________________, с другой стороны, заключили настоящий Договор о нижеследующем:',
 			fontSize:10,
 			width: 'auto',
 			alignment: 'left',
