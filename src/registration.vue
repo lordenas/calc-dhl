@@ -873,8 +873,17 @@
         padding-left: 0;
         margin: 0;
     }
+    .autosuggest__results .autosuggest__results_item {
+        cursor: pointer;
+        padding: 15px;
+    }
+
     #autosuggest ul:nth-child(1) > .autosuggest__results_title {
         border-top: none;
+    }
+
+    .autosuggest__results ul {
+        list-style: none;
     }
     .autosuggest__results .autosuggest__results_title {
         color: gray;
