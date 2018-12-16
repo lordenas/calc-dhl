@@ -293,9 +293,9 @@ export const store = new Vuex.Store({
                         let decimal = 1
                         //округляем вес
                         if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
-                            decimal = 1;
-                        } else {
                             decimal = 0;
+                        } else {
+                            decimal = 1;
                         }
 
                         //расчет объемного веса
@@ -317,9 +317,9 @@ export const store = new Vuex.Store({
                         //округляем все + объемные вес
                         let decimal2 = 1
                         if (parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
-                            decimal2 = 1;
-                        } else {
                             decimal2 = 0;
+                        } else {
+                            decimal2 = 1;
                         }
 
                         mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)
@@ -465,9 +465,9 @@ export const store = new Vuex.Store({
                     let decimal = 1
                     //округляем вес
                     if (parseFloat(JSON.parse(JSON.stringify(state.backetData[a].parametr))) % 1 == 0) {
-                        decimal = 1;
-                    } else {
                         decimal = 0;
+                    } else {
+                        decimal = 1;
                     }
 
                     //расчет объемного веса
@@ -489,9 +489,9 @@ export const store = new Vuex.Store({
                     //округляем все + объемные вес
                     let decimal2 = 1
                     if (parseFloat(JSON.parse(JSON.stringify(mass))) % 1 == 0) {
-                        decimal2 = 1;
-                    } else {
                         decimal2 = 0;
+                    } else {
+                        decimal2 = 1;
                     }
 
                     mass = (Math.ceil(parseFloat(mass) * 2) / 2).toFixed(decimal2)

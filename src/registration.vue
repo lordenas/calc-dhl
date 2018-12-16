@@ -443,6 +443,141 @@
             },
 
             toaxios() {
+                let htmlFooter = `<br><br>
+                <table style="" class="es-wrapper" align="left" width="800" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="esd-email-paddings" valign="top">
+                                    <table class="es-content esd-header-popover" align="center" width="800" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="esd-stripe">
+                                                    <table class="es-content-body" style="background-color: rgb(255, 255, 255);" width="600" cellspacing="0" cellpadding="0" bgcolor="#fff" align="center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="esd-structure es-p20t es-p20r es-p20l" align="left">
+                                                                    <!--[if mso]><table width="560"><tr><td width="180" valign="top"><![endif]-->
+                                                                    <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="border-right: 1px solid #CCC">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="es-m-p0r es-m-p20b esd-container-frame" esd-custom-block-id="24500" width="180" valign="top" align="center">
+                                                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-image"  align="center">
+                                                                                                    <a target="_blank"> <img class="adapt-img" src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/54611544884096224.jpg" alt="" style="display: block;" width="131"> </a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-text" align="left">
+                                                                                                    <p style="font-size: 18px;">Филиппович</p>
+                                                                                                    <p style="font-size: 18px;">Анастасия</p>
+                                                                                                    <p style="font-size: 11px;">логист</p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!--[if mso]></td><td width="20"></td><td width="360" valign="top"><![endif]-->
+                                                                    <table cellspacing="0" cellpadding="0" align="right">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="esd-container-frame" width="360" align="left">
+                                                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-text es-p20r" align="left">
+                                                                                                    <p align="left" style="color: #767171; text-align: left; ">Всероссийский Центр Сертификации «МЕЖРЕГИОНТЕСТ» <br>Тел. 8-800-333-60-84 доб. 263 <br>Моб. +7 (911) 130-14-39 196084, г. Санкт-Петербург, ул. Новорощинская, д. 4 <br>105066, г. Москва, ул. Бауманская, д.6</p>
+                                                                                                    <p align="left"style="color: #767171; text-align: left; line-height: 200%;"><u>filippovich@megregiontest.ru</u></p>
+                                                                                                    <p align="left" style="color: #767171; text-align: left; line-height: 200%;"><u><a href="https://межрегионтест.рф/">www.межрегионтест.рф</a></u></p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-image" align="left">
+                                                                                                    <a href="https://vk.com/megregiontestinfo" target="_blank"> <img src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/33781544884439445.png" alt="" style="display: block; float: left; margin: 0 10px 0 0" width="29"> </a>
+                                                                                                    <a href="https://www.facebook.com/megregiontest/" target="_blank"> <img class="adapt-img" src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/79081544884450046.png" alt="" style="display: block;  float: left; margin: 0 10px 0 0" width="29"> </a>
+                                                                                                    <a href="https://www.youtube.com/channel/UCioaEQ54DFAwRLN8ilP3gWQ" target="_blank"> <img class="adapt-img" src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/69971544884456656.png" alt="" style="display: block;" width="43"> </a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!--[if mso]></td></tr></table><![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="es-content esd-footer-popover" cellspacing="0" cellpadding="0" align="center">
+                                        <tbody>
+                                            <tr>
+                                                <td class="esd-stripe">
+                                                    <table class="es-content-body" width="800" align="center" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="esd-structure es-p20t es-p20r es-p20l" align="center">
+                                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="esd-container-frame" width="800" valign="top">
+                                                                                    <table width="100%" cellspacing="0" cellpadding="0" align="center">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-text" align="left">
+                                                                                                    <p>Нам доверяют:</p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr align="center">
+                                                                                                <td class="esd-block-image" align="center">
+                                                                                                    <center><img class="adapt-img" src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/50861544884617839.jpg" alt="" style="display: block;" align="center" width="427">  </center>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-text" align="left">
+                                                                                                    <p style="font-size: 8px; color: #767171;"><br></p>
+                                                                                                    <p style="font-size: 8px; color: #767171;">Данное сообщение и все его вложения содержат сведения, относящиеся к коммерческой тайне компании. Просим Вас использовать полученную информацию только в соответствии с ФЗ № 98-ФЗ «О коммерческой тайне» и не разглашать ее (п. 9 ст. 3 ФЗ №98-ФЗ). Если Вы получили это сообщение по ошибке, то должны удалить полученную информацию (письмо). Нарушение ФЗ № 98-ФЗ может повлечь уголовную, административную, гражданско-правовую или иную ответственность, предусмотренную действующим законодательством РФ.</p>
+                                                                                                    <p style="font-size: 8px; color: #767171;"><br></p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr align="center">
+                                                                                                <td class="esd-block-image" align="center">
+                                                                                                    <center> <a href="https://межрегионтест.рф/sluzhebnyy-kontrol" style="display: contents;" target="_blank" align="center"> <img class="adapt-img" src="https://demo.stripo.email/content/guids/359a433e-05af-4d1e-aff7-a7dc6b2e76e0/images/37071544884780392.png" alt="" style="display: block; text-align: center;" width="229"> </a> </center>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="esd-block-text" align="left">
+                                                                                                    <p style="font-size: 8px; color: #767171;">В целях повышения качества предоставляемых услуг, просьба направлять все замечания и пожелания в службу клиентского сервиса. Все обращения будут внимательно и тщательно рассмотрены в обязательном порядке. service@megregiontest.ru</p>
+                                                                                                    <p style="font-size: 8px; color: #767171;"><br></p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>`
+        
                 if(this.validemeil) {
                     let newdata =  new Date()
                     let today = ( this.$store.state.datestateregular.getDate() < 10 ? '0' : '') +  this.$store.state.datestateregular.getDate() + '.' + (( this.$store.state.datestateregular.getMonth() + 1) < 10 ? '0' : '') + ( this.$store.state.datestateregular.getMonth() + 1) + '.' +  this.$store.state.datestateregular.getUTCFullYear()
@@ -578,6 +713,13 @@
                             margin: 0px;
                             border-collapse: collapse;
                         }
+                        .es-wrapper td {
+                            border: none !important;
+                            padding: 0px;
+                            text-align: center;
+                            margin: 0px;
+                            border-collapse: collapse;
+                        }
                     </style>
                     <body>
                         <h2 style="font-size: 16px">Добрый день!</h3>
@@ -668,7 +810,6 @@
                         <br><a href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Ознакомиться с условиями доставки</a>
                     </body>
                     </html>`
-//<table cellspacing="0" cellpadding="0" width="800"><tr><td>Описание груза</td></tr>` + cashblocklet + `</table>
                     let basketdatab = this.$store.state.backetData[0].title
                     //console.log('MAIL', this.$store.state.backetData[0].title)
                     this.axios({
@@ -683,7 +824,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': [this.email],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body': basketdatab == 3 ? htmlcont : html
+                            'html_body': basketdatab == 3 ? htmlcont + htmlFooter : html + htmlFooter
                         }
                     }).then(response => {
                         console.log(response)
@@ -701,7 +842,7 @@
                             'from': 'lordenas@gmail.com',
                             'to': ['lordenas@gmail.com'],
                             'subject': 'Заказ успешно принят в работу.',
-                            'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlicoContainder: html + cash + cashurlicoContainder
+                            'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlicoContainder + htmlFooter : html + cash + cashurlicoContainder +htmlFooter
                         }
                     }).then(response => {
                         console.log(response)
