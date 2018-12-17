@@ -300,7 +300,7 @@
                             v-model="status"
                             value="accepted"
                             unchecked-value="not_accepted">
-                        <a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Я принимаю условия доставки</a>
+                        <a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/dostavka/pravila-i-usloviya-dostavki-gruzov">Я принимаю условия доставки</a>
                         </b-form-checkbox>
                     </div>
             <div class="title-block-new" v-show="presoptionStateFace == 2">
@@ -490,7 +490,7 @@
                                                                                         <tbody>
                                                                                             <tr>
                                                                                                 <td class="esd-block-text es-p20r" align="left">
-                                                                                                    <p align="left" style="color: #767171; text-align: left; ">Всероссийский Центр Сертификации «МЕЖРЕГИОНТЕСТ» <br>Тел. 8-800-333-60-84 доб. 263 <br>Моб. +7 (911) 130-14-39 196084, г. Санкт-Петербург, ул. Новорощинская, д. 4 <br>105066, г. Москва, ул. Бауманская, д.6</p>
+                                                                                                    <p align="left" style="color: #767171; text-align: left; ">Всероссийский Центр Сертификации «МЕЖРЕГИОНТЕСТ» <br>Тел. 8-800-333-60-84 доб. 263 <br>Моб. +7 (911) 130-14-39 <br>196084, г. Санкт-Петербург, ул. Новорощинская, д. 4 <br>105066, г. Москва, ул. Бауманская, д.6</p>
                                                                                                     <p align="left"style="color: #767171; text-align: left; line-height: 200%;"><u>filippovich@megregiontest.ru</u></p>
                                                                                                     <p align="left" style="color: #767171; text-align: left; line-height: 200%;"><u><a href="https://межрегионтест.рф/">www.межрегионтест.рф</a></u></p>
                                                                                                 </td>
@@ -807,7 +807,7 @@
                         </table>
                         <br><br>
                         `+ deistvklientlet +`
-                        <br><a href="https://межрегионтест.рф/posts/pravila-i-usloviya-dostavki-gruzov">Ознакомиться с условиями доставки</a>
+                        <br><a href="https://межрегионтест.рф/dostavka/pravila-i-usloviya-dostavki-gruzov">Ознакомиться с условиями доставки</a>
                     </body>
                     </html>`
                     let basketdatab = this.$store.state.backetData[0].title
