@@ -816,7 +816,7 @@
                             method: 'POST',
                             url: 'https://api.mailhandler.ru/message/send/',
                             headers: {
-                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
+                                "X-Secure-Token": "dad030b8-c3ec-4728-9d21-ac49f59dea0e",
                                 "Accept": "application/json",
                                 "Content-Type": "application/json",
                             },
@@ -834,7 +834,7 @@
                             method: 'POST',
                             url: 'https://api.mailhandler.ru/message/send/',
                             headers: {
-                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
+                                "X-Secure-Token": "dad030b8-c3ec-4728-9d21-ac49f59dea0e",
                                 "Accept": "application/json",
                                 "Content-Type": "application/json",
                             },
