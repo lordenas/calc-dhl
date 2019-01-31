@@ -84,6 +84,7 @@ export const store = new Vuex.Store({
             imapostizv: '',
             markgruznomer: '',
             obshves: '',
+            obshobg: '',
             obshstoimgruz: '',
             kodtovaratnved: '',
             modelartic: '',

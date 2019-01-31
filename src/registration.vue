@@ -816,12 +816,12 @@
                             method: 'POST',
                             url: 'https://api.mailhandler.ru/message/send/',
                             headers: {
-                                "X-Secure-Token": "dad030b8-c3ec-4728-9d21-ac49f59dea0e",
+                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
                                 "Accept": "application/json",
                                 "Content-Type": "application/json",
                             },
                             data: {
-                            'from': 'lordenas@gmail.com',
+                            'from': 'filippovich@megregiontest.ru',
                             'to': [this.email],
                             'subject': 'Заказ успешно принят в работу.',
                             'html_body': basketdatab == 3 ? htmlcont + htmlFooter : html + htmlFooter
@@ -834,13 +834,13 @@
                             method: 'POST',
                             url: 'https://api.mailhandler.ru/message/send/',
                             headers: {
-                                "X-Secure-Token": "dad030b8-c3ec-4728-9d21-ac49f59dea0e",
+                                "X-Secure-Token": "cff7fac0-37de-48ea-abb4-d30d3d29f803",
                                 "Accept": "application/json",
                                 "Content-Type": "application/json",
                             },
                             data: {
-                            'from': 'lordenas@gmail.com',
-                            'to': ['lordenas@gmail.com'],
+                            'from': 'filippovich@megregiontest.ru',
+                            'to': ['filippovich@megregiontest.ru'],
                             'subject': 'Заказ успешно принят в работу.',
                             'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlicoContainder + htmlFooter : html + cash + cashurlicoContainder +htmlFooter
                         }

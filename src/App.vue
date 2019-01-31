@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-		<div v-show="!stepOneflag" class="video-hero jquery-background-video-wrapper demo-video-wrapper">
+		<div v-show="stepOneflag" class="video-hero jquery-background-video-wrapper demo-video-wrapper">
 			<video class="jquery-background-video" autoplay muted loop poster="/541.jpg">
 				<source src="/fon-transcode.webm" type="video/webm">
 			</video>
@@ -24,38 +24,23 @@
 				</div>
 			</div>
 		</div>
-            <video v-show="stepOneflag" poster="/541.jpg" id="bgvid" playsinline autoplay muted loop>
+            <video v-show="!stepOneflag" poster="/541.jpg" id="bgvid" playsinline autoplay muted loop>
             <!-- 
             - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
             WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
             <source src="/fon-transcode.webm" type="video/webm">
 
             </video>
-            <div id="polina" v-show="stepOneflag">
+            <div id="polina" v-show="!stepOneflag">
                 <div>
                     <a @click ="stepOne()" v-show="stepOneflag" style="margin: 0px; box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.64);" class="typepost-but-succes button-next">Расчитать стоимость доставки</a> 
                 </div>
             </div>
-        
-<!--         <div v-show="stepOneflag" class="video-hero jquery-background-video-wrapperOne demo-video-wrapper">
-			<video class="jquery-background-video" autoplay muted loop poster="https://d2ezlykacdqcnj.cloudfront.net/_assets/home-video/beach-waves-loop.jpg">
-				<source src="/fon-transcode.webm" type="video/webm">
-			</video>
-			<div class="video-cloud">
-				<div class="video-overlay"></div>
-				<div class="page-width">
-					<div class="video-hero--content">
-						<div class="wrapper">
-                            <a @click ="stepOne()" v-show="stepOneflag" class="typepost-but-succes button-next">Расчитать стоимость доставки</a> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
+
         
 		<div id="app">
 			<transition name="fade">
-				<div  v-show="!stepOneflag" class="stepOne">
+				<div  v-show="stepOneflag" class="stepOne">
 					
 					<form-adress v-show="!this.$store.state.backetData.length > 0"></form-adress>
 
