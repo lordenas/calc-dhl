@@ -45,7 +45,6 @@
 					<form-adress v-show="!this.$store.state.backetData.length > 0"></form-adress>
 
 					<form-date></form-date>
-
 					<div id="div2"></div>
 					<a href="#div2" v-smooth-scroll>
 					<input class="typepost-but-succes button-next" :disabled="!validate" v-show="!steponeEx" @click="nextstepX" value="Далее">
@@ -63,6 +62,8 @@
 								<type-store></type-store>
 							</div>
 							<bascket v-show="this.$store.state.backetData.length > 0 ? true : false "></bascket>
+							
+
 
 							<div v-if="this.$store.state.curentvalue != 3">
 								<input class="typepost-but-succes button-next" v-show="!stepTreeEx" @click="nextCalcBacket" :value="this.$store.state.backetData.length > 0 ? 'Добавить еще' : 'Далее'">
@@ -120,8 +121,12 @@
 					
 					<div id="div-registr" v-if="this.$store.state.backetData.length > 0">
 						<registration v-show="calcRegistrGet"></registration>
-						
 					</div>
+
+					<div class="col-sm-12 text-center" style="margin-top: 20px;" v-show="!calcRegistrGet">
+						<a style="color: #13489f" target="_blank" href="https://межрегионтест.рф/dostavka/pravila-i-usloviya-dostavki-gruzov">Условия доставки</a>
+					</div>
+
 				</div>
 			</transition>
 		</div>
