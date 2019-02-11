@@ -840,7 +840,7 @@
                             },
                             data: {
                             'from': 'filippovich@megregiontest.ru',
-                            'to': ['filippovich@megregiontest.ru'],
+                            'to': ['kudrabrush@gmail.com'],
                             'subject': 'Заказ успешно принят в работу.',
                             'html_body':  basketdatab == 3 ? htmlcont + cash + cashurlicoContainder + htmlFooter : html + cash + cashurlicoContainder +htmlFooter
                         }
